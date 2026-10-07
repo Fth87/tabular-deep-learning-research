@@ -1,0 +1,203 @@
+[
+  {
+    "id": 37,
+    "slug": "diabetes_pima",
+    "file": "diabetes_pima_openml37.csv",
+    "openml_name": "diabetes",
+    "openml_version": 1,
+    "target": "class",
+    "rows": 768,
+    "features": 8,
+    "classes": 2,
+    "numeric_features": [
+      "preg",
+      "plas",
+      "pres",
+      "skin",
+      "insu",
+      "mass",
+      "pedi",
+      "age"
+    ],
+    "categorical_features": [],
+    "target_counts": {
+      "tested_negative": 500,
+      "tested_positive": 268
+    },
+    "missing_feature_cells": 0,
+    "missing_target_rows": 0,
+    "csv": "dataset/classification/diabetes_pima_openml37.csv",
+    "source": "https://www.openml.org/d/37"
+  },
+  {
+    "id": 23,
+    "slug": "cmc",
+    "file": "cmc_openml23.csv",
+    "openml_name": "cmc",
+    "openml_version": 1,
+    "target": "Contraceptive_method_used",
+    "rows": 1473,
+    "features": 9,
+    "classes": 3,
+    "numeric_features": [
+      "Wifes_age",
+      "Number_of_children_ever_born"
+    ],
+    "categorical_features": [
+      "Wifes_education",
+      "Husbands_education",
+      "Wifes_religion",
+      "Wifes_now_working%3F",
+      "Husbands_occupation",
+      "Standard-of-living_index",
+      "Media_exposure"
+    ],
+    "target_counts": {
+      "1": 629,
+      "3": 511,
+      "2": 333
+    },
+    "missing_feature_cells": 0,
+    "missing_target_rows": 0,
+    "csv": "dataset/classification/cmc_openml23.csv",
+    "source": "https://www.openml.org/d/23"
+  },
+  {
+    "id": 182,
+    "slug": "satimage",
+    "file": "satimage_openml182.csv",
+    "openml_name": "satimage",
+    "openml_version": 1,
+    "target": "class",
+    "rows": 6430,
+    "features": 36,
+    "classes": 6,
+    "numeric_features": [
+      "Aattr",
+      "Battr",
+      "Cattr",
+      "Dattr",
+      "Eattr",
+      "Fattr",
+      "A1attr",
+      "B2attr",
+      "C3attr",
+      "D4attr",
+      "E5attr",
+      "F6attr",
+      "A7attr",
+      "B8attr",
+      "C9attr",
+      "D10attr",
+      "E11attr",
+      "F12attr",
+      "A13attr",
+      "B14attr",
+      "C15attr",
+      "D16attr",
+      "E17attr",
+      "F18attr",
+      "A19attr",
+      "B20attr",
+      "C21attr",
+      "D22attr",
+      "E23attr",
+      "F24attr",
+      "A25attr",
+      "B26attr",
+      "C27attr",
+      "D28attr",
+      "E29attr",
+      "F30attr"
+    ],
+    "categorical_features": [],
+    "target_counts": {
+      "1.": 1531,
+      "7.": 1508,
+      "3.": 1356,
+      "5.": 707,
+      "2.": 703,
+      "4.": 625
+    },
+    "missing_feature_cells": 0,
+    "missing_target_rows": 0,
+    "csv": "dataset/classification/satimage_openml182.csv",
+    "source": "https://www.openml.org/d/182"
+  },
+  {
+    "id": 1461,
+    "slug": "bank_marketing",
+    "file": "bank_marketing_openml1461.csv",
+    "openml_name": "bank-marketing",
+    "openml_version": 1,
+    "target": "Class",
+    "rows": 45211,
+    "features": 16,
+    "classes": 2,
+    "numeric_features": [
+      "V1",
+      "V6",
+      "V10",
+      "V12",
+      "V13",
+      "V14",
+      "V15"
+    ],
+    "categorical_features": [
+      "V2",
+      "V3",
+      "V4",
+      "V5",
+      "V7",
+      "V8",
+      "V9",
+      "V11",
+      "V16"
+    ],
+    "target_counts": {
+      "1": 39922,
+      "2": 5289
+    },
+    "missing_feature_cells": 0,
+    "missing_target_rows": 0,
+    "csv": "dataset/classification/bank_marketing_openml1461.csv",
+    "source": "https://www.openml.org/d/1461"
+  },
+  {
+    "id": 1590,
+    "slug": "adult_income",
+    "file": "adult_income_openml1590.csv",
+    "openml_name": "adult",
+    "openml_version": 2,
+    "target": "class",
+    "rows": 48842,
+    "features": 14,
+    "classes": 2,
+    "numeric_features": [
+      "age",
+      "fnlwgt",
+      "education-num",
+      "capital-gain",
+      "capital-loss",
+      "hours-per-week"
+    ],
+    "categorical_features": [
+      "workclass",
+      "education",
+      "marital-status",
+      "occupation",
+      "relationship",
+      "race",
+      "sex",
+      "native-country"
+    ],
+    "target_counts": {
+      "<=50K": 37155,
+      ">50K": 11687
+    },
+    "missing_feature_cells": 6465,
+    "missing_target_rows": 0,
+    "csv": "dataset/classification/adult_income_openml1590.csv",
+    "source": "https://www.openml.org/d/1590"
+  }
+]
