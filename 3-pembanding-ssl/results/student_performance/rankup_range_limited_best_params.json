@@ -1,0 +1,14 @@
+{
+  "dataset": "student_performance",
+  "method": "range_limited",
+  "best_trial": 0,
+  "best_validation_mae": 1.3552315060344649,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.36206771171652075,
+    "relative_gap": 0.9507635921035062
+  },
+  "weak_strength": 0.36206771171652075,
+  "strong_strength": 0.968590505643731
+}

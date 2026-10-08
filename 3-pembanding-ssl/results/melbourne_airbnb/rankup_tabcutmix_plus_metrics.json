@@ -1,0 +1,18 @@
+{
+  "dataset": "melbourne_airbnb",
+  "task_type": "ordinal_regression",
+  "method": "RankUp + tabcutmix_plus",
+  "primary_metric": "mae",
+  "mae": 1.2932660293452123,
+  "rmse": 1.75743311448214,
+  "r2": 0.6577598587914337,
+  "spearman": 0.8060466726248855,
+  "qwk": 0.8036239755304356,
+  "best_trial": 23,
+  "best_validation_mae": 1.3185358288275522,
+  "best_epoch": 35,
+  "weak_strength": 0.36718446621867606,
+  "strong_strength": 0.44589889904552743,
+  "n_labeled": 1402,
+  "n_unlabeled": 12622
+}

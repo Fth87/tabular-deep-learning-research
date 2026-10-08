@@ -1,0 +1,20 @@
+{
+  "dataset": "adult_income",
+  "task_type": "classification",
+  "method": "STUNT (self-generated tasks, prototypical few-shot evaluation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.7969155179473182,
+  "macro_precision": 0.7270424315442316,
+  "macro_recall": 0.7552704769168073,
+  "macro_f1": 0.7381522934552964,
+  "fit_seconds": 29.252392768859863,
+  "best_step": 775,
+  "best_validation_accuracy": 0.7903644056230381,
+  "ways_per_synthetic_task": 2,
+  "shots_per_real_class": 1,
+  "n_labeled": 3418,
+  "n_unlabeled": 30770,
+  "n_validation": 7327,
+  "n_test": 7327,
+  "steps_requested": 1000
+}

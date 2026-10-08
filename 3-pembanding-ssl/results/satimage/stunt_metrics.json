@@ -1,0 +1,20 @@
+{
+  "dataset": "satimage",
+  "task_type": "classification",
+  "method": "STUNT (self-generated tasks, prototypical few-shot evaluation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.5958549222797928,
+  "macro_precision": 0.5954284552675396,
+  "macro_recall": 0.5373507721589813,
+  "macro_f1": 0.5454835272899985,
+  "fit_seconds": 32.20254635810852,
+  "best_step": 875,
+  "best_validation_accuracy": 0.5937823834196891,
+  "ways_per_synthetic_task": 5,
+  "shots_per_real_class": 1,
+  "n_labeled": 450,
+  "n_unlabeled": 4050,
+  "n_validation": 965,
+  "n_test": 965,
+  "steps_requested": 1000
+}

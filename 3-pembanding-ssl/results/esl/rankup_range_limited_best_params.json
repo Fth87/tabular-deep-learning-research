@@ -1,0 +1,14 @@
+{
+  "dataset": "esl",
+  "method": "range_limited",
+  "best_trial": 1,
+  "best_validation_mae": 0.3722288865162556,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.6980743053027207,
+    "relative_gap": 0.5990598257128396
+  },
+  "weak_strength": 0.6980743053027207,
+  "strong_strength": 0.8789458593463009
+}

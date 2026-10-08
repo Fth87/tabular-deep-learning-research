@@ -1,0 +1,15 @@
+{
+  "dataset": "diabetes_pima",
+  "method": "RankUp-CLS + range_limited",
+  "adaptation": "multiclass pseudo-label consistency; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "best_trial": 10,
+  "best_validation_metric": 0.7818657509606737,
+  "n_trials": 40,
+  "weak_strength": 0.9220743423574905,
+  "strong_strength": 0.958999726476851,
+  "parameters": {
+    "weak_strength": 0.9220743423574905,
+    "relative_gap": 0.4738539941332139
+  }
+}

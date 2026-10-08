@@ -1,0 +1,21 @@
+{
+  "dataset": "adult_income",
+  "task_type": "classification",
+  "method": "GFTab (authors' GKSMT, GFK loss and tree embedding)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8569673809198853,
+  "macro_precision": 0.809298978504857,
+  "macro_recall": 0.7843767135778923,
+  "macro_f1": 0.7955000234362682,
+  "fit_seconds": 91.05790972709656,
+  "best_epoch": 3,
+  "best_validation_loss": 0.448213274932156,
+  "n_labeled": 3418,
+  "n_unlabeled": 30770,
+  "n_validation": 7327,
+  "n_test": 7327,
+  "numeric_features": 6,
+  "categorical_features": 8,
+  "tree_embeddings": 14,
+  "epochs_requested": 10
+}

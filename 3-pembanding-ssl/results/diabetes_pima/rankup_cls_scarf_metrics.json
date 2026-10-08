@@ -1,0 +1,22 @@
+{
+  "dataset": "diabetes_pima",
+  "task_type": "classification",
+  "method": "RankUp-CLS + scarf",
+  "adaptation": "weak-to-strong multiclass pseudo-labeling; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.75,
+  "macro_precision": 0.7236331569664902,
+  "macro_recall": 0.7085526315789473,
+  "macro_f1": 0.7143099787685775,
+  "best_trial": 1,
+  "best_validation_metric": 0.7734182590233545,
+  "best_epoch": 3,
+  "weak_strength": 0.75,
+  "strong_strength": 1.0,
+  "n_labeled": 53,
+  "n_unlabeled": 483,
+  "classes": [
+    "tested_negative",
+    "tested_positive"
+  ]
+}

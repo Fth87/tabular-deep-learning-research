@@ -1,0 +1,21 @@
+{
+  "dataset": "cmc",
+  "task_type": "classification",
+  "method": "GFTab (authors' GKSMT, GFK loss and tree embedding)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.4796380090497738,
+  "macro_precision": 0.4576656287182603,
+  "macro_recall": 0.45164041632126745,
+  "macro_f1": 0.4509703062894552,
+  "fit_seconds": 15.418238639831543,
+  "best_epoch": 7,
+  "best_validation_loss": 1.0086633417134483,
+  "n_labeled": 103,
+  "n_unlabeled": 928,
+  "n_validation": 221,
+  "n_test": 221,
+  "numeric_features": 2,
+  "categorical_features": 7,
+  "tree_embeddings": 30,
+  "epochs_requested": 10
+}

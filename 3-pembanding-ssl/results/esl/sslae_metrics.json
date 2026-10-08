@@ -1,0 +1,20 @@
+{
+  "dataset": "esl",
+  "task_type": "ordinal_regression",
+  "method": "SSLAE (authors' implementation; ordinal labels treated as ordered classes)",
+  "primary_metric": "mae",
+  "accuracy": 0.4189189189189189,
+  "macro_precision": 0.23076923076923075,
+  "macro_recall": 0.33749999999999997,
+  "macro_f1": 0.25925925925925924,
+  "fit_seconds": 8.748646259307861,
+  "n_labeled": 34,
+  "n_unlabeled": 306,
+  "n_validation": 74,
+  "n_test": 74,
+  "mae": 0.6891891891891891,
+  "rmse": 0.9515279320153484,
+  "r2": 0.5004534005037783,
+  "spearman": 0.7350543372741201,
+  "qwk": 0.7121124143537336
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "satimage",
+  "task_type": "classification",
+  "method": "RankUp-CLS + tabcutmix",
+  "adaptation": "weak-to-strong multiclass pseudo-labeling; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8569948186528498,
+  "macro_precision": 0.8317239163720869,
+  "macro_recall": 0.8249147205218837,
+  "macro_f1": 0.8266777557476739,
+  "best_trial": 16,
+  "best_validation_metric": 0.8575159787971263,
+  "best_epoch": 40,
+  "weak_strength": 0.2725895740172132,
+  "strong_strength": 0.42263388935419766,
+  "n_labeled": 450,
+  "n_unlabeled": 4050,
+  "classes": [
+    "1.0",
+    "2.0",
+    "3.0",
+    "4.0",
+    "5.0",
+    "7.0"
+  ]
+}

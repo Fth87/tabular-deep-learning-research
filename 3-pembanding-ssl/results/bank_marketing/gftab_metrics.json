@@ -1,0 +1,21 @@
+{
+  "dataset": "bank_marketing",
+  "task_type": "classification",
+  "method": "GFTab (authors' GKSMT, GFK loss and tree embedding)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8941315246240047,
+  "macro_precision": 0.7519946650692015,
+  "macro_recall": 0.6408310149102695,
+  "macro_f1": 0.6742463711689726,
+  "fit_seconds": 83.43736696243286,
+  "best_epoch": 2,
+  "best_validation_loss": 0.41628305551906425,
+  "n_labeled": 3164,
+  "n_unlabeled": 28483,
+  "n_validation": 6782,
+  "n_test": 6782,
+  "numeric_features": 7,
+  "categorical_features": 9,
+  "tree_embeddings": 16,
+  "epochs_requested": 10
+}

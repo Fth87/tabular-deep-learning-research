@@ -1,0 +1,14 @@
+{
+  "dataset": "esl",
+  "method": "scarf",
+  "best_trial": 0,
+  "best_validation_mae": 0.36097875022618575,
+  "n_trials": 6,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_q": 1,
+    "strong_q": 2
+  },
+  "weak_strength": 0.25,
+  "strong_strength": 0.5
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "diabetes_pima",
+  "task_type": "classification",
+  "method": "VIME (author corruption/loss, TensorFlow 2 adapter)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.646551724137931,
+  "macro_precision": 0.5890553474823138,
+  "macro_recall": 0.5703947368421053,
+  "macro_f1": 0.5697874265038444,
+  "best_iteration": 160,
+  "best_validation_loss": 0.5368110537528992,
+  "fit_seconds": 66.14831948280334,
+  "n_labeled": 53,
+  "n_unlabeled": 483,
+  "n_validation": 116,
+  "n_test": 116,
+  "pretrain_epochs": 10,
+  "iterations_requested": 1000,
+  "views": 3,
+  "mask_probability": 0.3,
+  "alpha": 2.0,
+  "beta": 1.0
+}

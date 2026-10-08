@@ -1,0 +1,14 @@
+{
+  "dataset": "student_performance",
+  "method": "scarf",
+  "best_trial": 0,
+  "best_validation_mae": 1.3552315060344649,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_q": 16,
+    "relative_gap": 0.9507635921035062
+  },
+  "weak_strength": 0.37209302325581395,
+  "strong_strength": 0.9767441860465116
+}

@@ -1,0 +1,15 @@
+{
+  "dataset": "diabetes_pima",
+  "task_type": "classification",
+  "method": "SSLAE (authors' implementation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.7586206896551724,
+  "macro_precision": 0.7348484848484849,
+  "macro_recall": 0.7447368421052631,
+  "macro_f1": 0.7387387387387387,
+  "fit_seconds": 4.300588369369507,
+  "n_labeled": 53,
+  "n_unlabeled": 483,
+  "n_validation": 116,
+  "n_test": 116
+}

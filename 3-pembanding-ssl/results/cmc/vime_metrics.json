@@ -1,0 +1,23 @@
+{
+  "dataset": "cmc",
+  "task_type": "classification",
+  "method": "VIME (author corruption/loss, TensorFlow 2 adapter)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.46153846153846156,
+  "macro_precision": 0.45106171866735245,
+  "macro_recall": 0.43043197936814953,
+  "macro_f1": 0.433021955890682,
+  "best_iteration": 60,
+  "best_validation_loss": 1.0257554054260254,
+  "fit_seconds": 58.090742111206055,
+  "n_labeled": 103,
+  "n_unlabeled": 928,
+  "n_validation": 221,
+  "n_test": 221,
+  "pretrain_epochs": 10,
+  "iterations_requested": 1000,
+  "views": 3,
+  "mask_probability": 0.3,
+  "alpha": 2.0,
+  "beta": 1.0
+}

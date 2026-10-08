@@ -1,0 +1,20 @@
+{
+  "dataset": "diabetes_pima",
+  "task_type": "classification",
+  "method": "STUNT (self-generated tasks, prototypical few-shot evaluation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.5431034482758621,
+  "macro_precision": 0.52473604826546,
+  "macro_recall": 0.5269736842105264,
+  "macro_f1": 0.5208479463798613,
+  "fit_seconds": 10.102550983428955,
+  "best_step": 150,
+  "best_validation_accuracy": 0.6551724137931034,
+  "ways_per_synthetic_task": 2,
+  "shots_per_real_class": 1,
+  "n_labeled": 53,
+  "n_unlabeled": 483,
+  "n_validation": 116,
+  "n_test": 116,
+  "steps_requested": 1000
+}

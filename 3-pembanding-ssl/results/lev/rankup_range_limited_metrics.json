@@ -1,0 +1,18 @@
+{
+  "dataset": "lev",
+  "task_type": "ordinal_regression",
+  "method": "RankUp + range_limited",
+  "primary_metric": "mae",
+  "mae": 0.48761610631116525,
+  "rmse": 0.6743711111615979,
+  "r2": 0.5026988246607584,
+  "spearman": 0.7133703143693877,
+  "qwk": 0.68707667298835,
+  "best_trial": 2,
+  "best_validation_mae": 0.48421804324074325,
+  "best_epoch": 2,
+  "weak_strength": 0.15665752201589034,
+  "strong_strength": 0.2889261130208179,
+  "n_labeled": 70,
+  "n_unlabeled": 630
+}

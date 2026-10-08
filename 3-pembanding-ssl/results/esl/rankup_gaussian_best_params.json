@@ -1,0 +1,14 @@
+{
+  "dataset": "esl",
+  "method": "gaussian",
+  "best_trial": 27,
+  "best_validation_mae": 0.366085278935587,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_sigma": 0.04788203786583507,
+    "relative_gap": 0.8833557431462105
+  },
+  "weak_strength": 0.04788203786583507,
+  "strong_strength": 1.330618779442821
+}

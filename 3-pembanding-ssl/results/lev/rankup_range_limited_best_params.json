@@ -1,0 +1,14 @@
+{
+  "dataset": "lev",
+  "method": "range_limited",
+  "best_trial": 2,
+  "best_validation_mae": 0.48421804324074325,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.15665752201589034,
+    "relative_gap": 0.15683852581586644
+  },
+  "weak_strength": 0.15665752201589034,
+  "strong_strength": 0.2889261130208179
+}

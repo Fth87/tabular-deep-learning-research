@@ -1,0 +1,18 @@
+{
+  "dataset": "student_performance",
+  "task_type": "ordinal_regression",
+  "method": "RankUp + range_limited",
+  "primary_metric": "mae",
+  "mae": 1.359700912108554,
+  "rmse": 1.7605143540193329,
+  "r2": 0.029584260792139494,
+  "spearman": 0.2305423423075189,
+  "qwk": 0.16519505538609713,
+  "best_trial": 0,
+  "best_validation_mae": 1.3552315060344649,
+  "best_epoch": 1,
+  "weak_strength": 0.36206771171652075,
+  "strong_strength": 0.968590505643731,
+  "n_labeled": 46,
+  "n_unlabeled": 416
+}

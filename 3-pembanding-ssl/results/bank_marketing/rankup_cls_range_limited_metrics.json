@@ -1,0 +1,22 @@
+{
+  "dataset": "bank_marketing",
+  "task_type": "classification",
+  "method": "RankUp-CLS + range_limited",
+  "adaptation": "weak-to-strong multiclass pseudo-labeling; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8947213211442052,
+  "macro_precision": 0.7452684124005046,
+  "macro_recall": 0.7106378507718122,
+  "macro_f1": 0.7259850700323227,
+  "best_trial": 6,
+  "best_validation_metric": 0.7399417150408232,
+  "best_epoch": 12,
+  "weak_strength": 0.7924960823523964,
+  "strong_strength": 0.8367207224082589,
+  "n_labeled": 3164,
+  "n_unlabeled": 28483,
+  "classes": [
+    "1",
+    "2"
+  ]
+}

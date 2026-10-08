@@ -1,0 +1,14 @@
+{
+  "dataset": "student_performance",
+  "method": "gaussian",
+  "best_trial": 0,
+  "best_validation_mae": 1.3590761178615682,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_sigma": 0.04125996585496644,
+    "relative_gap": 0.9507635921035062
+  },
+  "weak_strength": 0.04125996585496644,
+  "strong_strength": 1.42817688066389
+}

@@ -1,0 +1,14 @@
+{
+  "dataset": "nhanes",
+  "method": "scarf",
+  "best_trial": 18,
+  "best_validation_mae": 0.7414980469359899,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_q": 5,
+    "relative_gap": 0.6640992720219899
+  },
+  "weak_strength": 0.16666666666666666,
+  "strong_strength": 0.7333333333333333
+}

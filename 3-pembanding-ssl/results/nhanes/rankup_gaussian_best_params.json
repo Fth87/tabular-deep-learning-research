@@ -1,0 +1,14 @@
+{
+  "dataset": "nhanes",
+  "method": "gaussian",
+  "best_trial": 33,
+  "best_validation_mae": 0.7430682236348815,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_sigma": 0.0501076397443309,
+    "relative_gap": 0.2704333052026107
+  },
+  "weak_strength": 0.0501076397443309,
+  "strong_strength": 0.4422068229162859
+}

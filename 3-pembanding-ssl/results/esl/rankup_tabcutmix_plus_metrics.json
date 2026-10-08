@@ -1,0 +1,18 @@
+{
+  "dataset": "esl",
+  "task_type": "ordinal_regression",
+  "method": "RankUp + tabcutmix_plus",
+  "primary_metric": "mae",
+  "mae": 0.4162610182770427,
+  "rmse": 0.5147924902886155,
+  "r2": 0.8537831822052029,
+  "spearman": 0.9361526601917067,
+  "qwk": 0.9018567639257294,
+  "best_trial": 0,
+  "best_validation_mae": 0.37620248278138124,
+  "best_epoch": 1,
+  "weak_strength": 0.36206771171652075,
+  "strong_strength": 0.968590505643731,
+  "n_labeled": 34,
+  "n_unlabeled": 306
+}

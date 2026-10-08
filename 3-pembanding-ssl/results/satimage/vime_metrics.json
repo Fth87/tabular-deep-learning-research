@@ -1,0 +1,23 @@
+{
+  "dataset": "satimage",
+  "task_type": "classification",
+  "method": "VIME (author corruption/loss, TensorFlow 2 adapter)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8590673575129534,
+  "macro_precision": 0.8348805047341954,
+  "macro_recall": 0.8184171333617553,
+  "macro_f1": 0.8228812610977437,
+  "best_iteration": 930,
+  "best_validation_loss": 0.40791055560112,
+  "fit_seconds": 227.82609367370605,
+  "n_labeled": 450,
+  "n_unlabeled": 4050,
+  "n_validation": 965,
+  "n_test": 965,
+  "pretrain_epochs": 10,
+  "iterations_requested": 1000,
+  "views": 3,
+  "mask_probability": 0.3,
+  "alpha": 2.0,
+  "beta": 1.0
+}

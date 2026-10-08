@@ -1,0 +1,14 @@
+{
+  "dataset": "melbourne_airbnb",
+  "method": "range_limited",
+  "best_trial": 36,
+  "best_validation_mae": 1.3241024340347793,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.0641653144797769,
+    "relative_gap": 0.15924077694078725
+  },
+  "weak_strength": 0.0641653144797769,
+  "strong_strength": 0.21318835689015453
+}

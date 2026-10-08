@@ -1,0 +1,15 @@
+{
+  "dataset": "adult_income",
+  "method": "RankUp-CLS + range_limited",
+  "adaptation": "multiclass pseudo-label consistency; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "best_trial": 21,
+  "best_validation_metric": 0.7937698813071299,
+  "n_trials": 40,
+  "weak_strength": 0.6529358464653898,
+  "strong_strength": 0.8702041705405279,
+  "parameters": {
+    "weak_strength": 0.6529358464653898,
+    "relative_gap": 0.6260177602970785
+  }
+}

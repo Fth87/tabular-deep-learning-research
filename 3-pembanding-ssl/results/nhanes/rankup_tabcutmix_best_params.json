@@ -1,0 +1,14 @@
+{
+  "dataset": "nhanes",
+  "method": "tabcutmix",
+  "best_trial": 8,
+  "best_validation_mae": 0.7446173134124464,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.2959877083819655,
+    "relative_gap": 0.5252316752006057
+  },
+  "weak_strength": 0.2959877083819655,
+  "strong_strength": 0.6657572636703231
+}

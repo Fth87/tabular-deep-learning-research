@@ -1,0 +1,23 @@
+{
+  "dataset": "cmc",
+  "task_type": "classification",
+  "method": "RankUp-CLS + gaussian",
+  "adaptation": "weak-to-strong multiclass pseudo-labeling; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.48868778280542985,
+  "macro_precision": 0.48512477514455793,
+  "macro_recall": 0.463441097909183,
+  "macro_f1": 0.46797921720522345,
+  "best_trial": 30,
+  "best_validation_metric": 0.5169257048505563,
+  "best_epoch": 2,
+  "weak_strength": 0.2679930851486696,
+  "strong_strength": 1.1942920357949958,
+  "n_labeled": 103,
+  "n_unlabeled": 928,
+  "classes": [
+    "1",
+    "2",
+    "3"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "dataset": "satimage",
+  "task_type": "classification",
+  "method": "SSLAE (authors' implementation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8290155440414507,
+  "macro_precision": 0.7896116254599462,
+  "macro_recall": 0.7947353801021023,
+  "macro_f1": 0.7914132636371473,
+  "fit_seconds": 24.14186668395996,
+  "n_labeled": 450,
+  "n_unlabeled": 4050,
+  "n_validation": 965,
+  "n_test": 965
+}

@@ -1,0 +1,14 @@
+{
+  "dataset": "lev",
+  "method": "gaussian",
+  "best_trial": 18,
+  "best_validation_mae": 0.48180259796827435,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_sigma": 0.24391633990321346,
+    "relative_gap": 0.15695308222507848
+  },
+  "weak_strength": 0.24391633990321346,
+  "strong_strength": 0.4410625418879619
+}

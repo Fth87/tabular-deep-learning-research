@@ -1,0 +1,15 @@
+{
+  "dataset": "cmc",
+  "method": "RankUp-CLS + gaussian",
+  "adaptation": "multiclass pseudo-label consistency; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "best_trial": 30,
+  "best_validation_metric": 0.5169257048505563,
+  "n_trials": 40,
+  "weak_strength": 0.2679930851486696,
+  "strong_strength": 1.1942920357949958,
+  "parameters": {
+    "weak_sigma": 0.2679930851486696,
+    "relative_gap": 0.7518618113909734
+  }
+}

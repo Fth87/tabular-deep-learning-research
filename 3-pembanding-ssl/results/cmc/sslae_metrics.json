@@ -1,0 +1,15 @@
+{
+  "dataset": "cmc",
+  "task_type": "classification",
+  "method": "SSLAE (authors' implementation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.43891402714932126,
+  "macro_precision": 0.2913793103448276,
+  "macro_recall": 0.37685364281108963,
+  "macro_f1": 0.32844932844932845,
+  "fit_seconds": 11.161128759384155,
+  "n_labeled": 103,
+  "n_unlabeled": 928,
+  "n_validation": 221,
+  "n_test": 221
+}

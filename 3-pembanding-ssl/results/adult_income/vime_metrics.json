@@ -1,0 +1,23 @@
+{
+  "dataset": "adult_income",
+  "task_type": "classification",
+  "method": "VIME (author corruption/loss, TensorFlow 2 adapter)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8303534871024976,
+  "macro_precision": 0.7820324678750139,
+  "macro_recall": 0.7144845854489847,
+  "macro_f1": 0.7374824116786309,
+  "best_iteration": 630,
+  "best_validation_loss": 0.37820160388946533,
+  "fit_seconds": 240.56802105903625,
+  "n_labeled": 3418,
+  "n_unlabeled": 30770,
+  "n_validation": 7327,
+  "n_test": 7327,
+  "pretrain_epochs": 10,
+  "iterations_requested": 1000,
+  "views": 3,
+  "mask_probability": 0.3,
+  "alpha": 2.0,
+  "beta": 1.0
+}

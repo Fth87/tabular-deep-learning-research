@@ -1,0 +1,15 @@
+{
+  "dataset": "satimage",
+  "method": "RankUp-CLS + gaussian",
+  "adaptation": "multiclass pseudo-label consistency; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "best_trial": 21,
+  "best_validation_metric": 0.8673043452422986,
+  "n_trials": 40,
+  "weak_strength": 0.22761169274856333,
+  "strong_strength": 1.1448524419302892,
+  "parameters": {
+    "weak_sigma": 0.22761169274856333,
+    "relative_gap": 0.7208811523607235
+  }
+}

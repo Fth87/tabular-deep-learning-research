@@ -1,0 +1,15 @@
+{
+  "dataset": "adult_income",
+  "task_type": "classification",
+  "method": "SSLAE (authors' implementation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8411355261362086,
+  "macro_precision": 0.7936815492373738,
+  "macro_recall": 0.7421009879828746,
+  "macro_f1": 0.7618858990323139,
+  "fit_seconds": 165.80379605293274,
+  "n_labeled": 3418,
+  "n_unlabeled": 30770,
+  "n_validation": 7327,
+  "n_test": 7327
+}

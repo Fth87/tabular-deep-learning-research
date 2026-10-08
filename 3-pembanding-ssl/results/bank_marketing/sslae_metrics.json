@@ -1,0 +1,15 @@
+{
+  "dataset": "bank_marketing",
+  "task_type": "classification",
+  "method": "SSLAE (authors' implementation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8810085520495429,
+  "macro_precision": 0.7207264745104043,
+  "macro_recall": 0.7696113534754869,
+  "macro_f1": 0.7411682852060877,
+  "fit_seconds": 111.43470120429993,
+  "n_labeled": 3164,
+  "n_unlabeled": 28483,
+  "n_validation": 6782,
+  "n_test": 6782
+}

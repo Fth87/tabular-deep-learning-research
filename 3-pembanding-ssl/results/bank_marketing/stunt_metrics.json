@@ -1,0 +1,20 @@
+{
+  "dataset": "bank_marketing",
+  "task_type": "classification",
+  "method": "STUNT (self-generated tasks, prototypical few-shot evaluation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8596284281922737,
+  "macro_precision": 0.5522418943485836,
+  "macro_recall": 0.5200945322835455,
+  "macro_f1": 0.5186865320934587,
+  "fit_seconds": 17.205644607543945,
+  "best_step": 175,
+  "best_validation_accuracy": 0.8603656738425244,
+  "ways_per_synthetic_task": 2,
+  "shots_per_real_class": 1,
+  "n_labeled": 3164,
+  "n_unlabeled": 28483,
+  "n_validation": 6782,
+  "n_test": 6782,
+  "steps_requested": 1000
+}

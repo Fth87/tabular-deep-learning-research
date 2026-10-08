@@ -1,0 +1,23 @@
+{
+  "dataset": "bank_marketing",
+  "task_type": "classification",
+  "method": "VIME (author corruption/loss, TensorFlow 2 adapter)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8888233559422,
+  "macro_precision": 0.7701423810692319,
+  "macro_recall": 0.5503006036497766,
+  "macro_f1": 0.5630419007846678,
+  "best_iteration": 280,
+  "best_validation_loss": 0.31120702624320984,
+  "fit_seconds": 105.31773042678833,
+  "n_labeled": 3164,
+  "n_unlabeled": 28483,
+  "n_validation": 6782,
+  "n_test": 6782,
+  "pretrain_epochs": 10,
+  "iterations_requested": 1000,
+  "views": 3,
+  "mask_probability": 0.3,
+  "alpha": 2.0,
+  "beta": 1.0
+}

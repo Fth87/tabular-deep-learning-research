@@ -1,0 +1,20 @@
+{
+  "dataset": "melbourne_airbnb",
+  "task_type": "ordinal_regression",
+  "method": "SSLAE (authors' implementation; ordinal labels treated as ordered classes)",
+  "primary_metric": "mae",
+  "accuracy": 0.31636726546906185,
+  "macro_precision": 0.23467894615599533,
+  "macro_recall": 0.2631588160790437,
+  "macro_f1": 0.23888291066667308,
+  "fit_seconds": 55.94893956184387,
+  "n_labeled": 1402,
+  "n_unlabeled": 12622,
+  "n_validation": 3006,
+  "n_test": 3006,
+  "mae": 1.416833000665336,
+  "rmse": 2.0796674333652163,
+  "r2": 0.5207511142617658,
+  "spearman": 0.7625829939908655,
+  "qwk": 0.7700609020504544
+}

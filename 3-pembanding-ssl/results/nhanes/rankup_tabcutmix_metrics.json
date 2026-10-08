@@ -1,0 +1,18 @@
+{
+  "dataset": "nhanes",
+  "task_type": "ordinal_regression",
+  "method": "RankUp + tabcutmix",
+  "primary_metric": "mae",
+  "mae": 0.7521584442325508,
+  "rmse": 0.9416429406738834,
+  "r2": 0.09126191367877068,
+  "spearman": 0.3416116382228971,
+  "qwk": 0.2872518816051165,
+  "best_trial": 8,
+  "best_validation_mae": 0.7446173134124464,
+  "best_epoch": 1,
+  "weak_strength": 0.2959877083819655,
+  "strong_strength": 0.6657572636703231,
+  "n_labeled": 365,
+  "n_unlabeled": 3290
+}

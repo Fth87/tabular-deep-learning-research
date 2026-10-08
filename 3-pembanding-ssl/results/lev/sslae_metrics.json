@@ -1,0 +1,20 @@
+{
+  "dataset": "lev",
+  "task_type": "ordinal_regression",
+  "method": "SSLAE (authors' implementation; ordinal labels treated as ordered classes)",
+  "primary_metric": "mae",
+  "accuracy": 0.5333333333333333,
+  "macro_precision": 0.3243136613585723,
+  "macro_recall": 0.35523809523809524,
+  "macro_f1": 0.33685760202031795,
+  "fit_seconds": 8.141050577163696,
+  "n_labeled": 70,
+  "n_unlabeled": 630,
+  "n_validation": 150,
+  "n_test": 150,
+  "mae": 0.5266666666666666,
+  "rmse": 0.812403840463596,
+  "r2": 0.2782853810264386,
+  "spearman": 0.5840256767084994,
+  "qwk": 0.5318706260639303
+}

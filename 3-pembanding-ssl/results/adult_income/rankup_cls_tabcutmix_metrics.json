@@ -1,0 +1,22 @@
+{
+  "dataset": "adult_income",
+  "task_type": "classification",
+  "method": "RankUp-CLS + tabcutmix",
+  "adaptation": "weak-to-strong multiclass pseudo-labeling; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8438651562713252,
+  "macro_precision": 0.784237240780739,
+  "macro_recall": 0.7992280801725721,
+  "macro_f1": 0.7911535339779816,
+  "best_trial": 28,
+  "best_validation_metric": 0.7941671582832532,
+  "best_epoch": 14,
+  "weak_strength": 0.1320346817267633,
+  "strong_strength": 0.6434536675781488,
+  "n_labeled": 3418,
+  "n_unlabeled": 30770,
+  "classes": [
+    "<=50K",
+    ">50K"
+  ]
+}

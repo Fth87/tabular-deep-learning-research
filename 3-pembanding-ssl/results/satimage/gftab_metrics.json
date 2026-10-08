@@ -1,0 +1,21 @@
+{
+  "dataset": "satimage",
+  "task_type": "classification",
+  "method": "GFTab (authors' GKSMT, GFK loss and tree embedding)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8476683937823835,
+  "macro_precision": 0.8349474477350295,
+  "macro_recall": 0.8111251562610975,
+  "macro_f1": 0.8209013443968405,
+  "fit_seconds": 92.58514451980591,
+  "best_epoch": 10,
+  "best_validation_loss": 0.9495007181540132,
+  "n_labeled": 450,
+  "n_unlabeled": 4050,
+  "n_validation": 965,
+  "n_test": 965,
+  "numeric_features": 36,
+  "categorical_features": 0,
+  "tree_embeddings": 216,
+  "epochs_requested": 10
+}

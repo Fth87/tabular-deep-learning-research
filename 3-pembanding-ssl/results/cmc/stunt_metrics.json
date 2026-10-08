@@ -1,0 +1,20 @@
+{
+  "dataset": "cmc",
+  "task_type": "classification",
+  "method": "STUNT (self-generated tasks, prototypical few-shot evaluation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.4072398190045249,
+  "macro_precision": 0.4049182855380821,
+  "macro_recall": 0.41436492585428764,
+  "macro_f1": 0.383852761961842,
+  "fit_seconds": 16.379355669021606,
+  "best_step": 275,
+  "best_validation_accuracy": 0.4479638009049774,
+  "ways_per_synthetic_task": 3,
+  "shots_per_real_class": 1,
+  "n_labeled": 103,
+  "n_unlabeled": 928,
+  "n_validation": 221,
+  "n_test": 221,
+  "steps_requested": 1000
+}

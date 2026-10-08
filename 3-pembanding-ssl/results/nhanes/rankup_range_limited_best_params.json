@@ -1,0 +1,14 @@
+{
+  "dataset": "nhanes",
+  "method": "range_limited",
+  "best_trial": 7,
+  "best_validation_mae": 0.7412683941073916,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.18091546917467458,
+    "relative_gap": 0.18422110534358038
+  },
+  "weak_strength": 0.18091546917467458,
+  "strong_strength": 0.331808126813144
+}

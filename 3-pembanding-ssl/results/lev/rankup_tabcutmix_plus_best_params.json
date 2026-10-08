@@ -1,0 +1,14 @@
+{
+  "dataset": "lev",
+  "method": "tabcutmix_plus",
+  "best_trial": 0,
+  "best_validation_mae": 0.48363883783523365,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.36206771171652075,
+    "relative_gap": 0.9507635921035062
+  },
+  "weak_strength": 0.36206771171652075,
+  "strong_strength": 0.968590505643731
+}

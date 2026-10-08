@@ -1,0 +1,15 @@
+{
+  "dataset": "bank_marketing",
+  "method": "RankUp-CLS + zero_out",
+  "adaptation": "multiclass pseudo-label consistency; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "best_trial": 15,
+  "best_validation_metric": 0.7456149137897261,
+  "n_trials": 40,
+  "weak_strength": 0.018131969003976754,
+  "strong_strength": 0.7800052537898597,
+  "parameters": {
+    "weak_strength": 0.018131969003976754,
+    "relative_gap": 0.7759426529174456
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "dataset": "diabetes_pima",
+  "task_type": "classification",
+  "method": "GFTab (authors' GKSMT, GFK loss and tree embedding)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.7068965517241379,
+  "macro_precision": 0.6929086538461539,
+  "macro_recall": 0.7111842105263158,
+  "macro_f1": 0.6937888198757765,
+  "fit_seconds": 8.48742151260376,
+  "best_epoch": 7,
+  "best_validation_loss": 0.6133875120431185,
+  "n_labeled": 53,
+  "n_unlabeled": 483,
+  "n_validation": 116,
+  "n_test": 116,
+  "numeric_features": 8,
+  "categorical_features": 0,
+  "tree_embeddings": 10,
+  "epochs_requested": 10
+}

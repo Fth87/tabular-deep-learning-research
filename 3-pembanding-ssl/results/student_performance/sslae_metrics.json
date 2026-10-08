@@ -1,0 +1,20 @@
+{
+  "dataset": "student_performance",
+  "task_type": "ordinal_regression",
+  "method": "SSLAE (authors' implementation; ordinal labels treated as ordered classes)",
+  "primary_metric": "mae",
+  "accuracy": 0.2,
+  "macro_precision": 0.1246133496133496,
+  "macro_recall": 0.1502840909090909,
+  "macro_f1": 0.1360703629277798,
+  "fit_seconds": 3.9920411109924316,
+  "n_labeled": 46,
+  "n_unlabeled": 416,
+  "n_validation": 100,
+  "n_test": 100,
+  "mae": 1.54,
+  "rmse": 1.98997487421324,
+  "r2": -0.23986348977738814,
+  "spearman": 0.19726743946709416,
+  "qwk": 0.158199056162578
+}
