@@ -1,0 +1,22 @@
+{
+  "dataset": "nhanes",
+  "rows": 5223,
+  "features": 30,
+  "numeric_features": 30,
+  "missing_cells": 0,
+  "duplicate_rows": 0,
+  "target_counts": {
+    "0": 560,
+    "1": 1471,
+    "2": 2071,
+    "3": 927,
+    "4": 194
+  },
+  "target_proportion": {
+    "0": 0.1072,
+    "1": 0.2816,
+    "2": 0.3965,
+    "3": 0.1775,
+    "4": 0.0371
+  }
+}

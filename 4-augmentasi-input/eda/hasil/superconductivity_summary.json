@@ -1,0 +1,18 @@
+{
+  "dataset": "superconductivity",
+  "rows": 21263,
+  "features": 81,
+  "numeric_features": 81,
+  "missing_cells": 0,
+  "duplicate_rows": 66,
+  "target_statistics": {
+    "count": 21263.0,
+    "mean": 34.421219135352494,
+    "std": 34.25436244874411,
+    "min": 0.00021,
+    "25%": 5.365,
+    "50%": 20.0,
+    "75%": 63.0,
+    "max": 185.0
+  }
+}
