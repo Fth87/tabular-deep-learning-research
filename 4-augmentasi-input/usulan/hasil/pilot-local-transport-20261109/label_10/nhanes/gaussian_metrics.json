@@ -1,0 +1,33 @@
+{
+  "dataset": "nhanes",
+  "label_percent": 10,
+  "method": "gaussian",
+  "seed": 42,
+  "metric": "qwk",
+  "validation": 0.30334172380869706,
+  "best_epoch": 13,
+  "epochs_run": 28,
+  "pilot_config": {
+    "epochs": 30,
+    "max_steps": 40,
+    "weak_strength": 0.1,
+    "strong_strength": 0.3,
+    "radius": 0.5,
+    "donor_confidence": 0.8,
+    "batch_size": 32,
+    "learning_rate": 0.002,
+    "unlabeled_weight": 0.2,
+    "confidence_cutoff": 0.95
+  },
+  "input_sha256": {
+    "manifest.json": "8a2189dbeb08c1e65171c34d1822069c5c9f65b4489c6608311133a823dbb145",
+    "train_labeled.npz": "43e42663ecfdfbe2829d251bfae806f57b905b5290e96e57f9dfb734294281d6",
+    "train_unlabeled.npz": "840ef8952ffcfd59860a320b82bd3d0302b234f6ee679c02c2ce46da0a32de9f",
+    "validation.npz": "48b019a7eb4a6add28eea4725757918041c196fc02b5e42a5cc19e8d81261041"
+  },
+  "mean_pseudo_accept_rate": 0.14912109375000002,
+  "best_epoch_pseudo_accept_rate": 0.1662109375,
+  "augmentation_diagnostics": null,
+  "test_used": false,
+  "device": "Tesla T4"
+}

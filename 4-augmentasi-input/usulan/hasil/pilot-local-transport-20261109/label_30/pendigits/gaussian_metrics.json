@@ -1,0 +1,33 @@
+{
+  "dataset": "pendigits",
+  "label_percent": 30,
+  "method": "gaussian",
+  "seed": 42,
+  "metric": "macro_f1",
+  "validation": 0.9953466030188386,
+  "best_epoch": 23,
+  "epochs_run": 30,
+  "pilot_config": {
+    "epochs": 30,
+    "max_steps": 40,
+    "weak_strength": 0.1,
+    "strong_strength": 0.3,
+    "radius": 0.5,
+    "donor_confidence": 0.8,
+    "batch_size": 32,
+    "learning_rate": 0.002,
+    "unlabeled_weight": 0.2,
+    "confidence_cutoff": 0.95
+  },
+  "input_sha256": {
+    "manifest.json": "7e7280f4e114dcee5b9d71fc872217c5b7406aca2b36b143b3a9aed8f60575e8",
+    "train_labeled.npz": "36da0572a73c25ecaf297203d5c1607ce922e1f2e7d206d66ccb901d60319124",
+    "train_unlabeled.npz": "0f6c4d74e477e8be344499aa358264176aa06f58a68139c1b617243cc28ccf8a",
+    "validation.npz": "802dd3b010f6c2ac8003ee37ac4b8ca3b74c479952a695ada9a4f25ea0d02c46"
+  },
+  "mean_pseudo_accept_rate": 0.9176822916666667,
+  "best_epoch_pseudo_accept_rate": 0.9734375,
+  "augmentation_diagnostics": null,
+  "test_used": false,
+  "device": "Tesla T4"
+}

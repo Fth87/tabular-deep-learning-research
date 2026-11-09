@@ -1,0 +1,33 @@
+{
+  "dataset": "superconductivity",
+  "label_percent": 10,
+  "method": "tabcutmix",
+  "seed": 42,
+  "metric": "mse",
+  "validation": 202.08688607183225,
+  "best_epoch": 27,
+  "epochs_run": 30,
+  "pilot_config": {
+    "epochs": 30,
+    "max_steps": 40,
+    "weak_strength": 0.1,
+    "strong_strength": 0.3,
+    "radius": 0.5,
+    "donor_confidence": 0.8,
+    "batch_size": 32,
+    "learning_rate": 0.002,
+    "unlabeled_weight": 0.2,
+    "confidence_cutoff": 0.95
+  },
+  "input_sha256": {
+    "manifest.json": "f9b8420c20839707cf9cb65d39290ae17cabb436ab34b43956a9c8814f8d6883",
+    "train_labeled.npz": "ffa6d1bea5e7af4d6c6760c02fd9e3b0c325c61ab62962917837a73063465c3e",
+    "train_unlabeled.npz": "a5f7ae8fc8abff46907209a29ec46ebe6e27bcaad7f10ae8c070c7ceecf39411",
+    "validation.npz": "3413364ef0c1968ef8662b26f930156c4f84d25b792b1fe4eb7be50d9a4200d6"
+  },
+  "mean_pseudo_accept_rate": 0.4473079427083333,
+  "best_epoch_pseudo_accept_rate": 0.4759765625,
+  "augmentation_diagnostics": null,
+  "test_used": false,
+  "device": "Tesla T4"
+}
