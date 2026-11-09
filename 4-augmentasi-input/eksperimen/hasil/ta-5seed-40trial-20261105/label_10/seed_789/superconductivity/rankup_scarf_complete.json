@@ -1,0 +1,8 @@
+{
+  "rankup_scarf_run_config.json": "e53f1412daed863fd7a0eef1786e24ac83192876fd334be6436da5c6cffdc1dd",
+  "rankup_scarf_metrics.json": "38895d890d0d2400fed57606a54f994c9798a027d0a77ce4a5e80fe5d54065b6",
+  "rankup_scarf_history.csv": "4f1f4ddb15bceb798061008dc574ad8bad2401e5f6ce1ced631b9f94af02aaac",
+  "rankup_scarf_predictions.npz": "60fa896067b7b43a173feba471a00f79163bd04d7b4f63facb52a609e939a2a5",
+  "rankup_scarf_model.pt": "45f287998af88f1ba187915d881e6e3a840fe5355d95fbfe889e6a9b0432f2e7",
+  "rankup_scarf_best_params.json": "7f56a446f007d7aed69a7943ed3eae5dfb0d890f924c5f78fb4e546738ef304f"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "nhanes",
+  "task_type": "ordinal_regression",
+  "method": "RankUp + zero_out",
+  "primary_metric": "qwk",
+  "qwk": 0.2941165156848037,
+  "train_qwk": 0.4565783926723642,
+  "validation_qwk": 0.30907225114970927,
+  "best_trial": 0,
+  "best_validation_qwk": 0.33494111048794173,
+  "best_epoch": 2,
+  "weak_strength": 0.36206771171652075,
+  "strong_strength": 0.968590505643731,
+  "n_labeled": 1096,
+  "n_unlabeled": 2559,
+  "seed": 101112
+}

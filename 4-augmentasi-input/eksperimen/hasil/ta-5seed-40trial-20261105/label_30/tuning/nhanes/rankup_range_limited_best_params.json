@@ -1,0 +1,44 @@
+{
+  "dataset": "nhanes",
+  "method": "range_limited",
+  "labeled_fraction": 0.3,
+  "split_seed": 42,
+  "tuning_seed": 42,
+  "best_trial": 14,
+  "best_validation_qwk": 0.3459522642434296,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_strength": 0.17517503658538824,
+    "relative_gap": 0.12642741907449434
+  },
+  "trial_counts": {
+    "running": 0,
+    "complete": 40,
+    "pruned": 0,
+    "fail": 0,
+    "waiting": 0
+  },
+  "search_space": {
+    "weak_strength": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.01,
+        "high": 0.95,
+        "log": false
+      }
+    },
+    "relative_gap": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.001,
+        "high": 1.0,
+        "log": false
+      }
+    }
+  },
+  "weak_strength": 0.17517503658538824,
+  "strong_strength": 0.27945552789811184
+}

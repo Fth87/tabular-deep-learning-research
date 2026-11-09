@@ -1,0 +1,44 @@
+{
+  "dataset": "nhanes",
+  "method": "scarf",
+  "labeled_fraction": 0.3,
+  "split_seed": 42,
+  "tuning_seed": 42,
+  "best_trial": 0,
+  "best_validation_qwk": 0.34106556910646213,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_q": 11,
+    "relative_gap": 0.9507635921035062
+  },
+  "trial_counts": {
+    "running": 0,
+    "complete": 40,
+    "pruned": 0,
+    "fail": 0,
+    "waiting": 0
+  },
+  "search_space": {
+    "weak_q": {
+      "name": "IntDistribution",
+      "attributes": {
+        "log": false,
+        "step": 1,
+        "low": 1,
+        "high": 29
+      }
+    },
+    "relative_gap": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.001,
+        "high": 1.0,
+        "log": false
+      }
+    }
+  },
+  "weak_strength": 0.36666666666666664,
+  "strong_strength": 1.0
+}

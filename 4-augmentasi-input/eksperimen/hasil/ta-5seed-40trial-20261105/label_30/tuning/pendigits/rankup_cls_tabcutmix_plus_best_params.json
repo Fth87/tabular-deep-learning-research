@@ -1,0 +1,45 @@
+{
+  "dataset": "pendigits",
+  "method": "RankUp-CLS + tabcutmix_plus",
+  "labeled_fraction": 0.3,
+  "split_seed": 42,
+  "tuning_seed": 42,
+  "adaptation": "multiclass pseudo-label consistency; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "best_trial": 13,
+  "best_validation_metric": 0.9973310648741307,
+  "n_trials": 40,
+  "weak_strength": 0.19484017555225772,
+  "strong_strength": 0.833098235497406,
+  "parameters": {
+    "weak_strength": 0.19484017555225772,
+    "relative_gap": 0.7927097708618639
+  },
+  "trial_counts": {
+    "running": 0,
+    "complete": 20,
+    "pruned": 20,
+    "fail": 0,
+    "waiting": 0
+  },
+  "search_space": {
+    "weak_strength": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.01,
+        "high": 0.95,
+        "log": false
+      }
+    },
+    "relative_gap": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.001,
+        "high": 1.0,
+        "log": false
+      }
+    }
+  }
+}

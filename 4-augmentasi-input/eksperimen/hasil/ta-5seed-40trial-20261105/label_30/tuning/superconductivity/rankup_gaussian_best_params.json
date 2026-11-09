@@ -1,0 +1,44 @@
+{
+  "dataset": "superconductivity",
+  "method": "gaussian",
+  "labeled_fraction": 0.3,
+  "split_seed": 42,
+  "tuning_seed": 42,
+  "best_trial": 9,
+  "best_validation_mse": 168.69380062728075,
+  "n_trials": 40,
+  "optuna_epochs": 40,
+  "parameters": {
+    "weak_sigma": 0.057017441520673944,
+    "relative_gap": 0.2919379110578439
+  },
+  "trial_counts": {
+    "running": 0,
+    "complete": 11,
+    "pruned": 29,
+    "fail": 0,
+    "waiting": 0
+  },
+  "search_space": {
+    "weak_sigma": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.005,
+        "high": 1.4,
+        "log": true
+      }
+    },
+    "relative_gap": {
+      "name": "FloatDistribution",
+      "attributes": {
+        "step": null,
+        "low": 0.001,
+        "high": 1.0,
+        "log": false
+      }
+    }
+  },
+  "weak_strength": 0.057017441520673944,
+  "strong_strength": 0.4782787553360315
+}

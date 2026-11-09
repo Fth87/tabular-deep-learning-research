@@ -1,0 +1,33 @@
+{
+  "dataset": "pendigits",
+  "task_type": "classification",
+  "method": "RankUp-CLS + tabcutmix",
+  "adaptation": "weak-to-strong multiclass pseudo-labeling; ordinal ARC omitted",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.9662664379645511,
+  "macro_precision": 0.9680549623713407,
+  "macro_recall": 0.9669648041917378,
+  "macro_f1": 0.9667703212343712,
+  "train_macro_f1": 1.0,
+  "validation_macro_f1": 0.9934094977937956,
+  "best_trial": 4,
+  "best_validation_metric": 0.9907527520095432,
+  "best_epoch": 42,
+  "weak_strength": 0.5750481110386163,
+  "strong_strength": 0.8760689456043074,
+  "n_labeled": 599,
+  "n_unlabeled": 5396,
+  "classes": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "seed": 101112
+}

@@ -1,0 +1,19 @@
+{
+  "dataset": "superconductivity",
+  "task_type": "regression",
+  "method": "RankUp + tabcutmix_plus",
+  "primary_metric": "mse",
+  "mse": 196.91902823669488,
+  "train_mse": 64.90819687686682,
+  "validation_mse": 184.58311179830278,
+  "mae": 8.63693972402912,
+  "r2": 0.8279747000790776,
+  "best_trial": 37,
+  "best_validation_mse": 187.16525794248057,
+  "best_epoch": 43,
+  "weak_strength": 0.18970871272164558,
+  "strong_strength": 0.22223567458870747,
+  "n_labeled": 1500,
+  "n_unlabeled": 13506,
+  "seed": 42
+}
