@@ -1,0 +1,13 @@
+{
+  "split_seed": 42,
+  "train_rows": 15006,
+  "train_feature_groups": 10618,
+  "train_rows_in_repeated_feature_groups": 6088,
+  "train_repeated_groups_with_different_target": 1668,
+  "median_target_range_within_different_target_groups": 2.3100000000000005,
+  "max_target_range": 107.0,
+  "exact_feature_hash_overlap_train_validation": 0,
+  "exact_feature_hash_overlap_train_test": 0,
+  "hidden_train_labels_used_for_this_descriptive_audit": true,
+  "validation_test_targets_used": false
+}

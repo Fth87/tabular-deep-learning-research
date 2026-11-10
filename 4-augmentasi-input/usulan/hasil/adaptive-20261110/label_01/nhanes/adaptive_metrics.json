@@ -1,0 +1,97 @@
+{
+  "dataset": "nhanes",
+  "label_percent": 1,
+  "method": "adaptive",
+  "seed": 42,
+  "metric": "qwk",
+  "validation": 0.2932526560191374,
+  "best_epoch": 31,
+  "epochs_run": 46,
+  "pilot_config": {
+    "epochs": 120,
+    "max_steps": 100,
+    "weak_strength": 0.1,
+    "strong_strength": 0.3,
+    "donor_confidence": 0.8,
+    "batch_size": 32,
+    "learning_rate": 0.002,
+    "unlabeled_weight": 0.2,
+    "confidence_cutoff": 0.95,
+    "effective_weak_strength": 0.0,
+    "donor_pool": 2048,
+    "donor_k": 5
+  },
+  "input_sha256": {
+    "manifest.json": "4c56455a02d13d92a811084b1c82b1e3ec1606c8dd06da626356b8d9ad6be2cb",
+    "train_labeled.npz": "1f9c1e4b1f4d38d7601a83c92715f5130e38859f9b08827b4111ed637952464e",
+    "train_unlabeled.npz": "6b393e0954756606640811640d51ee4d70b629e5d28cbfab4308961f9b61fed4",
+    "validation.npz": "48b019a7eb4a6add28eea4725757918041c196fc02b5e42a5cc19e8d81261041"
+  },
+  "mean_pseudo_accept_rate": 0.5363862941576086,
+  "best_epoch_pseudo_accept_rate": 0.62896484375,
+  "augmentation_diagnostics": {
+    "probabilities": {
+      "random": 0.7352941176470589,
+      "guided": 0.2647058823529412,
+      "group": 0.0,
+      "train_mean_abs_correlation": 0.12014430617794992,
+      "n_labeled": 36
+    },
+    "operator_counts": {
+      "random": 107920,
+      "guided": 39280,
+      "group": 0
+    },
+    "operators": {
+      "random": {
+        "n_views": 107920,
+        "changed_rate": 0.9617772424017791,
+        "mean_delta_l2": 2.4847237482169895
+      },
+      "guided": {
+        "n_views": 39280,
+        "changed_rate": 0.9540478615071283,
+        "mean_delta_l2": 2.4633515097823016,
+        "feature_weights": [
+          0.9747675061225891,
+          0.9229049682617188,
+          0.9231494069099426,
+          0.9831609725952148,
+          0.9887040257453918,
+          0.9457435607910156,
+          0.9453984498977661,
+          0.9452210664749146,
+          0.940420925617218,
+          0.9961592555046082,
+          0.9472507834434509,
+          0.967440128326416,
+          0.9991909861564636,
+          0.955948531627655,
+          0.9375265836715698,
+          0.9424850344657898,
+          0.9774080514907837,
+          0.9599108099937439,
+          0.9573342204093933,
+          0.9070362448692322,
+          0.9586573839187622,
+          0.931020200252533,
+          0.9877477884292603,
+          1.0,
+          1.0,
+          1.0,
+          0.9576053023338318,
+          0.95741868019104,
+          0.9887040257453918,
+          0.9899160861968994
+        ]
+      },
+      "group": {
+        "n_views": 0,
+        "changed_rate": null,
+        "mean_delta_l2": null
+      }
+    }
+  },
+  "test_used": false,
+  "device": "Tesla T4"
+}

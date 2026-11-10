@@ -1,0 +1,36 @@
+{
+  "dataset": "superconductivity",
+  "label_percent": 1,
+  "method": "correlated_noise",
+  "seed": 42,
+  "metric": "mse",
+  "validation": 341.7664861326432,
+  "best_epoch": 1,
+  "epochs_run": 16,
+  "pilot_config": {
+    "epochs": 30,
+    "max_steps": 40,
+    "weak_strength": 0.1,
+    "strong_strength": 0.3,
+    "donor_confidence": 0.8,
+    "batch_size": 32,
+    "learning_rate": 0.002,
+    "unlabeled_weight": 0.2,
+    "confidence_cutoff": 0.95
+  },
+  "input_sha256": {
+    "manifest.json": "e18a5f177980294cda16c493057b25e269ba445c24fd25af885527c0fd593455",
+    "train_labeled.npz": "81086c878bf1bba209e10e2a43407b9da510dc953e542f07d5616e211609d128",
+    "train_unlabeled.npz": "c0e59af15599c4ed644429732a3ae29567e3d8888764938dd0d7914c6f13dcf5",
+    "validation.npz": "3413364ef0c1968ef8662b26f930156c4f84d25b792b1fe4eb7be50d9a4200d6"
+  },
+  "mean_pseudo_accept_rate": 0.5328094482421875,
+  "best_epoch_pseudo_accept_rate": 0.2083984375,
+  "augmentation_diagnostics": {
+    "n_views": 40960,
+    "eligible_rate": null,
+    "mean_delta_rms": 0.18472413532435894
+  },
+  "test_used": false,
+  "device": "Tesla T4"
+}

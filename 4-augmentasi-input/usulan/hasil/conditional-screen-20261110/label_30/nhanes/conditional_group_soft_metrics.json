@@ -1,0 +1,40 @@
+{
+  "dataset": "nhanes",
+  "label_percent": 30,
+  "method": "conditional_group_soft",
+  "seed": 42,
+  "metric": "qwk",
+  "validation": 0.3311055152697049,
+  "best_epoch": 1,
+  "epochs_run": 16,
+  "pilot_config": {
+    "epochs": 120,
+    "max_steps": 100,
+    "weak_strength": 0.1,
+    "strong_strength": 0.3,
+    "donor_confidence": 0.8,
+    "batch_size": 32,
+    "learning_rate": 0.002,
+    "unlabeled_weight": 0.2,
+    "confidence_cutoff": 0.95,
+    "effective_weak_strength": 0.0,
+    "donor_pool": 2048,
+    "donor_k": 5
+  },
+  "input_sha256": {
+    "manifest.json": "4af220159f701c7416a000142cfb9be2de1852616c7c8a3130c81e9aa4aab604",
+    "train_labeled.npz": "59d6289e3d3360dbaef0f7eff9181270827d023b6e0ffd07635029c389b8c52c",
+    "train_unlabeled.npz": "5d86d6bbfec90c7780d6138a61b780f5868ab122bf370cff91c39f67d14a793c",
+    "validation.npz": "48b019a7eb4a6add28eea4725757918041c196fc02b5e42a5cc19e8d81261041"
+  },
+  "augmentation_diagnostics": {
+    "n_views": 40944,
+    "changed_rate": 0.9496629542790153,
+    "mean_delta_l2": 2.907302493832921
+  },
+  "test_used": false,
+  "device": "Tesla T4",
+  "mean_pseudo_weight": 0.4922848437079665,
+  "best_epoch_pseudo_weight": 0.3368116451136302,
+  "history_pseudo_accept_rate_is_mean_soft_weight": true
+}
