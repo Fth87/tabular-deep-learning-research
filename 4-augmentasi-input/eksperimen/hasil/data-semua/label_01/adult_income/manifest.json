@@ -1,0 +1,67 @@
+{
+  "name": "adult_income",
+  "source_csv": "/mnt/new-volume/Kuliah/Riset deep learning/task 3/dataset/classification/adult_income_openml1590.csv",
+  "source_test_csv": null,
+  "target": "class",
+  "split_policy": "stratified",
+  "task_type": "classification",
+  "rows": 48842,
+  "raw_features": 14,
+  "encoded_features": 105,
+  "classes": [
+    "<=50K",
+    ">50K"
+  ],
+  "target_values": [],
+  "class_counts_labeled": {
+    "<=50K": 259,
+    ">50K": 82
+  },
+  "labeled_class_ratio": 3.158536585365854,
+  "primary_metric": "macro_f1",
+  "split_sizes": {
+    "train_labeled": 341,
+    "train_unlabeled": 33847,
+    "validation": 7327,
+    "test": 7327
+  },
+  "seed": 42,
+  "train_fraction": 0.699971336145121,
+  "validation_fraction": 0.1500143319274395,
+  "test_fraction": 0.1500143319274395,
+  "labeled_fraction_of_train": 0.01,
+  "feature_columns": [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "native-country"
+  ],
+  "numeric_columns": [
+    "age",
+    "fnlwgt",
+    "education-num",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week"
+  ],
+  "categorical_columns": [
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country"
+  ]
+}

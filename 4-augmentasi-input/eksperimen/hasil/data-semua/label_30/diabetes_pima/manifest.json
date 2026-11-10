@@ -1,0 +1,54 @@
+{
+  "name": "diabetes_pima",
+  "source_csv": "/mnt/new-volume/Kuliah/Riset deep learning/task 3/dataset/classification/diabetes_pima_openml37.csv",
+  "source_test_csv": null,
+  "target": "class",
+  "split_policy": "stratified",
+  "task_type": "classification",
+  "rows": 768,
+  "raw_features": 8,
+  "encoded_features": 8,
+  "classes": [
+    "tested_negative",
+    "tested_positive"
+  ],
+  "target_values": [],
+  "class_counts_labeled": {
+    "tested_negative": 104,
+    "tested_positive": 56
+  },
+  "labeled_class_ratio": 1.8571428571428572,
+  "primary_metric": "macro_f1",
+  "split_sizes": {
+    "train_labeled": 160,
+    "train_unlabeled": 376,
+    "validation": 116,
+    "test": 116
+  },
+  "seed": 42,
+  "train_fraction": 0.6979166666666666,
+  "validation_fraction": 0.15104166666666666,
+  "test_fraction": 0.15104166666666666,
+  "labeled_fraction_of_train": 0.3,
+  "feature_columns": [
+    "preg",
+    "plas",
+    "pres",
+    "skin",
+    "insu",
+    "mass",
+    "pedi",
+    "age"
+  ],
+  "numeric_columns": [
+    "preg",
+    "plas",
+    "pres",
+    "skin",
+    "insu",
+    "mass",
+    "pedi",
+    "age"
+  ],
+  "categorical_columns": []
+}

@@ -1,0 +1,71 @@
+{
+  "name": "bank_marketing",
+  "source_csv": "/mnt/new-volume/Kuliah/Riset deep learning/task 3/dataset/classification/bank_marketing_openml1461.csv",
+  "source_test_csv": null,
+  "target": "Class",
+  "split_policy": "stratified",
+  "task_type": "classification",
+  "rows": 45211,
+  "raw_features": 16,
+  "encoded_features": 51,
+  "classes": [
+    "1",
+    "2"
+  ],
+  "target_values": [],
+  "class_counts_labeled": {
+    "1": 279,
+    "2": 37
+  },
+  "labeled_class_ratio": 7.54054054054054,
+  "primary_metric": "macro_f1",
+  "split_sizes": {
+    "train_labeled": 316,
+    "train_unlabeled": 31331,
+    "validation": 6782,
+    "test": 6782
+  },
+  "seed": 42,
+  "train_fraction": 0.6999845170423127,
+  "validation_fraction": 0.15000774147884363,
+  "test_fraction": 0.15000774147884363,
+  "labeled_fraction_of_train": 0.01,
+  "feature_columns": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16"
+  ],
+  "numeric_columns": [
+    "V1",
+    "V6",
+    "V10",
+    "V12",
+    "V13",
+    "V14",
+    "V15"
+  ],
+  "categorical_columns": [
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V7",
+    "V8",
+    "V9",
+    "V11",
+    "V16"
+  ]
+}

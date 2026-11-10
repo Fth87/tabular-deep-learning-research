@@ -1,0 +1,54 @@
+{
+  "name": "esl",
+  "source_csv": "/mnt/new-volume/Kuliah/Riset deep learning/task 3/dataset/oc06_esl.csv",
+  "source_test_csv": null,
+  "target": "y",
+  "split_policy": "stratified",
+  "task_type": "ordinal_regression",
+  "rows": 488,
+  "raw_features": 4,
+  "encoded_features": 4,
+  "classes": [],
+  "target_values": [
+    0.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0
+  ],
+  "class_counts_labeled": {
+    "3.0": 9,
+    "2.0": 8,
+    "1.0": 7,
+    "0.0": 4,
+    "4.0": 4,
+    "5.0": 2
+  },
+  "labeled_class_ratio": null,
+  "primary_metric": "qwk",
+  "split_sizes": {
+    "train_labeled": 34,
+    "train_unlabeled": 306,
+    "validation": 74,
+    "test": 74
+  },
+  "seed": 42,
+  "train_fraction": 0.6967213114754098,
+  "validation_fraction": 0.15163934426229508,
+  "test_fraction": 0.15163934426229508,
+  "labeled_fraction_of_train": 0.1,
+  "feature_columns": [
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3"
+  ],
+  "numeric_columns": [
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3"
+  ],
+  "categorical_columns": []
+}

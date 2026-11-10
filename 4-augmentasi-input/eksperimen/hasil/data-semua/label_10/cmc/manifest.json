@@ -1,0 +1,59 @@
+{
+  "name": "cmc",
+  "source_csv": "/mnt/new-volume/Kuliah/Riset deep learning/task 3/dataset/classification/cmc_openml23.csv",
+  "source_test_csv": null,
+  "target": "Contraceptive_method_used",
+  "split_policy": "stratified",
+  "task_type": "classification",
+  "rows": 1473,
+  "raw_features": 9,
+  "encoded_features": 24,
+  "classes": [
+    "1",
+    "2",
+    "3"
+  ],
+  "target_values": [],
+  "class_counts_labeled": {
+    "1": 44,
+    "3": 36,
+    "2": 23
+  },
+  "labeled_class_ratio": 1.9130434782608696,
+  "primary_metric": "macro_f1",
+  "split_sizes": {
+    "train_labeled": 103,
+    "train_unlabeled": 928,
+    "validation": 221,
+    "test": 221
+  },
+  "seed": 42,
+  "train_fraction": 0.6999321113374066,
+  "validation_fraction": 0.1500339443312967,
+  "test_fraction": 0.1500339443312967,
+  "labeled_fraction_of_train": 0.1,
+  "feature_columns": [
+    "Wifes_age",
+    "Wifes_education",
+    "Husbands_education",
+    "Number_of_children_ever_born",
+    "Wifes_religion",
+    "Wifes_now_working%3F",
+    "Husbands_occupation",
+    "Standard-of-living_index",
+    "Media_exposure"
+  ],
+  "numeric_columns": [
+    "Wifes_age",
+    "Number_of_children_ever_born"
+  ],
+  "categorical_columns": [
+    "Wifes_education",
+    "Husbands_education",
+    "Wifes_religion",
+    "Wifes_now_working%3F",
+    "Husbands_occupation",
+    "Standard-of-living_index",
+    "Media_exposure"
+  ]
+}
