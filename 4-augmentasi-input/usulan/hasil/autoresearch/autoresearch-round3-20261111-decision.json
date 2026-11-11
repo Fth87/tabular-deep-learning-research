@@ -1,0 +1,11 @@
+{
+  "run_id": "autoresearch-round3-20261111",
+  "candidate_sha256": "064b9759c5a7bd42497230157f9c22ca9617f5ea2bf1c7564888fab720690592",
+  "conditions": 9,
+  "wins": 5,
+  "ties": 4,
+  "losses": 0,
+  "decision": "keep",
+  "baseline": "feature-guided-20261110",
+  "test_used": false
+}
