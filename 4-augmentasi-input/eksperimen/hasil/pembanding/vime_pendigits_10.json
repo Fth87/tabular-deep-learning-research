@@ -1,0 +1,23 @@
+{
+  "dataset": "pendigits",
+  "task_type": "classification",
+  "method": "VIME (author corruption/loss, TensorFlow 2 adapter)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.8782161234991424,
+  "macro_precision": 0.8855811059328221,
+  "macro_recall": 0.8805789167865152,
+  "macro_f1": 0.8775252674822701,
+  "best_iteration": 980,
+  "best_validation_loss": 0.360444575548172,
+  "fit_seconds": 218.85589003562927,
+  "n_labeled": 599,
+  "n_unlabeled": 5396,
+  "n_validation": 1499,
+  "n_test": 3498,
+  "pretrain_epochs": 10,
+  "iterations_requested": 1000,
+  "views": 3,
+  "mask_probability": 0.3,
+  "alpha": 2.0,
+  "beta": 1.0
+}

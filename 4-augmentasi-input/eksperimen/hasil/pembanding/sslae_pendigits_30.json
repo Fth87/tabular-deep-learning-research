@@ -1,0 +1,15 @@
+{
+  "dataset": "pendigits",
+  "task_type": "classification",
+  "method": "SSLAE (authors' implementation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.9251000571755289,
+  "macro_precision": 0.9289470414467227,
+  "macro_recall": 0.9257918630442376,
+  "macro_f1": 0.925512953283161,
+  "fit_seconds": 58.8570499420166,
+  "n_labeled": 1798,
+  "n_unlabeled": 4197,
+  "n_validation": 1499,
+  "n_test": 3498
+}

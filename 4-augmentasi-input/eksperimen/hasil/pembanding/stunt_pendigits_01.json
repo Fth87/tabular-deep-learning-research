@@ -1,0 +1,20 @@
+{
+  "dataset": "pendigits",
+  "task_type": "classification",
+  "method": "STUNT (self-generated tasks, prototypical few-shot evaluation)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.6781017724413951,
+  "macro_precision": 0.687188486565493,
+  "macro_recall": 0.6788995383856307,
+  "macro_f1": 0.6645412126325082,
+  "fit_seconds": 32.42531204223633,
+  "best_step": 425,
+  "best_validation_accuracy": 0.7124749833222148,
+  "ways_per_synthetic_task": 5,
+  "shots_per_real_class": 1,
+  "n_labeled": 59,
+  "n_unlabeled": 5936,
+  "n_validation": 1499,
+  "n_test": 3498,
+  "steps_requested": 1000
+}

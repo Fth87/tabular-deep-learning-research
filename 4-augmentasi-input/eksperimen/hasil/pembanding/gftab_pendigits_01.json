@@ -1,0 +1,21 @@
+{
+  "dataset": "pendigits",
+  "task_type": "classification",
+  "method": "GFTab (authors' GKSMT, GFK loss and tree embedding)",
+  "primary_metric": "macro_f1",
+  "accuracy": 0.32332761578044594,
+  "macro_precision": 0.4695644871803795,
+  "macro_recall": 0.3179456906729634,
+  "macro_f1": 0.2639334920498306,
+  "fit_seconds": 112.56742191314697,
+  "best_epoch": 10,
+  "best_validation_loss": 2.0375737878696425,
+  "n_labeled": 59,
+  "n_unlabeled": 5936,
+  "n_validation": 1499,
+  "n_test": 3498,
+  "numeric_features": 16,
+  "categorical_features": 0,
+  "tree_embeddings": 160,
+  "epochs_requested": 10
+}

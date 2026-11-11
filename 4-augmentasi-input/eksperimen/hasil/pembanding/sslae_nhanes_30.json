@@ -1,0 +1,20 @@
+{
+  "dataset": "nhanes",
+  "task_type": "ordinal_regression",
+  "method": "SSLAE (authors' implementation; ordinal labels treated as ordered classes)",
+  "primary_metric": "mae",
+  "accuracy": 0.40561224489795916,
+  "macro_precision": 0.2875375840228817,
+  "macro_recall": 0.25653429162124797,
+  "macro_f1": 0.24717442255325928,
+  "fit_seconds": 16.43538522720337,
+  "n_labeled": 1096,
+  "n_unlabeled": 2559,
+  "n_validation": 784,
+  "n_test": 784,
+  "mae": 0.7066326530612245,
+  "rmse": 0.9689042833036098,
+  "r2": 0.03788283000746984,
+  "spearman": 0.3305813314101771,
+  "qwk": 0.2965592572364828
+}

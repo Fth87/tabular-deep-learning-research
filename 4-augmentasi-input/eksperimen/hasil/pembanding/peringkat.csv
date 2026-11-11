@@ -1,0 +1,187 @@
+dataset,pct,name,value,sign,rank
+nhanes,1,HGB (supervised),0.0,1,22.0
+nhanes,1,Ridge (supervised),0.0827828948872078,1,18.0
+nhanes,1,Self-training HGB,0.010556980305256092,1,21.0
+nhanes,1,COREG,0.1729917088445555,1,14.0
+nhanes,10,HGB (supervised),0.284869112746583,1,2.0
+nhanes,10,Ridge (supervised),0.20498271123326528,1,18.0
+nhanes,10,Self-training HGB,0.2909775143475398,1,1.0
+nhanes,10,COREG,0.198608318058052,1,19.0
+nhanes,30,HGB (supervised),0.29003536132015595,1,17.0
+nhanes,30,Ridge (supervised),0.2450135062128579,1,20.0
+nhanes,30,Self-training HGB,0.2932165486395826,1,16.0
+nhanes,30,COREG,0.2474417928352024,1,19.0
+pendigits,1,HGB (supervised),0.747259170910917,1,19.0
+pendigits,1,Logistic (supervised),0.811322185229835,1,17.0
+pendigits,1,Self-training HGB,0.7655689666066335,1,18.0
+pendigits,1,Label Spreading,0.9178938774229298,1,1.0
+pendigits,10,HGB (supervised),0.9040096995445044,1,18.0
+pendigits,10,Logistic (supervised),0.8851948163360255,1,19.0
+pendigits,10,Self-training HGB,0.9147951641148404,1,16.0
+pendigits,10,Label Spreading,0.9650266365239502,1,2.0
+pendigits,30,HGB (supervised),0.9543190165218578,1,17.0
+pendigits,30,Logistic (supervised),0.9005542478022341,1,20.0
+pendigits,30,Self-training HGB,0.9557512936967779,1,16.0
+pendigits,30,Label Spreading,0.9671043264529944,1,12.0
+superconductivity,1,HGB (supervised),374.4698202921538,-1,9.0
+superconductivity,1,Ridge (supervised),437.78756804646923,-1,17.0
+superconductivity,1,Self-training HGB,380.6407509062283,-1,16.0
+superconductivity,1,COREG,477.2431365782985,-1,18.0
+superconductivity,10,HGB (supervised),178.12792923487635,-1,1.0
+superconductivity,10,Ridge (supervised),357.95549032456825,-1,18.0
+superconductivity,10,Self-training HGB,183.38190480704472,-1,2.0
+superconductivity,10,COREG,263.96944382531365,-1,17.0
+superconductivity,30,HGB (supervised),143.3982651222575,-1,2.0
+superconductivity,30,Ridge (supervised),341.4777033269793,-1,18.0
+superconductivity,30,Self-training HGB,142.69725960362405,-1,1.0
+superconductivity,30,COREG,191.4033151072628,-1,17.0
+nhanes,1,GFTAB,0.026775185553423286,1,20.0
+nhanes,10,GFTAB,0.1781858629037535,1,20.0
+nhanes,30,GFTAB,0.2868142444658325,1,18.0
+pendigits,1,GFTAB,0.2639334920498306,1,22.0
+pendigits,10,GFTAB,0.8582586994304586,1,21.0
+pendigits,30,GFTAB,0.9199478761015898,1,19.0
+nhanes,1,SSLAE,0.1431397373002058,1,17.0
+nhanes,10,SSLAE,0.25349286563614737,1,4.0
+nhanes,30,SSLAE,0.2965592572364828,1,15.0
+pendigits,1,SSLAE,0.6578457018576911,1,21.0
+pendigits,10,SSLAE,0.9088093165066209,1,17.0
+pendigits,30,SSLAE,0.925512953283161,1,18.0
+nhanes,1,STUNT,0.14400445525690997,1,16.0
+nhanes,10,STUNT,0.1630812731649537,1,22.0
+nhanes,30,STUNT,0.1860102788231961,1,22.0
+pendigits,1,STUNT,0.6645412126325082,1,20.0
+pendigits,10,STUNT,0.664487616522707,1,22.0
+pendigits,30,STUNT,0.5279687060292397,1,22.0
+nhanes,1,VIME,0.02938986248324471,1,19.0
+nhanes,10,VIME,0.172334579523445,1,21.0
+nhanes,30,VIME,0.2271095152603232,1,21.0
+pendigits,1,VIME,0.8118329419114044,1,16.0
+pendigits,10,VIME,0.8775252674822702,1,20.0
+pendigits,30,VIME,0.8948360071329381,1,21.0
+nhanes,1,TabM tanpa SSL,0.15032277286721607,1,15.0
+pendigits,1,TabM tanpa SSL,0.8377268591094886,1,15.0
+nhanes,1,RankUp + Block-Gibbs (usulan),0.23834196891191717,1,8.0
+pendigits,1,RankUp + Block-Gibbs (usulan),0.8599874758040411,1,13.0
+superconductivity,1,TabM tanpa SSL,378.545142537958,-1,15.0
+superconductivity,1,RankUp + Block-Gibbs (usulan),377.3815491998404,-1,14.0
+nhanes,10,TabM tanpa SSL,0.24035613448580495,1,10.0
+nhanes,10,RankUp + Block-Gibbs (usulan),0.21976982500394138,1,16.0
+pendigits,10,TabM tanpa SSL,0.9472948248947656,1,13.0
+pendigits,10,RankUp + Block-Gibbs (usulan),0.9525477444867683,1,7.0
+superconductivity,10,TabM tanpa SSL,197.40858074590378,-1,7.0
+superconductivity,10,RankUp + Block-Gibbs (usulan),197.6981019906773,-1,8.0
+nhanes,30,TabM tanpa SSL,0.33110819426214133,1,3.0
+nhanes,30,RankUp + Block-Gibbs (usulan),0.3291484406067148,1,4.0
+pendigits,30,TabM tanpa SSL,0.9669793399307176,1,14.0
+pendigits,30,RankUp + Block-Gibbs (usulan),0.9686876492614106,1,11.0
+superconductivity,30,TabM tanpa SSL,150.47494699798932,-1,11.0
+superconductivity,30,RankUp + Block-Gibbs (usulan),149.54589515255654,-1,7.0
+nhanes,1,RankUp + gaussian (tanpa tuning),0.22927362097214632,1,11.0
+nhanes,1,RankUp + zero_out (tanpa tuning),0.2510670704709278,1,5.0
+pendigits,1,RankUp + gaussian (tanpa tuning),0.8709009647889328,1,10.0
+pendigits,1,RankUp + scarf (tanpa tuning),0.839230441532376,1,14.0
+nhanes,1,RankUp + tabcutmix_plus (tanpa tuning),0.23913043478260876,1,7.0
+pendigits,1,RankUp + range_limited (tanpa tuning),0.8773043869472816,1,7.0
+pendigits,1,RankUp + tabcutmix (tanpa tuning),0.8690112257624921,1,11.0
+nhanes,1,RankUp + scarf (tanpa tuning),0.24240953056727788,1,6.0
+pendigits,1,RankUp + tabcutmix_plus (tanpa tuning),0.8671562771789499,1,12.0
+superconductivity,1,RankUp + scarf (tanpa tuning),372.53313756504383,-1,4.0
+nhanes,1,RankUp + range_limited (tanpa tuning),0.19083523602187646,1,13.0
+superconductivity,1,RankUp + tabcutmix (tanpa tuning),374.62241880110224,-1,10.0
+superconductivity,1,RankUp + gaussian (tanpa tuning),375.0016095078131,-1,11.0
+superconductivity,1,RankUp + zero_out (tanpa tuning),375.5826888615799,-1,13.0
+pendigits,1,RankUp + zero_out (tanpa tuning),0.8766123815885765,1,8.0
+superconductivity,1,RankUp + range_limited (tanpa tuning),373.6144750868485,-1,6.0
+superconductivity,1,RankUp + tabcutmix_plus (tanpa tuning),374.3955323045449,-1,8.0
+nhanes,1,RankUp + tabcutmix (tanpa tuning),0.23135656658072035,1,9.0
+nhanes,10,RankUp + tabcutmix (tanpa tuning),0.2323201825013418,1,13.0
+nhanes,10,RankUp + scarf (tanpa tuning),0.24046778769635324,1,9.0
+nhanes,10,RankUp + range_limited (tanpa tuning),0.2445797807551766,1,6.0
+nhanes,10,RankUp + zero_out (tanpa tuning),0.22593897722389333,1,15.0
+nhanes,10,RankUp + gaussian (tanpa tuning),0.24726517347092625,1,5.0
+nhanes,10,RankUp + tabcutmix_plus (tanpa tuning),0.23272590515915081,1,12.0
+pendigits,10,RankUp + tabcutmix (tanpa tuning),0.9385885466935241,1,15.0
+pendigits,10,RankUp + zero_out (tanpa tuning),0.9449147335929903,1,14.0
+pendigits,10,RankUp + range_limited (tanpa tuning),0.9551783224231054,1,5.0
+pendigits,10,RankUp + scarf (tanpa tuning),0.9495870495571325,1,10.0
+pendigits,10,RankUp + gaussian (tanpa tuning),0.9513117908466248,1,9.0
+superconductivity,10,RankUp + tabcutmix (tanpa tuning),208.31982341291373,-1,15.0
+pendigits,10,RankUp + tabcutmix_plus (tanpa tuning),0.9492201298498557,1,12.0
+superconductivity,10,RankUp + scarf (tanpa tuning),197.83700783117558,-1,10.0
+superconductivity,10,RankUp + tabcutmix_plus (tanpa tuning),208.73751063259178,-1,16.0
+superconductivity,10,RankUp + gaussian (tanpa tuning),194.42118218592307,-1,3.0
+superconductivity,10,RankUp + zero_out (tanpa tuning),196.86267559368096,-1,4.0
+superconductivity,10,RankUp + range_limited (tanpa tuning),197.04170489365217,-1,6.0
+nhanes,30,RankUp + tabcutmix (tanpa tuning),0.3238858847659891,1,8.0
+nhanes,30,RankUp + scarf (tanpa tuning),0.3238858847659891,1,8.0
+nhanes,30,RankUp + gaussian (tanpa tuning),0.33350965353081197,1,1.5
+nhanes,30,RankUp + range_limited (tanpa tuning),0.3238858847659891,1,8.0
+nhanes,30,RankUp + zero_out (tanpa tuning),0.33350965353081197,1,1.5
+nhanes,30,RankUp + tabcutmix_plus (tanpa tuning),0.3238858847659891,1,8.0
+pendigits,30,RankUp + scarf (tanpa tuning),0.9633881553865816,1,15.0
+pendigits,30,RankUp + tabcutmix (tanpa tuning),0.9692083377719868,1,10.0
+pendigits,30,RankUp + zero_out (tanpa tuning),0.9709821767391693,1,9.0
+pendigits,30,RankUp + tabcutmix_plus (tanpa tuning),0.9711399508708489,1,8.0
+pendigits,30,RankUp + gaussian (tanpa tuning),0.9745199390051941,1,4.0
+pendigits,30,RankUp + range_limited (tanpa tuning),0.9812832929687731,1,1.0
+superconductivity,30,RankUp + zero_out (tanpa tuning),150.71728365513295,-1,13.0
+superconductivity,30,RankUp + gaussian (tanpa tuning),152.07239756253523,-1,16.0
+superconductivity,30,RankUp + tabcutmix (tanpa tuning),149.12504982612228,-1,5.0
+superconductivity,30,RankUp + scarf (tanpa tuning),146.83437278896156,-1,4.0
+superconductivity,30,RankUp + tabcutmix_plus (tanpa tuning),151.07932590251065,-1,14.0
+superconductivity,30,RankUp + range_limited (tanpa tuning),150.42099158864252,-1,10.0
+nhanes,1,RankUp + tabcutmix_plus (Optuna),0.25513862936215337,1,4.0
+nhanes,1,RankUp + tabcutmix (Optuna),0.2272734842050923,1,12.0
+nhanes,1,RankUp + zero_out (Optuna),0.2855851941958467,1,1.0
+nhanes,1,RankUp + gaussian (Optuna),0.22961184744387342,1,10.0
+nhanes,1,RankUp + range_limited (Optuna),0.2728692765791272,1,2.0
+nhanes,1,RankUp + scarf (Optuna),0.2687362866520391,1,3.0
+pendigits,1,RankUp + tabcutmix_plus (Optuna),0.8750115296548812,1,9.0
+pendigits,1,RankUp + tabcutmix (Optuna),0.9065522999679831,1,2.0
+pendigits,1,RankUp + zero_out (Optuna),0.8927690968453618,1,4.0
+pendigits,1,RankUp + gaussian (Optuna),0.8842006633778254,1,6.0
+pendigits,1,RankUp + range_limited (Optuna),0.9008063173533072,1,3.0
+pendigits,1,RankUp + scarf (Optuna),0.8896990853899951,1,5.0
+superconductivity,1,RankUp + tabcutmix_plus (Optuna),374.12451856192,-1,7.0
+superconductivity,1,RankUp + tabcutmix (Optuna),375.25424206421656,-1,12.0
+superconductivity,1,RankUp + zero_out (Optuna),372.7245531434211,-1,5.0
+superconductivity,1,RankUp + gaussian (Optuna),370.858869475626,-1,2.0
+superconductivity,1,RankUp + range_limited (Optuna),372.2216141493355,-1,3.0
+superconductivity,1,RankUp + scarf (Optuna),370.38684751632644,-1,1.0
+nhanes,10,RankUp + tabcutmix_plus (Optuna),0.22726578281756604,1,14.0
+nhanes,10,RankUp + tabcutmix (Optuna),0.23299672535875338,1,11.0
+nhanes,10,RankUp + zero_out (Optuna),0.2539981842307424,1,3.0
+nhanes,10,RankUp + gaussian (Optuna),0.24306592147741868,1,7.0
+nhanes,10,RankUp + range_limited (Optuna),0.2413448275862069,1,8.0
+nhanes,10,RankUp + scarf (Optuna),0.21868644574709895,1,17.0
+pendigits,10,RankUp + tabcutmix_plus (Optuna),0.9602680239209789,1,3.0
+pendigits,10,RankUp + tabcutmix (Optuna),0.9671799571502673,1,1.0
+pendigits,10,RankUp + zero_out (Optuna),0.9494617514310123,1,11.0
+pendigits,10,RankUp + gaussian (Optuna),0.952988188094338,1,6.0
+pendigits,10,RankUp + range_limited (Optuna),0.9516798010629032,1,8.0
+pendigits,10,RankUp + scarf (Optuna),0.9569852757939682,1,4.0
+superconductivity,10,RankUp + tabcutmix_plus (Optuna),196.91902823669488,-1,5.0
+superconductivity,10,RankUp + tabcutmix (Optuna),198.47550806504825,-1,12.0
+superconductivity,10,RankUp + zero_out (Optuna),198.48473620303906,-1,13.0
+superconductivity,10,RankUp + gaussian (Optuna),197.7083715010068,-1,9.0
+superconductivity,10,RankUp + range_limited (Optuna),199.27378423431378,-1,14.0
+superconductivity,10,RankUp + scarf (Optuna),197.94616145605445,-1,11.0
+nhanes,30,RankUp + scarf (Optuna),0.31496481210994554,1,13.5
+nhanes,30,RankUp + tabcutmix_plus (Optuna),0.31680723349289575,1,11.0
+nhanes,30,RankUp + tabcutmix (Optuna),0.31496481210994554,1,13.5
+nhanes,30,RankUp + zero_out (Optuna),0.3238858847659891,1,8.0
+nhanes,30,RankUp + gaussian (Optuna),0.32871714689896503,1,5.0
+nhanes,30,RankUp + range_limited (Optuna),0.31621002404710963,1,12.0
+pendigits,30,RankUp + tabcutmix_plus (Optuna),0.9728061049400714,1,6.0
+pendigits,30,RankUp + tabcutmix (Optuna),0.9715171387718406,1,7.0
+pendigits,30,RankUp + zero_out (Optuna),0.9670538029562443,1,13.0
+pendigits,30,RankUp + gaussian (Optuna),0.9751704769742577,1,3.0
+pendigits,30,RankUp + range_limited (Optuna),0.9769819849534416,1,2.0
+pendigits,30,RankUp + scarf (Optuna),0.9743954781813204,1,5.0
+superconductivity,30,RankUp + tabcutmix_plus (Optuna),151.97295324115453,-1,15.0
+superconductivity,30,RankUp + tabcutmix (Optuna),146.18916803911242,-1,3.0
+superconductivity,30,RankUp + zero_out (Optuna),149.4030870583007,-1,6.0
+superconductivity,30,RankUp + gaussian (Optuna),150.17650859955634,-1,9.0
+superconductivity,30,RankUp + range_limited (Optuna),150.06646337481183,-1,8.0
+superconductivity,30,RankUp + scarf (Optuna),150.55123175772198,-1,12.0
