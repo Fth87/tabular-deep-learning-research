@@ -1,0 +1,175 @@
+\setcounter{section}{1}
+\section{Tinjauan Pustaka}
+
+\subsection{Augmentasi Data}
+
+Augmentasi data menghasilkan variasi sampel pelatihan melalui transformasi terhadap data yang tersedia. Variasi ini dapat mengurangi \textit{overfitting}, terutama ketika data pelatihan terbatas \cite{ref1}. Dalam pembelajaran dari data tanpa label, augmentasi juga menghasilkan beberapa versi sampel untuk melatih representasi atau konsistensi prediksi. Transformasi perlu dipilih dengan hati-hati karena perubahan yang terlalu besar dapat menghilangkan informasi yang berkaitan dengan target.
+
+\subsubsection{Augmentasi Citra}
+
+Pada citra, hubungan spasial antarpiksel memungkinkan transformasi seperti rotasi, pembalikan, pemotongan, dan perubahan warna. Transformasi tersebut dapat mempertahankan identitas objek apabila sesuai dengan tugas prediksi \cite{ref1}. SimCLR menggunakan dua hasil augmentasi dari citra yang sama sebagai pasangan positif dalam \textit{contrastive learning} \cite{ref2}. Sementara itu, \textit{Masked Autoencoders} (MAE) menyembunyikan sebagian \textit{patch} dan melatih model untuk merekonstruksinya \cite{ref3}.
+
+\subsubsection{Augmentasi Tabular}
+
+Data tabular terdiri atas baris sampel dan kolom fitur yang dapat berupa nilai numerik, kategori, atau ordinal. Kolom tidak memiliki hubungan spasial sejelas piksel, sehingga perubahan sebuah fitur dapat merusak hubungan antaratribut \cite{ref4}. VIME membentuk tugas pembelajaran dengan mengorupsi fitur dan memperkirakan nilai serta mask-nya \cite{ref5}. SubTab membagi fitur ke dalam beberapa subset \cite{ref6}, sedangkan SCARF mengganti sebagian nilai fitur untuk membentuk pasangan dalam pembelajaran kontrastif \cite{ref7}.
+
+Tabel~\ref{tab:i} merangkum perbedaan augmentasi citra dan tabular. Pada data tabular, kombinasi fitur hasil transformasi perlu diperiksa karena penggantian nilai secara independen dapat menghasilkan sampel yang tidak sesuai dengan data asal.
+
+\begin{table}[!htbp]
+\caption{Perbandingan augmentasi citra dan tabular}
+\label{tab:i}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\columnwidth}{p{.19\columnwidth}XX}
+\hline
+\textbf{Aspek} & \textbf{Citra} & \textbf{Tabular} \\
+\hline
+Struktur & Spasial antarpiksel & Hubungan antarfitur \\
+Informasi & Warna, bentuk, posisi & Numerik, kategori, ordinal \\
+Transformasi & Rotasi, pemotongan, warna & Masking, noise, pertukaran fitur \\
+Risiko & Informasi objek hilang & Kombinasi fitur atau target berubah \\
+Contoh & SimCLR \cite{ref2}, MAE \cite{ref3} & VIME \cite{ref5}, SubTab \cite{ref6}, SCARF \cite{ref7} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Self-Supervised Learning}
+
+\textit{Self-supervised learning} membentuk sinyal supervisi dari data tanpa memerlukan label target utama. Model menyelesaikan \textit{pretext task} untuk mempelajari representasi yang kemudian digunakan pada tugas seperti klasifikasi atau regresi \cite{ref4}. Tugas tersebut dapat berupa prediksi bagian data yang disembunyikan atau pembandingan beberapa versi dari sampel yang sama.
+
+Pendekatan ini dapat diterapkan pada berbagai jenis data. Pada citra, model memanfaatkan hubungan spasial antarpiksel; pada data tabular, model perlu mempelajari hubungan antarfitur yang memiliki makna dan tipe berbeda. Penelitian ini berfokus pada penggunaan operator augmentasi tabular dalam kerangka semi-supervised.
+
+\subsubsection{Self-Supervised Learning pada Citra}
+
+SimCLR menggunakan dua versi augmentasi dari satu citra sebagai pasangan positif dan mempelajari kedekatan representasinya melalui \textit{contrastive learning} \cite{ref2}. MAE menggunakan tugas rekonstruksi: sebagian \textit{patch} disembunyikan, lalu model memprediksi bagian yang hilang \cite{ref3}. Keduanya memanfaatkan struktur visual, tetapi menggunakan tujuan pembelajaran yang berbeda.
+
+\subsubsection{Self-Supervised Learning pada Data Tabular}
+
+Wang et al. \cite{ref4} mengelompokkan self-supervised learning tabular menjadi pendekatan \textit{predictive}, \textit{contrastive}, dan \textit{hybrid}. VIME menggunakan prediksi mask dan rekonstruksi fitur \cite{ref5}; SubTab mempelajari representasi dari beberapa subset fitur \cite{ref6}; sedangkan SCARF menggunakan korupsi fitur untuk membentuk pasangan kontrastif \cite{ref7}.
+
+Pada citra, transformasi dapat memanfaatkan keteraturan spasial. Pada data tabular, perubahan nilai perlu mempertimbangkan makna serta hubungan antarfitur. Tabel~\ref{tab:ii} merangkum perbedaan pembentukan tugas pada kedua jenis data tersebut. Dalam penelitian ini, operator augmentasi tabular diadaptasi ke kerangka semi-supervised; proses \textit{pretraining} dari paper asal tidak dijalankan secara utuh.
+
+\begin{table}[!htbp]
+\caption{Self-supervised learning pada citra dan tabular}
+\label{tab:ii}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\columnwidth}{p{.19\columnwidth}XX}
+\hline
+\textbf{Aspek} & \textbf{Citra} & \textbf{Tabular} \\
+\hline
+View & Transformasi visual & Korupsi atau subset fitur \\
+Predictive & Rekonstruksi patch & Prediksi atau rekonstruksi fitur \\
+Contrastive & Pasangan citra teraugmentasi & Pasangan fitur terkorupsi \\
+Tantangan & Menjaga informasi objek & Menjaga hubungan antarfitur \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Semi-Supervised Learning dan Pseudo-Labeling}
+
+\textit{Semi-supervised learning} menggunakan data berlabel bersama data tanpa label untuk menyelesaikan tugas prediksi \cite{ref8}. Pendekatan ini berbeda dari self-supervised learning yang membentuk sinyal pembelajarannya dari data. Dua mekanisme yang digunakan dalam penelitian ini adalah pseudo-labeling dan consistency regularization.
+
+\subsubsection{Pseudo-Labeling}
+
+Pseudo-labeling menggunakan prediksi model sebagai target sementara untuk sampel tanpa label. Pada klasifikasi, target tersebut dapat berupa kelas dengan probabilitas prediksi tertinggi. Prediksi yang keliru dapat menjadi sumber supervisi yang salah, sehingga pemilihannya perlu memperhatikan tingkat kepercayaan model.
+
+\subsubsection{Consistency Regularization}
+
+Consistency regularization mendorong model menghasilkan prediksi yang serupa untuk beberapa versi dari satu sampel. FixMatch menggabungkannya dengan pseudo-labeling: prediksi dari augmentasi lemah digunakan sebagai target untuk versi augmentasi kuat jika tingkat kepercayaannya memenuhi ambang \cite{ref9}. Pada data tabular, perubahan fitur yang turut mengubah informasi target dapat melanggar asumsi konsistensi tersebut.
+
+\subsection{RankUp dan Arsitektur Tabular}
+
+\subsubsection{RankUp untuk Regresi dan Ordinal}
+
+RankUp mengadaptasi prinsip semi-supervised classification untuk regresi melalui \textit{Auxiliary Ranking Classifier} (ARC) \cite{ref10}. ARC mempelajari urutan target dari pasangan sampel dan dilatih bersama objective regresi. RankUp juga memperkenalkan \textit{Regression Distribution Alignment} (RDA) sebagai komponen tambahan; konfigurasi penelitian ini tidak menggunakan RDA.
+
+Untuk tugas ordinal, penelitian ini memperlakukan level kelas sebagai target numerik. Prediksi kontinu dipetakan ke level terdekat saat evaluasi, sedangkan ARC mempelajari urutan antarsampel. Pendekatan ini mengasumsikan adanya jarak numerik antarkelas dan merupakan adaptasi penelitian, bukan metode ordinal yang diperkenalkan dalam paper RankUp.
+
+\subsubsection{Klasifikasi dan TabM}
+
+Pada klasifikasi multiclass, implementasi penelitian menggunakan pseudo-label kelas dan konsistensi augmentasi lemah--kuat berdasarkan prinsip FixMatch \cite{ref9}. Adaptasi yang disebut RankUp-CLS ini tidak menggunakan ARC dan bukan metode klasifikasi yang diajukan dalam paper RankUp.
+
+Seluruh metode menggunakan TabM sebagai arsitektur dasar. TabM merupakan model tabular berbasis \textit{parameter-efficient ensembling}, bukan algoritma semi-supervised \cite{ref11}. Penggunaan arsitektur yang sama membantu membandingkan operator augmentasi tanpa mengubah model dasarnya.
+
+\subsection{Teknik Augmentasi dalam Penelitian}
+
+Penelitian ini membandingkan enam operator augmentasi tabular. Operator dari paper asal diadaptasi untuk data tanpa label tanpa mereproduksi seluruh proses pembelajaran asal.
+
+\subsubsection{TabCutMix}
+
+TabCutMix menukar sebagian fitur antara pasangan sampel dari kelas yang sama dan semula digunakan untuk mengurangi memorisasi pada model difusi tabular \cite{ref12}. Dalam penelitian ini, pemilihan donor menggunakan pseudo-label. Untuk regresi kontinu, prediksi dikelompokkan berdasarkan kuantil sebagai bantuan memilih donor; target regresi tetap kontinu. Kesalahan pseudo-label dapat menyebabkan donor yang dipilih tidak sesuai.
+
+\subsubsection{SCARF}
+
+SCARF menggunakan \textit{random feature corruption} dalam self-supervised contrastive learning \cite{ref7}. Penelitian ini mengadaptasi operator korupsinya: nilai pengganti diambil secara independen untuk setiap fitur terpilih. Penggantian tersebut dapat menghasilkan variasi fitur sekaligus mengubah hubungan antaratribut.
+
+\subsubsection{Range-Limited Augmentation}
+
+Range-Limited Augmentation (RLA) membatasi perubahan fitur pada rentang tertentu dan dikembangkan untuk \textit{few-shot} classification tabular \cite{ref13}. Implementasi penelitian mengambil nilai dari rentang kuantil fitur. Batas rentang tidak menjamin seluruh hubungan antarfitur terjaga; pengambilan nilai kontinu juga dapat menghasilkan nilai yang tidak sesuai untuk fitur diskrit.
+
+\subsubsection{Gaussian Noise dan Zero Out}
+
+Gaussian Noise menambahkan gangguan berdistribusi normal pada fitur numerik; kekuatan augmentasi mengatur besar gangguannya. Zero Out mengganti fitur terpilih dengan nol. Pada fitur yang telah distandardisasi, nol berada di sekitar rata-rata fitur dan tidak selalu berarti nilai hilang. Keduanya digunakan sebagai operator sederhana untuk dibandingkan dengan pertukaran dan penggantian fitur.
+
+\subsubsection{TabCutMix Plus}
+
+TabCutMix Plus mengelompokkan fitur berdasarkan korelasi dan menukar kelompok tersebut bersama-sama \cite{ref12}. Implementasi penelitian menggunakan \textit{hierarchical clustering} dengan \textit{average linkage}; donor dipilih menggunakan pseudo-label atau kelompok kuantil prediksi pada regresi. Pengelompokan dapat mempertahankan sebagian hubungan fitur, tetapi tidak menjamin semua kombinasi hasil pertukaran valid. Tabel~\ref{tab:iii} merangkum keenam operator tersebut.
+
+\begin{table}[!htbp]
+\caption{Operator augmentasi yang dibandingkan}
+\label{tab:iii}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\columnwidth}{p{.26\columnwidth}X}
+\hline
+\textbf{Metode} & \textbf{Mekanisme} \\
+\hline
+TabCutMix & Pertukaran sebagian fitur dengan donor \cite{ref12} \\
+SCARF & Penggantian fitur secara independen \cite{ref7} \\
+RLA & Pengambilan nilai dalam rentang fitur \cite{ref13} \\
+Gaussian Noise & Penambahan gangguan Gaussian \\
+Zero Out & Penggantian nilai fitur dengan nol \\
+TabCutMix Plus & Pertukaran kelompok fitur berkorelasi \cite{ref12} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Penelitian Terdahulu dan Posisi Penelitian}
+
+VIME, SubTab, dan SCARF mempelajari representasi tabular \cite{ref5}, \cite{ref6}, dan \cite{ref7}. FixMatch menggunakan pseudo-label dan konsistensi untuk klasifikasi \cite{ref9}; RankUp menggunakan ARC untuk regresi semi-supervised \cite{ref10}. TabM menyediakan arsitektur tabular \cite{ref11}, sedangkan TabCutMix dan RLA dikembangkan untuk konteks augmentasi yang berbeda \cite{ref12}, \cite{ref13}. Tabel~\ref{tab:iv} merangkum kaitan penelitian tersebut dengan eksperimen ini.
+
+\begin{table}[!htbp]
+\caption{Penelitian terdahulu dan kaitannya}
+\label{tab:iv}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\columnwidth}{p{.27\columnwidth}X}
+\hline
+\textbf{Penelitian} & \textbf{Fokus dan kaitan} \\
+\hline
+VIME \cite{ref5} & Rekonstruksi dan estimasi mask fitur \\
+SubTab \cite{ref6} & Pembelajaran dari subset fitur \\
+SCARF \cite{ref7} & Sumber operator korupsi fitur \\
+FixMatch \cite{ref9} & Pseudo-label dan konsistensi kelas \\
+RankUp \cite{ref10} & Kerangka regresi semi-supervised dengan ARC \\
+TabM \cite{ref11} & Arsitektur dasar tabular \\
+TabCutMix \cite{ref12} & Sumber operator pertukaran fitur \\
+RLA \cite{ref13} & Sumber augmentasi berbatas rentang \\
+\hline
+\end{tabularx}
+\end{table}
+
+Eksperimen menggunakan tiga dataset dengan jenis target berbeda: NHANES dari benchmark TOC-UCO untuk ordinal \cite{ref14}, Pen Digits untuk klasifikasi multiclass \cite{ref15}, dan Superconductivity untuk regresi kontinu \cite{ref16}. NHANES memiliki lima level ordinal, Pen Digits sepuluh kelas, dan Superconductivity target suhu kritis kontinu.
+
+Enam operator diuji pada fraksi label 1\%, 10\%, dan 30\% dari \textit{train pool}, sehingga terdapat 54 kombinasi. Setiap kombinasi menggunakan Optuna untuk mencari kekuatan augmentasi, lalu dijalankan dengan lima seed pelatihan. Metrik utamanya adalah quadratic weighted kappa (QWK) untuk ordinal, macro-F1 untuk klasifikasi, dan mean squared error (MSE) untuk regresi.
+
+Rangkaian enam operator ini tidak menyertakan baseline \textit{supervised-only} atau tanpa augmentasi. Hasilnya karena itu dibatasi pada perbandingan relatif keenam operator dalam konfigurasi yang diuji, dan tidak menunjukkan besarnya peningkatan terhadap kedua baseline tersebut.
