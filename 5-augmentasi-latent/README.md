@@ -1,93 +1,93 @@
-# Augmentasi weak/strong di ruang latent untuk RankUp pada data tabular
+# Weak/strong augmentation in the latent space for RankUp on tabular data
 
-Pada RankUp, view weak dan strong biasanya dibuat dengan mengganggu **data input**. Di sini gangguannya dipindah ke **ruang latent**, yaitu output backbone TabM, lalu dibandingkan dengan augmentasi di input pada tiga dataset tabular (ordinal, klasifikasi, regresi) dengan data berlabel 1%, 10%, dan 30%.
+In RankUp, the weak and strong views are usually made by perturbing the **input data**. Here the perturbation is moved to the **latent space**, the output of the TabM backbone, and compared with input-level augmentation on three tabular datasets (ordinal, classification, regression) with 1%, 10%, and 30% labeled data.
 
-![Arsitektur](gambar/arsitektur/arsitektur_medium.png)
+![Architecture](gambar/arsitektur/arsitektur_medium.png)
 
-## Hasil singkat
+## Results at a glance
 
-945 run (3 dataset × 3 persentase label × 3 seed, banyak konfigurasi). Angka lengkap ada di [`hasil/ringkasan.md`](hasil/ringkasan.md), dan pembahasannya di [`dokumen/PLAN_EKSPERIMEN_LATENT.md`](dokumen/PLAN_EKSPERIMEN_LATENT.md) bagian 5.
+945 runs (3 datasets × 3 label percentages × 3 seeds, many configurations). Full numbers are in [`hasil/ringkasan.md`](hasil/ringkasan.md), and the discussion is in [`dokumen/PLAN_EKSPERIMEN_LATENT.md`](dokumen/PLAN_EKSPERIMEN_LATENT.md) section 5.
 
-- RankUp membantu terutama saat data berlabel sangat sedikit (label 1%).
-- Augmentasi di input cenderung berada di bawah RankUp tanpa augmentasi, sedangkan augmentasi di latent netral atau sedikit di atasnya. Belum terbukti menambah manfaat, dan selisih antar operator lebih kecil dari simpangan baku antar seed.
-- Augmentasi sudut dengan cosine terkontrol (ide pembimbing) setara dengan operator latent lain.
-- Keterbatasan: 3 seed, satu split data, dan strength augmentasi tidak di-tuning.
+- RankUp helps mainly when labeled data is very scarce (1% labels).
+- Input-level augmentation tends to fall below RankUp without augmentation, while latent-level augmentation is neutral or slightly above it. An added benefit is not proven, and the gap between operators is smaller than the standard deviation across seeds.
+- Angular augmentation with controlled cosine (the supervisor's idea) is on par with the other latent operators.
+- Limitations: 3 seeds, one data split, and the augmentation strength is not tuned.
 
-## Struktur folder
+## Folder structure
 
 ```
 .
-├── kode/              kode eksperimen
-│   ├── latent.py          operator latent, hook di backbone TabM, run_one
-│   ├── grid.py            semua konfigurasi dan kelompoknya
-│   ├── modal_latent.py    menjalankan grid di Modal (GPU T4)
-│   ├── ringkas.py         membuat hasil/ringkasan.md
-│   ├── test_latent.py     unit test
-│   ├── visualisasi.ipynb  grafik hasil
-│   └── experiments/       loop training RankUp (disalin dari `../4-augmentasi-input/eksperimen/experiments/`, tidak diubah)
-├── data/              split data (npz + manifest): label_01, label_10, label_30
-├── hasil/             results.jsonl (satu baris per run), ringkasan.md, pembanding/
-├── gambar/            diagram (LaTeX, PDF + PNG); lihat gambar/README.md
-└── dokumen/           rencana dan catatan rapat
+├── kode/              experiment code
+│   ├── latent.py          latent operators, hook on the TabM backbone, run_one
+│   ├── grid.py            all configurations and their groups
+│   ├── modal_latent.py    runs the grid on Modal (T4 GPU)
+│   ├── ringkas.py         builds hasil/ringkasan.md
+│   ├── test_latent.py     unit tests
+│   ├── visualisasi.ipynb  result plots
+│   └── experiments/       RankUp training loop (copied unchanged from `../4-augmentasi-input/eksperimen/experiments/`)
+├── data/              data splits (npz + manifest): label_01, label_10, label_30
+├── hasil/             results.jsonl (one line per run), ringkasan.md, pembanding/
+├── gambar/            diagrams (LaTeX, PDF + PNG); see gambar/README.md
+└── dokumen/           plan and meeting notes
     ├── PLAN_EKSPERIMEN_LATENT.md
-    └── rapat/             catatan ide pembimbing (13 November)
+    └── rapat/             notes on the supervisor's ideas (13 November)
 ```
 
-Rekaman rapat, paket konteks AI, dan log run hanya disimpan lokal (di `../arsip/`) dan tidak ikut diunggah. Paper rujukan (PDF, sumber, dan tinjauannya) ada di [`../referensi/`](../referensi/).
+Meeting recordings, the AI context package, and run logs are kept only locally (in `../arsip/`) and are not uploaded. The reference papers (PDFs, sources, and reviews) are in [`../referensi/`](../referensi/).
 
-## Alur
+## Flow
 
 ```
-x_u (unlabeled) ──► augmentasi input? ──► backbone TabM ──► h (B × 32 × 512) ──► augmentasi latent? ──► head
-                    (operator lama)                                              (hook, hanya view
-                                                                                  weak/strong saat training)
-view weak   → prediksi jadi pseudo-label (ranking untuk ordinal/regresi, kelas untuk klasifikasi)
-view strong → dilatih mengikuti pseudo-label (loss konsistensi RankUp)
+x_u (unlabeled) ──► input augmentation? ──► TabM backbone ──► h (B × 32 × 512) ──► latent augmentation? ──► head
+                    (old operators)                                               (hook, weak/strong
+                                                                                   views in training only)
+weak view   → prediction becomes the pseudo-label (ranking for ordinal/regression, class for classification)
+strong view → trained to follow the pseudo-label (RankUp consistency loss)
 ```
 
-Data berlabel, validation, dan test tidak pernah diganggu. Kode baru hanya (1) mengganti fungsi `augment` dan (2) memasang hook di output backbone, sehingga konfigurasi `input_*` memberi hasil identik dengan eksperimen sebelumnya.
+Labeled data, validation, and test are never perturbed. The new code only (1) replaces the `augment` function and (2) attaches a hook on the backbone output, so the `input_*` configurations give results identical to the earlier experiment.
 
-## Memulai
+## Getting started
 
-Butuh Python 3.10 atau lebih baru.
+Requires Python 3.10 or newer.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cd kode
 
-PYTHONPATH=. python test_latent.py -v     # unit test (CPU)
-python ringkas.py                         # membuat ../hasil/ringkasan.md dari results.jsonl
-jupyter lab visualisasi.ipynb             # grafik; jalankan semua sel
+PYTHONPATH=. python test_latent.py -v     # unit tests (CPU)
+python ringkas.py                         # builds ../hasil/ringkasan.md from results.jsonl
+jupyter lab visualisasi.ipynb             # plots; run all cells
 ```
 
-Menjalankan eksperimen di Modal (perlu akun Modal; ganti `<profil>` atau hapus `MODAL_PROFILE`):
+Run experiments on Modal (needs a Modal account; replace `<profile>` or remove `MODAL_PROFILE`):
 
 ```bash
-MODAL_PROFILE=<profil> modal run modal_latent.py                                  # test + smoke run 2 epoch
-MODAL_PROFILE=<profil> modal run modal_latent.py --action run --names fase1       # satu kelompok
-MODAL_PROFILE=<profil> modal run modal_latent.py --action run --names angular --seeds 42 --percents 10
+MODAL_PROFILE=<profile> modal run modal_latent.py                                  # tests + 2-epoch smoke run
+MODAL_PROFILE=<profile> modal run modal_latent.py --action run --names fase1       # one group
+MODAL_PROFILE=<profile> modal run modal_latent.py --action run --names angular --seeds 42 --percents 10
 ```
 
-Run yang sudah ada di `hasil/results.jsonl` dilewati, jadi perintah yang sama aman diulang kalau terputus. Untuk grid panjang, jalankan sebagai service (misalnya `systemd-run --user`) supaya tidak ikut mati saat terminal ditutup.
+Runs already in `hasil/results.jsonl` are skipped, so the same command is safe to repeat if it gets interrupted. For a long grid, run it as a service (for example `systemd-run --user`) so it does not die when the terminal is closed.
 
-## Nama konfigurasi
+## Configuration names
 
-Format `{posisi}_{operator}[_weak]`; operator: `gaussian`, `zero_out`, `scarf`, `tabcutmix`.
+Format `{position}_{operator}[_weak]`; operators: `gaussian`, `zero_out`, `scarf`, `tabcutmix`.
 
-| Posisi | Arti |
+| Position | Meaning |
 |---|---|
-| `supervised` | Tanpa RankUp (bobot unlabeled 0) |
-| `rankup_noaug` | RankUp tanpa augmentasi apa pun (kontrol) |
-| `input_` | Augmentasi di input |
-| `latent_` | Augmentasi di latent; weak = identitas |
-| `latent_…_weak` | Augmentasi di latent; weak juga diganggu ringan (0,1) |
-| `both_` | View strong diaugmentasi di input lalu di latent |
-| `angular`, `angular_weak` | Cosine terkontrol: strong cos ∈ [0,3; 0,5], weak cos ∈ [0,7; 0,95] |
-| `angular[_weak\|_weak90][_s10\|_s50]` | Ablasi rentang cosine |
-| `angular…_prerelu` | Rotasi sebelum ReLU blok terakhir, bukan di output backbone |
-| `matched_{op}` | Operator lama dengan strength yang memberi cos ≈ 0,4, sama dengan `angular` |
+| `supervised` | No RankUp (unlabeled weight 0) |
+| `rankup_noaug` | RankUp with no augmentation at all (control) |
+| `input_` | Augmentation at the input |
+| `latent_` | Augmentation in the latent space; weak = identity |
+| `latent_…_weak` | Augmentation in the latent space; weak is also lightly perturbed (0.1) |
+| `both_` | Strong view augmented at the input and then in the latent space |
+| `angular`, `angular_weak` | Controlled cosine: strong cos ∈ [0.3, 0.5], weak cos ∈ [0.7, 0.95] |
+| `angular[_weak\|_weak90][_s10\|_s50]` | Ablation of the cosine range |
+| `angular…_prerelu` | Rotation before the last block's ReLU, instead of at the backbone output |
+| `matched_{op}` | Old operator with the strength that gives cos ≈ 0.4, the same as `angular` |
 
 ## Data
 
-Tiga dataset publik: NHANES (ordinal, metrik QWK), Pen Digits (klasifikasi, Macro F1), dan Superconductivity (regresi, MSE). `data/` berisi split yang sudah jadi (data berlabel, tak berlabel, validation, dan test; seed split 42), hanya file `.npz` dan `manifest.json`.
+Three public datasets: NHANES (ordinal, QWK metric), Pen Digits (classification, Macro F1), and Superconductivity (regression, MSE). `data/` holds the ready-made splits (labeled, unlabeled, validation, and test; split seed 42), only the `.npz` files and `manifest.json`.

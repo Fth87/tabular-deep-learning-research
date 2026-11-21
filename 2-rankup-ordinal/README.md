@@ -1,31 +1,33 @@
-# Tahap 2 — RankUp pada data ordinal (Task 1 dan Task 2, Juli–September 2026)
+# Stage 2 — RankUp on ordinal data (Task 1 and Task 2, July–September 2026)
 
-Menguji RankUp pada **lima dataset ordinal** (Lev, ESL, NHANES, Student Performance, Melbourne Airbnb) dengan beberapa model tabular, objective ordinal, dan augmentasi weak/strong. Hampir semua eksperimen berupa notebook Kaggle yang berdiri sendiri; hasilnya tersimpan di dalam output notebook.
+Tests RankUp on **five ordinal datasets** (Lev, ESL, NHANES, Student Performance, Melbourne Airbnb) with several tabular models, ordinal objectives, and weak/strong augmentations. Almost all experiments are self-contained Kaggle notebooks; the results are stored in the notebook outputs.
 
-## Isi folder
+## Folder contents
 
-| Folder | Isi |
+| Folder | Contents |
 |---|---|
-| `dataset/` | Lima dataset ordinal (CSV) |
-| `kode/` | Notebook sumber: EDA, benchmark model tabular ordinal, RankUp pada semua dataset (MLP, TabM, RealMLP), dan versi CORAL/CORN |
-| `hasil/` | Notebook yang sudah dijalankan (dengan output), termasuk benchmark 5 seed dan versi CORAL/CORN |
-| `hasil-tabm/` | RankUp + TabM dengan fraksi label 1%, 10%, 30%, beserta notebook visualisasinya |
-| `task1_weak_strong_optuna/` | **Task 1**: Optuna mencari kekuatan weak/strong untuk TabCutMix, SCARF, Range-Limited, dan Gaussian (objective: validation MAE) |
-| `hasil-optuna/` | Hasil run Task 1 (folder per augmentasi) |
-| `gambar/` | Ringkasan visual: profil lima dataset ordinal, parameter weak/strong terbaik dari Optuna, dan grafik konvergensi Optuna |
-| `catatan-rapat-2026-08-26.md` | Arahan pembimbing: cara menentukan kekuatan weak/strong, survei paper, jumlah seed |
-| `docs/superpowers/` | Spesifikasi dan rencana notebook CORAL/CORN (19 Agustus) |
-| `scripts/`, `tests/` | Pembuat notebook CORAL/CORN dan tesnya |
+| `dataset/` | The five ordinal datasets (CSV) |
+| `kode/` | Source notebooks: EDA, ordinal tabular model benchmark, RankUp on all datasets (MLP, TabM, RealMLP), and the CORAL/CORN version |
+| `hasil/` | Executed notebooks (with outputs), including the 5-seed benchmark and the CORAL/CORN version |
+| `hasil-tabm/` | RankUp + TabM with 1%, 10%, and 30% labeled fractions, plus the visualization notebook |
+| `task1_weak_strong_optuna/` | **Task 1**: Optuna searches the weak/strong strength for TabCutMix, SCARF, Range-Limited, and Gaussian (objective: validation MAE) |
+| `hasil-optuna/` | Task 1 run results (one folder per augmentation) |
+| `gambar/` | Visual summary: profile of the five ordinal datasets, best weak/strong parameters from Optuna, and Optuna convergence plots |
+| `catatan-rapat-2026-08-26.md` | Supervisor's guidance: how to choose weak/strong strength, paper survey, number of seeds |
+| `docs/superpowers/` | Specification and plan for the CORAL/CORN notebook (19 August) |
+| `scripts/`, `tests/` | CORAL/CORN notebook generator and its test |
 
-## Eksperimen utama
+The folder names are in Indonesian: `kode` = code, `hasil` = results, `gambar` = figures, `catatan-rapat` = meeting notes.
 
-- **Benchmark model tabular ordinal:** TabM, RealMLP-TD-S, XGBoost, LightGBM, dan CatBoost; baseline 1 seed, tuning Optuna, lalu retrain 5 seed.
-- **RankUp pada semua dataset:** MLP, TabM, dan RealMLP dibandingkan dalam empat skenario: Supervised, Fully-Supervised (batas atas), RankUp + augmentasi range-limited, dan RankUp + TabCutMix.
-- **CORAL dan CORN:** objective ordinal ditambahkan di samping regresi.
-- **Sweep fraksi label (TabM):** 1%, 10%, 30% label dengan empat augmentasi (Range-Limited, SCARF, TabCutMix, Gaussian).
+## Main experiments
 
-## Menjalankan
+- **Ordinal tabular model benchmark:** TabM, RealMLP-TD-S, XGBoost, LightGBM, and CatBoost; a 1-seed baseline, Optuna tuning, then retraining with 5 seeds.
+- **RankUp on all datasets:** MLP, TabM, and RealMLP compared in four scenarios: Supervised, Fully-Supervised (upper bound), RankUp + range-limited augmentation, and RankUp + TabCutMix.
+- **CORAL and CORN:** ordinal objectives added alongside regression.
+- **Label-fraction sweep (TabM):** 1%, 10%, and 30% labels with four augmentations (Range-Limited, SCARF, TabCutMix, Gaussian).
 
-Notebook dirancang untuk Kaggle (GPU). Secara lokal, `uv sync` memasang dependensi dasar (`pyproject.toml`). Untuk melihat hasil, buka notebook di `hasil/` dan `hasil-tabm/`; tidak perlu dijalankan ulang.
+## Running
 
-Lanjut ke [`../3-pembanding-ssl/`](../3-pembanding-ssl/).
+The notebooks are designed for Kaggle (GPU). Locally, `uv sync` installs the basic dependencies (`pyproject.toml`). To see the results, open the notebooks in `hasil/` and `hasil-tabm/`; there is no need to rerun them.
+
+Next: [`../3-pembanding-ssl/`](../3-pembanding-ssl/).

@@ -1,41 +1,41 @@
-# Task 3 — RankUp ordinal, RankUp-CLS, dan pembanding SSL
+# Task 3 — ordinal RankUp, RankUp-CLS, and SSL baselines
 
-Task 3 memakai dua kelompok data. RankUp ordinal diuji pada lima dataset Task 2. Adaptasi RankUp-CLS dan empat metode SSL pembanding (SSLAE, VIME, STUNT, GFTab) diuji pada lima dataset klasifikasi OpenML. Empat metode SSL pembanding juga diuji pada kelima dataset ordinal. CSV klasifikasi disimpan terpisah di `dataset/classification/`.
+Task 3 uses two groups of data. Ordinal RankUp is tested on the five Task 2 datasets. The RankUp-CLS adaptation and the four baseline SSL methods (SSLAE, VIME, STUNT, GFTab) are tested on five OpenML classification datasets. The four baseline SSL methods are also tested on the five ordinal datasets. The classification CSVs are stored separately in `dataset/classification/`.
 
-`modal_app.py` mengatur image/GPU dan memilih runner; `prepare_data.py` menyiapkan split bersama.
+`modal_app.py` sets up the image/GPU and selects the runner; `prepare_data.py` prepares the shared splits.
 
-## Kode paper yang diklon
+## Cloned paper code
 
-| Metode | Kode sumber | Catatan adaptasi |
+| Method | Source code | Adaptation notes |
 |---|---|---|
-| VIME | [`experiments/vime/paper_repo`](experiments/vime/paper_repo) · [repo penulis](https://github.com/jsyoon0823/VIME) | [`experiments/vime/run.py`](experiments/vime/run.py) memakai split bersama, corruption dari utilitas penulis, dan objective VIME dengan adapter TensorFlow 2. |
-| STUNT | [`experiments/stunt/paper_repo`](experiments/stunt/paper_repo) · [repo penulis](https://github.com/jaehyun513/STUNT) | [`experiments/stunt/run.py`](experiments/stunt/run.py) memakai task clustering buatan dari train-unlabeled dan evaluasi prototypical few-shot dari labeled-train. Adapter memakai MiniBatchKMeans agar dapat menangani ukuran fitur dan data Task 3. |
-| GFTab | [`experiments/gftab/paper_repo`](experiments/gftab/paper_repo) · [repo penulis](https://github.com/Yoontae6719/Geodesic-Flow-Kernels-for-Semi-Supervised-Learning-on-Mixed-Variable-Tabular-Dataset) | [`experiments/gftab/run.py`](experiments/gftab/run.py) mempertahankan tipe numerik/kategorikal dari CSV split bersama, corruption/GFK upstream, dan tree embedding yang dilatih hanya pada labeled train. |
-| SSLAE | [`experiments/sslae/paper_repo`](experiments/sslae/paper_repo) · [repo penulis](https://github.com/sintija-s/sslae) | Runner Task 3 menggunakan API classifier penulis lewat [`experiments/sslae/run.py`](experiments/sslae/run.py) dan `modal_app.py`. |
-| ReCom | Belum diklon | URL repository publik penulis belum berhasil diverifikasi. Paper: [DOI](https://doi.org/10.1016/j.ins.2021.12.076). |
-| SAWTab | Belum diklon | URL repository publik penulis belum berhasil diverifikasi. Paper: [DOI](https://doi.org/10.1007/978-981-97-2259-4_24). |
+| VIME | [`experiments/vime/paper_repo`](experiments/vime/paper_repo) · [authors' repo](https://github.com/jsyoon0823/VIME) | [`experiments/vime/run.py`](experiments/vime/run.py) uses the shared split, the corruption from the authors' utilities, and the VIME objective with a TensorFlow 2 adapter. |
+| STUNT | [`experiments/stunt/paper_repo`](experiments/stunt/paper_repo) · [authors' repo](https://github.com/jaehyun513/STUNT) | [`experiments/stunt/run.py`](experiments/stunt/run.py) uses synthetic clustering tasks built from train-unlabeled and prototypical few-shot evaluation from labeled-train. The adapter uses MiniBatchKMeans to handle the feature and data sizes of Task 3. |
+| GFTab | [`experiments/gftab/paper_repo`](experiments/gftab/paper_repo) · [authors' repo](https://github.com/Yoontae6719/Geodesic-Flow-Kernels-for-Semi-Supervised-Learning-on-Mixed-Variable-Tabular-Dataset) | [`experiments/gftab/run.py`](experiments/gftab/run.py) keeps the numeric/categorical types from the shared split CSVs, the upstream corruption/GFK, and a tree embedding trained only on labeled train. |
+| SSLAE | [`experiments/sslae/paper_repo`](experiments/sslae/paper_repo) · [authors' repo](https://github.com/sintija-s/sslae) | The Task 3 runner uses the authors' classifier API through [`experiments/sslae/run.py`](experiments/sslae/run.py) and `modal_app.py`. |
+| ReCom | Not cloned | The authors' public repository URL could not be verified. Paper: [DOI](https://doi.org/10.1016/j.ins.2021.12.076). |
+| SAWTab | Not cloned | The authors' public repository URL could not be verified. Paper: [DOI](https://doi.org/10.1007/978-981-97-2259-4_24). |
 
-> Folder `paper_repo/` tidak ikut git (kode dan lisensi milik penulis aslinya). Unduh dengan `./siapkan_paper_repo.sh`: skrip itu mengambil commit yang sama dengan yang dipakai di eksperimen dan memasang perubahan lokal pada GFTab dan SSLAE dari `paper_repo_patch/`.
+> The `paper_repo/` folders are not tracked by git (the code and license belong to the original authors). Download them with `./siapkan_paper_repo.sh`: the script fetches the same commits that were used in the experiments and applies the local changes to GFTab and SSLAE from `paper_repo_patch/`.
 
-Kode runner dan penyesuaian Task 3 disimpan di luar clone. Empat metode SSL membaca split bersama. Untuk target ordinal, runner memperlakukan setiap level sebagai kelas, lalu memetakan prediksi kembali ke nilai berurut untuk menghitung MAE dan metrik ordinal. STUNT memakai evaluasi prototypical few-shot, sehingga protokolnya berbeda dari pembanding lainnya dan RankUp.
+The Task 3 runner code and adjustments are kept outside the clones. The four SSL methods read the shared splits. For ordinal targets, the runner treats each level as a class, then maps the predictions back to ordered values to compute MAE and ordinal metrics. STUNT uses prototypical few-shot evaluation, so its protocol differs from the other baselines and from RankUp.
 
-## Dataset dan split
+## Datasets and splits
 
-Sepuluh dataset terdaftar di [`config/datasets.json`](config/datasets.json). Lima dataset Task 2 ditandai `ordinal_regression`; lima dataset OpenML berada di `dataset/classification/` dan ditandai `classification`. Metadata unduhan ada di `dataset/openml_manifest.json`; unduh ulang dengan `python download_openml_datasets.py`. Rincian jumlah, tipe fitur, dan pemeriksaan ada di [`dataset_compatibility.md`](dataset_compatibility.md).
+The ten datasets are listed in [`config/datasets.json`](config/datasets.json). The five Task 2 datasets are marked `ordinal_regression`; the five OpenML datasets are in `dataset/classification/` and marked `classification`. Download metadata is in `dataset/openml_manifest.json`; download again with `python download_openml_datasets.py`. Details on counts, feature types, and checks are in [`dataset_compatibility.md`](dataset_compatibility.md).
 
-`prepare_data.py` membuat split stratified dengan seed 42 untuk semua target:
+`prepare_data.py` makes a stratified split with seed 42 for all targets:
 
-- 70% train pool, 15% validation, dan 15% test.
-- Dari train pool, 10% menjadi labeled dan 90% menjadi unlabeled untuk SSL.
-- Imputasi, scaling, dan one-hot encoding di-fit pada train saja, termasuk train berlabel dan tanpa label.
+- 70% train pool, 15% validation, and 15% test.
+- From the train pool, 10% becomes labeled and 90% becomes unlabeled for SSL.
+- Imputation, scaling, and one-hot encoding are fit on train only, covering both labeled and unlabeled train.
 
-Target ordinal tetap numerik dan urutannya dipertahankan; train-unlabeled tidak menyimpan target di file model. Kolom kategori CMC, Bank Marketing, dan Adult ditentukan eksplisit dari metadata OpenML. Nilai fitur Adult yang hilang ditangani di preprocessor train-only.
+Ordinal targets stay numeric and keep their order; train-unlabeled does not store the target in the model files. The categorical columns of CMC, Bank Marketing, and Adult are set explicitly from the OpenML metadata. Missing Adult feature values are handled in the train-only preprocessor.
 
-Setiap dataset menghasilkan `.npz` untuk model, CSV untuk inspeksi, preprocessor, dan `manifest.json` di folder output. Lima dataset ordinal memakai MAE sebagai metrik utama; RMSE tetap dilaporkan sebagai metrik tambahan bersama R², Spearman, dan QWK. Untuk klasifikasi OpenML, metrik utama Accuracy jika seimbang dan Macro-F1 jika tidak seimbang. Sepuluh persen train pool berlabel berarti sekitar 7% seluruh data berlabel.
+Each dataset produces `.npz` files for the model, CSVs for inspection, the preprocessor, and `manifest.json` in the output folder. The five ordinal datasets use MAE as the main metric; RMSE is still reported as an extra metric along with R², Spearman, and QWK. For OpenML classification, the main metric is Accuracy if the classes are balanced and Macro-F1 if not. Ten percent of the train pool labeled means about 7% of all data labeled.
 
-## Jalankan persiapan dan baseline di Modal
+## Run preparation and baselines on Modal
 
-Pasang dependency lokal dengan `pip install -r requirements.txt`, lalu login dengan `modal setup`. CSV dari folder `dataset/` termasuk `dataset/classification/` ikut dimasukkan ke image Modal. Dari folder `task 3`, jalankan:
+Install local dependencies with `pip install -r requirements.txt`, then log in with `modal setup`. The CSVs from the `dataset/` folder, including `dataset/classification/`, are included in the Modal image. From the `3-pembanding-ssl` folder, run:
 
 ```bash
 modal run modal_app.py --dataset all --action prepare
@@ -48,9 +48,9 @@ modal run modal_app.py --dataset classification --action rankup_cls
 modal run modal_app.py --dataset all --action all --max-parallel-jobs 4
 ```
 
-`--action prepare --dataset all` menyiapkan seluruh dataset. Untuk lima dataset ordinal, gunakan `--dataset ordinal`; untuk lima dataset klasifikasi OpenML, gunakan `--dataset classification`. Jalankan `prepare` terlebih dahulu. `--action all --dataset all` menjadwalkan empat baseline SSL pada sepuluh dataset, enam RankUp ordinal pada lima dataset ordinal, dan enam RankUp-CLS pada lima dataset klasifikasi. Job dikirim paralel per batch; `--max-parallel-jobs` mengatur batas GPU aktif dan default-nya 4. Modal dapat mengantrikan job jika kuota GPU akun tidak cukup. Paralel lebih banyak memakai lebih banyak GPU pada waktu yang sama.
+`--action prepare --dataset all` prepares all datasets. For the five ordinal datasets, use `--dataset ordinal`; for the five OpenML classification datasets, use `--dataset classification`. Run `prepare` first. `--action all --dataset all` schedules the four SSL baselines on ten datasets, six ordinal RankUp runs on five ordinal datasets, and six RankUp-CLS runs on five classification datasets. Jobs are sent in parallel per batch; `--max-parallel-jobs` sets the active GPU limit and defaults to 4. Modal may queue jobs if the account's GPU quota is not enough. More parallelism uses more GPUs at the same time.
 
-Volume `task3-data` menyimpan split hasil persiapan. Hasil metrik dan prediksi ditulis ke Volume `task3-results`. Unduh hasil dengan:
+The Volume `task3-data` stores the prepared splits. Metrics and predictions are written to the Volume `task3-results`. Download results with:
 
 ```bash
 modal volume get task3-results lev/sslae_metrics.json ./sslae_metrics.json
@@ -60,19 +60,19 @@ modal volume get task3-results adult_income/gftab_metrics.json ./gftab_metrics.j
 modal volume get task3-results lev/rankup_range_limited_metrics.json ./rankup_metrics.json
 ```
 
-Runner klasifikasi melaporkan Accuracy, Macro-Precision, Macro-Recall, dan Macro-F1. Metrik utama memakai Accuracy jika rasio kelas terbesar/terkecil pada labeled train <= 1.5, selain itu Macro-F1. RankUp ordinal memilih checkpoint berdasarkan validation MAE dan melaporkan MAE, RMSE, R², Spearman, serta QWK.
+The classification runners report Accuracy, Macro-Precision, Macro-Recall, and Macro-F1. The main metric is Accuracy if the largest/smallest class ratio in labeled train is <= 1.5, otherwise Macro-F1. Ordinal RankUp selects the checkpoint by validation MAE and reports MAE, RMSE, R², Spearman, and QWK.
 
-## Jalankan persiapan secara lokal
+## Run preparation locally
 
-Pasang `requirements.txt`, isi path CSV yang valid, lalu jalankan:
+Install `requirements.txt`, fill in valid CSV paths, then run:
 
 ```bash
 python prepare_data.py --dataset lev --output ./prepared
 ```
 
-Semua runner training Modal menggunakan GPU T4 dan berhenti dengan error jika GPU tidak terdeteksi, supaya tidak diam-diam berjalan di CPU. Persiapan split dan operasi preprocessing berbasis pandas/scikit-learn tetap berjalan di CPU. GFTab menjalankan SVD GFK dan pohon XGBoost pada GPU; sebagian pemuatan data dan encoding kategori tetap di CPU sebelum batch dikirim ke GPU. Seluruh runner menulis metrik dan prediksi ke `task3-results`. Training belum dijalankan.
+All Modal training runners use a T4 GPU and stop with an error if no GPU is detected, so they never silently run on CPU. Split preparation and pandas/scikit-learn preprocessing still run on CPU. GFTab runs the GFK SVD and XGBoost trees on GPU; some data loading and category encoding stay on CPU before batches are sent to the GPU. All runners write metrics and predictions to `task3-results`.
 
-Untuk menjalankan empat pembanding SSL pada lima dataset ordinal yang sama dengan RankUp:
+To run the four SSL baselines on the same five ordinal datasets as RankUp:
 
 ```bash
 modal run modal_app.py --dataset ordinal --action sslae
@@ -81,28 +81,28 @@ modal run modal_app.py --dataset ordinal --action stunt
 modal run modal_app.py --dataset ordinal --action gftab
 ```
 
-Keempat model ini tetap classifier: target ordinal diubah menjadi kelas untuk training, lalu prediksi kelas dipetakan kembali ke nilai target aslinya. MAE menjadi metrik utama supaya hasilnya bisa dibandingkan dengan RankUp. Ini adaptasi klasifikasi untuk target ordinal, bukan implementasi native ordinal dari paper. STUNT juga tetap memakai protokol few-shot.
+These four models remain classifiers: the ordinal target is turned into classes for training, then the class predictions are mapped back to the original target values. MAE is the main metric so the results can be compared with RankUp. This is a classification adaptation for ordinal targets, not a native ordinal implementation from the papers. STUNT also keeps its few-shot protocol.
 
 ## RankUp-style ordinal regression
 
-RankUp memiliki satu file mandiri untuk setiap eksperimen: `experiments/rankup/tabcutmix.py`, `scarf.py`, `range_limited.py`, `gaussian.py`, `zero_out.py`, dan `tabcutmix_plus.py`. Setiap file memuat augmentasi, model, loss, Optuna, training, evaluasi, dan CLI untuk metodenya. Optuna mencari kekuatan weak/strong dengan objective validation MAE; test baru dipakai setelah parameter terbaik dipilih. Default mengikuti Task 2: 200 trial (SCARF 150; dibatasi menjadi enam pasangan pada dataset empat fitur), 40 epoch per trial, lalu final training maksimal 120 epoch. Atur angkanya lewat `--rankup-trials`, `--rankup-optuna-epochs`, dan `--rankup-epochs`.
+RankUp has one standalone file per experiment: `experiments/rankup/tabcutmix.py`, `scarf.py`, `range_limited.py`, `gaussian.py`, `zero_out.py`, and `tabcutmix_plus.py`. Each file contains the augmentation, model, loss, Optuna, training, evaluation, and CLI for its method. Optuna searches the weak/strong strength with validation MAE as the objective; test is used only after the best parameters are chosen. Defaults follow Task 2: 200 trials (SCARF 150; limited to six pairs on the four-feature dataset), 40 epochs per trial, then final training for at most 120 epochs. Set the numbers with `--rankup-trials`, `--rankup-optuna-epochs`, and `--rankup-epochs`.
 
-Rangkuman metode, cara kerja, keterbatasan, dan sumber paper ada di [`related_work.md`](related_work.md).
+A summary of the methods, how they work, their limitations, and the paper sources is in [`related_work.md`](related_work.md).
 
-Eksperimen dijalankan langsung dari terminal dengan Modal; notebook tidak diperlukan. Untuk menjalankan keenam augmentasi pada lima dataset ordinal:
+Experiments run directly from the terminal with Modal; notebooks are not needed. To run all six augmentations on the five ordinal datasets:
 
 ```bash
 modal run modal_app.py --dataset all --action rankup --augmentation all
 ```
 
-Untuk satu augmentasi, ganti `all` dengan `tabcutmix`, `scarf`, `range_limited`, `gaussian`, `zero_out`, atau `tabcutmix_plus`. Untuk smoke run, misalnya `modal run modal_app.py --dataset lev --action rankup --augmentation scarf --rankup-trials 2 --rankup-optuna-epochs 3 --rankup-epochs 3`. Setiap dataset menyimpan `rankup_<metode>_optuna_trials.csv` dan `rankup_<metode>_best_params.json` selain metrik, prediksi, serta riwayat final training.
+For one augmentation, replace `all` with `tabcutmix`, `scarf`, `range_limited`, `gaussian`, `zero_out`, or `tabcutmix_plus`. For a smoke run, for example `modal run modal_app.py --dataset lev --action rankup --augmentation scarf --rankup-trials 2 --rankup-optuna-epochs 3 --rankup-epochs 3`. Each dataset stores `rankup_<method>_optuna_trials.csv` and `rankup_<method>_best_params.json` in addition to the metrics, predictions, and final training history.
 
 ## RankUp-style classification
 
-RankUp-CLS menjalankan enam augmentasi yang sama pada dataset klasifikasi. Tiap metode memiliki runner mandiri di `experiments/rankup_classification/`, lengkap dengan augmentasi, training, Optuna, evaluasi, dan CLI. Runner memakai cross-entropy untuk target kelas, lalu pseudo-label ber-confidence tinggi dari weak view untuk melatih strong view. ARC ordinal tidak dipakai karena kelas nominal tidak memiliki urutan. Karena itu hasilnya adalah adaptasi weak-to-strong RankUp untuk klasifikasi, bukan reproduksi RankUp asli. Metrik validation mengikuti Accuracy atau Macro-F1 sesuai keseimbangan kelas.
+RankUp-CLS runs the same six augmentations on the classification datasets. Each method has a standalone runner in `experiments/rankup_classification/`, complete with augmentation, training, Optuna, evaluation, and CLI. The runner uses cross-entropy for class targets, then uses high-confidence pseudo-labels from the weak view to train the strong view. The ordinal ARC is not used because nominal classes have no order. So the result is a weak-to-strong RankUp adaptation for classification, not a reproduction of the original RankUp. The validation metric follows Accuracy or Macro-F1 depending on class balance.
 
 ```bash
 modal run modal_app.py --dataset classification --action rankup_cls --augmentation all
 ```
 
-Untuk satu dataset dan augmentasi, misalnya `modal run modal_app.py --dataset diabetes_pima --action rankup_cls --augmentation scarf --rankup-trials 2 --rankup-optuna-epochs 3 --rankup-epochs 3`. Hasil memakai awalan `rankup_cls_<metode>` di folder dataset pada Volume `task3-results`.
+For one dataset and augmentation, for example `modal run modal_app.py --dataset diabetes_pima --action rankup_cls --augmentation scarf --rankup-trials 2 --rankup-optuna-epochs 3 --rankup-epochs 3`. Results use the prefix `rankup_cls_<method>` in the dataset folder of the Volume `task3-results`.

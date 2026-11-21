@@ -1,10 +1,10 @@
-# Autoresearch augmentasi RankUp
+# Autoresearch for RankUp augmentation
 
-Folder ini mengadaptasi siklus [karpathy/autoresearch](https://github.com/karpathy/autoresearch): agen membuat hipotesis, mengubah `candidate.py`, menguji kandidat pada protokol tetap, mencatat skor, kemudian memutuskan keep/discard. Sistem ini **bukan** clone upstream yang melakukan optimasi LLM nanochat, dan bukan agen yang membuat hipotesis sendiri setelah sesi Codex selesai. Berkas `program.md` menjelaskan batas dan aturan.
+This folder adapts the [karpathy/autoresearch](https://github.com/karpathy/autoresearch) cycle: an agent forms a hypothesis, edits `candidate.py`, tests the candidate on a fixed protocol, records the score, and then decides keep/discard. This system is **not** a clone of upstream, which does LLM optimization of nanochat, and it is not an agent that forms hypotheses on its own after the Codex session ends. The file `program.md` describes the limits and rules.
 
-`candidate.py` adalah kandidat yang sedang diuji; `snapshots/round*.py` menyimpan versi putaran terdahulu. `runner.py` memakai loop RankUp yang sama dengan baseline, `modal_ar.py` mengirim job ke Modal, dan `score.py` memeriksa sembilan kondisi serta checksum input sebelum mengeluarkan keputusan. Hasil ada di `../hasil/autoresearch/` dan `../hasil/autoresearch-round*/`. Tidak ada checkpoint yang tersimpan pada pilot ini.
+`candidate.py` is the candidate under test; `snapshots/round*.py` keeps the versions from earlier rounds. `runner.py` uses the same RankUp loop as the baseline, `modal_ar.py` sends jobs to Modal, and `score.py` checks the nine conditions and the input checksums before producing a decision. Results are in `../hasil/autoresearch/` and `../hasil/autoresearch-round*/`. No checkpoints were saved in this pilot.
 
-Perintah dari folder `4-augmentasi-input`, setelah kandidat dipilih dan diuji:
+Commands from the `4-augmentasi-input` folder, after a candidate has been chosen and tested:
 
 ```bash
 uv run modal run --profile lagi usulan/autoresearch/modal_ar.py --action check
@@ -13,4 +13,4 @@ uv run modal volume get experiment-ta-results autoresearch-round-N usulan/hasil 
 uv run python usulan/autoresearch/score.py autoresearch-round-N
 ```
 
-Gunakan run ID baru untuk tiap perubahan agar hasil berbeda tidak bercampur. Perintah kedua mengantrekan 9 job; tunggu semua job selesai sebelum mengambil hasil. `--detach` mempertahankan job Modal, bukan proses agen yang akan menemukan kandidat baru sendiri. Jangan jalankan banyak putaran tanpa mengendalikan biaya. Validation lama telah dipakai berulang dan test historis sudah terekspos; keputusan keep/discard satu seed hanya screening dan butuh split/holdout serta seed tambahan sebelum klaim penelitian.
+Use a new run ID for every change so that different results do not get mixed. The second command queues 9 jobs; wait for all jobs to finish before fetching results. `--detach` keeps the Modal jobs alive, not an agent process that would find new candidates by itself. Do not run many rounds without controlling cost. The old validation set has been reused repeatedly and the historical test set is already exposed; a single-seed keep/discard decision is only screening and needs a split/holdout and extra seeds before any research claim.

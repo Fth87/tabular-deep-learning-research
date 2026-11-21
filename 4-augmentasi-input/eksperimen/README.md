@@ -1,8 +1,8 @@
-# Eksperimen RankUp
+# RankUp experiments
 
-Panduan ini menjelaskan mode awal satu split dan lima seed. Mode tambahan **5-fold dengan satu seed** beserta perintah dan ringkasan hasilnya ada di [README utama](../README.md#mode-tambahan-5-fold-satu-seed). Keduanya menggunakan direktori data dan hasil terpisah.
+This guide describes the initial single-split, five-seed mode. The additional **5-fold, single-seed** mode, with its commands and result summary, is in the [main README](../README.md#extra-mode-5-fold-single-seed). The two use separate data and result directories.
 
-Enam augmentasi dibandingkan pada tiga dataset dan tiga fraksi data berlabel: **1%, 10%, dan 30% dari train pool**. Total ada **54 kombinasi**. Setiap kombinasi menjalankan Optuna sekali, lalu lima training akhir dengan parameter terbaik: total 54 proses tuning dan 270 training akhir.
+Six augmentations are compared on three datasets and three labeled-data fractions: **1%, 10%, and 30% of the train pool**. There are **54 combinations** in total. Each combination runs Optuna once, then five final trainings with the best parameters: 54 tuning processes and 270 final trainings in total.
 
 1. TabCutMix (`tabcutmix`)
 2. SCARF (`scarf`)
@@ -11,33 +11,33 @@ Enam augmentasi dibandingkan pada tiga dataset dan tiga fraksi data berlabel: **
 5. Zero Out (`zero_out`)
 6. TabCutMix Plus (`tabcutmix_plus`)
 
-Superconductivity memakai RankUp untuk regresi kontinu dan MSE. NHANES memakai RankUp untuk regresi ordinal dengan QWK sebagai metrik utama. Pen Digits memakai adaptasi RankUp-CLS untuk klasifikasi dengan macro-F1; adaptasi ini menggunakan pseudo-label kelas dan tidak memakai ARC ordinal.
+Superconductivity uses RankUp for continuous regression with MSE. NHANES uses RankUp for ordinal regression with QWK as the main metric. Pen Digits uses the RankUp-CLS adaptation for classification with macro-F1; this adaptation uses class pseudo-labels and does not use the ordinal ARC.
 
-## Data dan metrik
+## Data and metrics
 
-NHANES memakai split stratified sekitar 70% train pool, 15% validation, 15% test. Pen Digits mempertahankan test resmi UCI (penulis berbeda); validation diambil secara stratified sebesar 20% dari train resmi. Superconductivity memakai split berdasarkan kelompok vektor fitur identik untuk mencegah fitur yang sama muncul antar train, validation, dan test; proporsi baris mendekati 70/15/15. Validation dan test tetap sama antarfraksi. Fraksi 1%, 10%, dan 30% diambil dari train pool; sisanya menjadi train-unlabeled. Preprocessing di-fit pada train pool dan train-unlabeled disimpan tanpa target. Lima seed mengubah training, bukan split data.
+NHANES uses a stratified split of about 70% train pool, 15% validation, 15% test. Pen Digits keeps the official UCI test set (different authors); validation is taken stratified at 20% of the official train set. Superconductivity uses a split by groups of identical feature vectors to prevent the same features from appearing across train, validation, and test; the row proportions are close to 70/15/15. Validation and test stay the same across fractions. The 1%, 10%, and 30% fractions are drawn from the train pool; the rest becomes train-unlabeled. Preprocessing is fit on the train pool and train-unlabeled is stored without targets. The five seeds change the training, not the data split.
 
 | Dataset | 1% labeled | 10% labeled | 30% labeled | Validation | Test |
 |---|---:|---:|---:|---:|---:|
-| Superconductivity | 150 | 1.500 | 4.501 | 3.176 | 3.081 |
-| NHANES | 36 | 365 | 1.096 | 784 | 784 |
-| Pen Digits | 59 | 599 | 1.798 | 1.499 | 3.498 |
+| Superconductivity | 150 | 1,500 | 4,501 | 3,176 | 3,081 |
+| NHANES | 36 | 365 | 1,096 | 784 | 784 |
+| Pen Digits | 59 | 599 | 1,798 | 1,499 | 3,498 |
 
-Pada NHANES 1%, level paling jarang hanya memiliki satu contoh berlabel. Ini dapat membuat hasil tidak stabil.
+In NHANES 1%, the rarest level has only one labeled example. This can make the results unstable.
 
-Superconductivity menggunakan MSE untuk training, pemilihan trial/checkpoint, dan test. Target `critical_temp` kontinu tetap utuh. Pada TabCutMix dan TabCutMix Plus saja, prediksi dikelompokkan berdasarkan kuantil label train untuk memilih donor; ini adaptasi sementara dan bukan pengubahan target atau pendekatan yang wajib untuk semua regresi. Tidak ada estimasi confidence donor pada adaptasi ini.
+Superconductivity uses MSE for training, trial/checkpoint selection, and test. The continuous `critical_temp` target is kept intact. Only for TabCutMix and TabCutMix Plus, the predictions are grouped by quantiles of the train labels to choose donors; this is a temporary adaptation and not a change of target or a required approach for all regression. There is no donor confidence estimate in this adaptation.
 
-Untuk ordinal, loss regresi saat training tetap MSE pada target yang distandardisasi. Pemilihan trial dan checkpoint menggunakan QWK pada validation; metrik ordinal yang dilaporkan pada test adalah QWK. Prediksi kontinu dipetakan ke level ordinal terdekat sebelum QWK dihitung. Pen Digits menggunakan cross-entropy untuk training, macro-F1 untuk pemilihan trial dan checkpoint, lalu melaporkan macro-F1 dan metrik klasifikasi lain pada test.
+For ordinal, the regression loss during training is still MSE on the standardized target. Trial and checkpoint selection use QWK on validation; the ordinal metric reported on test is QWK. Continuous predictions are mapped to the nearest ordinal level before QWK is computed. Pen Digits uses cross-entropy for training, macro-F1 for trial and checkpoint selection, then reports macro-F1 and other classification metrics on test.
 
-SCARF mengambil donor independen per fitur. Loss konsistensi ranking dihitung sebagai rata-rata loss bermask atas seluruh pasangan, mengikuti normalisasi RankUp. TabCutMix dan RLA tetap adaptasi untuk unlabeled data. TabCutMix Plus menggunakan hierarchical average-linkage seperti kode sumber; pemilihan grup probabilistik memungkinkan sampel tidak berubah; detailnya ada di [temuan sumber](catatan/temuan_sumber.md). Tidak ada baseline supervised-only dalam rangkaian ini.
+SCARF takes an independent donor per feature. The ranking consistency loss is computed as the mean of the masked loss over all pairs, following the RankUp normalization. TabCutMix and RLA remain adaptations for unlabeled data. TabCutMix Plus uses hierarchical average-linkage as in the source code; probabilistic group selection allows a sample to stay unchanged; details are in the [source findings](catatan/temuan_sumber.md). There is no supervised-only baseline in this series.
 
-## Pengujian
+## Testing
 
-Pemeriksaan split yang ringan bisa dijalankan lokal dengan `uv run python -m unittest discover -s eksperimen/tests -p test_splits.py -v`. Tes yang membutuhkan PyTorch dijalankan di Modal dengan `uv run modal run eksperimen/modal_app.py --action check`; perintah ini menggunakan CPU dan data sintetis kecil, tanpa menjalankan eksperimen penuh.
+A light split check can be run locally with `uv run python -m unittest discover -s eksperimen/tests -p test_splits.py -v`. Tests that need PyTorch run on Modal with `uv run modal run eksperimen/modal_app.py --action check`; this command uses CPU and small synthetic data, without running the full experiment.
 
-## Jalankan di Modal
+## Run on Modal
 
-Dari folder `4-augmentasi-input`:
+From the `4-augmentasi-input` folder:
 
 ```bash
 uv sync
@@ -45,28 +45,28 @@ uv run modal run eksperimen/modal_app.py --action prepare --dataset all --label-
 uv run modal run --detach eksperimen/modal_app.py --action train --dataset all --method all --label-percent all --run-id ta-001
 ```
 
-Untuk smoke test, setelah menyiapkan split yang sesuai:
+For a smoke test, after preparing the matching split:
 
 ```bash
 uv run modal run eksperimen/modal_app.py --action prepare --dataset nhanes --label-percent 1
 uv run modal run --detach eksperimen/modal_app.py --action train --dataset nhanes --method range_limited --label-percent 1 --run-id smoke-001 --trials 2 --optuna-epochs 3 --epochs 3
 ```
 
-`--dataset` menerima `all`, `nhanes`, `pendigits`, atau `superconductivity`; `--label-percent` menerima `all`, `1`, `10`, atau `30`; `--method` menerima `all` atau nama augmentasi di atas. Optuna mencari kekuatan augmentasi weak dan strong menggunakan metrik validation masing-masing dataset; learning rate dan bobot loss memakai nilai tetap, bukan objek tuning. Tuning memakai seed 42 secara default, 40 trial, dan 40 epoch per trial. Setelah parameter terbaik diperoleh, model dilatih ulang dengan seed **42, 123, 456, 789, dan 101112**, maksimal 120 epoch per seed; tiap seed memakai parameter terbaik dan split data yang sama. Ringkasan menyimpan rata-rata dan standar deviasi sampel dari kelima skor train berlabel, validation, dan test. `--seed` mengubah seed tuning, bukan daftar lima seed. Maksimum empat job menggunakan GPU T4 bersamaan dan timeout setiap job adalah 12 jam. Semua job dikirim ke antrean Modal; `--detach` menjaga job tetap berjalan setelah proses lokal selesai. Tunggu pesan `Queued all ... jobs in Modal` sebelum menutup terminal. Job gagal atau melewati timeout dapat dikirim ulang dengan run ID dan pengaturan yang sama; trial dan seed yang sudah tersimpan dilanjutkan. Jangan kirim ulang kombinasi yang sama saat job sebelumnya masih berjalan.
+`--dataset` accepts `all`, `nhanes`, `pendigits`, or `superconductivity`; `--label-percent` accepts `all`, `1`, `10`, or `30`; `--method` accepts `all` or the augmentation names above. Optuna searches the weak and strong augmentation strengths using each dataset's validation metric; the learning rate and loss weights use fixed values and are not tuned. Tuning uses seed 42 by default, 40 trials, and 40 epochs per trial. After the best parameters are found, the model is retrained with seeds **42, 123, 456, 789, and 101112**, at most 120 epochs per seed; each seed uses the best parameters and the same data split. The summary stores the mean and sample standard deviation of the five labeled-train, validation, and test scores. `--seed` changes the tuning seed, not the list of five seeds. At most four jobs use T4 GPUs at once, and each job's timeout is 12 hours. All jobs are sent to the Modal queue; `--detach` keeps the jobs running after the local process ends. Wait for the message `Queued all ... jobs in Modal` before closing the terminal. Jobs that fail or exceed the timeout can be resubmitted with the same run ID and settings; saved trials and seeds are resumed. Do not resubmit the same combination while the previous job is still running.
 
-Split disimpan di Volume `experiment-ta-data/label_XX/<dataset>`; menjalankan prepare untuk fraksi dan dataset yang sama akan menimpa split tersebut. Hasil tuning disimpan di `experiment-ta-results/<run-id>/label_XX/tuning/<dataset>`, hasil tiap seed di `label_XX/seed_<seed>/<dataset>`, dan ringkasan lima seed di `label_XX/summary/<dataset>`. Pakai run ID baru untuk setiap pengulangan agar file tidak tertimpa.
+Splits are stored in the Volume `experiment-ta-data/label_XX/<dataset>`; running prepare for the same fraction and dataset overwrites that split. Tuning results are stored in `experiment-ta-results/<run-id>/label_XX/tuning/<dataset>`, per-seed results in `label_XX/seed_<seed>/<dataset>`, and the five-seed summary in `label_XX/summary/<dataset>`. Use a new run ID for every repetition so files are not overwritten.
 
-## Melanjutkan setelah terputus
+## Resuming after an interruption
 
-Jalankan ulang perintah training dengan run ID dan pengaturan yang sama setelah job sebelumnya berhenti. Snapshot Optuna disimpan dan di-commit tiap trial; trial yang sedang berjalan saat terputus dihitung ulang. Seed yang lengkap dan lolos checksum dilewati, sedangkan seed yang terputus di tengah training dimulai lagi dari awal. Kode, data split, versi library, dan pengaturan harus sama; gunakan run ID baru jika berubah. Lihat [panduan utama](../README.md#melanjutkan-eksperimen-yang-terputus).
+Rerun the training command with the same run ID and settings after the previous job has stopped. The Optuna snapshot is saved and committed per trial; a trial that was running when the interruption happened is recomputed. Seeds that are complete and pass the checksum are skipped, while a seed interrupted in the middle of training restarts from the beginning. The code, data splits, library versions, and settings must be the same; use a new run ID if they change. See the [main guide](../README.md#resuming-an-interrupted-experiment).
 
-## Isi hasil tiap eksperimen
+## Contents of each experiment's results
 
-Di folder `tuning/<dataset>/`, file `*_optuna_trials.csv` mencatat tiap trial dan statusnya. `*_best_params.json` mencatat parameter terbaik, rentang pencarian yang dipakai pada trial terbaik, jumlah trial berdasarkan status, seed tuning, dan fraksi label. Default adalah **40 trial per kombinasi**; pruning dapat menghentikan sebagian trial sebelum 40 epoch.
+In the folder `tuning/<dataset>/`, the `*_optuna_trials.csv` file records each trial and its status. `*_best_params.json` records the best parameters, the search ranges used in the best trial, the number of trials by status, the tuning seed, and the label fraction. The default is **40 trials per combination**; pruning can stop some trials before 40 epochs.
 
-Pada setiap `seed_<seed>/<dataset>/`, file `*_run_config.json` menyimpan argumen awal seperti learning rate, batch size, epoch, bobot loss, cutoff, seed, manifest data, serta versi library. File `*_metrics.json` menyimpan metrik train, validation, dan test; skor train dihitung pada data train **yang berlabel** setelah checkpoint terbaik dipilih. `*_history.csv` menyimpan riwayat loss dan metrik validation tiap epoch; `*_predictions.npz` menyimpan prediksi test. `*_model.pt` menyimpan bobot checkpoint terbaik dan metadata model; untuk regresi dan ordinal juga menyimpan parameter scaler target. Preprocessor fitur dan split tersimpan di Volume data, bukan dalam file model. Split Superconductivity mengelompokkan fitur yang identik; material yang serupa namun tidak identik masih tersebar antar partisi.
+In each `seed_<seed>/<dataset>/`, the `*_run_config.json` file stores initial arguments such as learning rate, batch size, epochs, loss weights, cutoff, seed, data manifest, and library versions. The `*_metrics.json` file stores the train, validation, and test metrics; the train score is computed on **labeled** train data after the best checkpoint is chosen. `*_history.csv` stores the loss history and validation metric per epoch; `*_predictions.npz` stores the test predictions. `*_model.pt` stores the best checkpoint weights and model metadata; for regression and ordinal it also stores the target scaler parameters. The feature preprocessor and splits are stored in the data Volume, not in the model file. The Superconductivity split groups identical features; similar but non-identical materials are still spread across partitions.
 
-## Unduh dan ringkas hasil
+## Download and summarize results
 
 ```bash
 mkdir -p eksperimen/hasil
@@ -74,4 +74,4 @@ uv run modal volume get experiment-ta-results ta-001 eksperimen/hasil
 uv run python eksperimen/ringkas_hasil.py eksperimen/hasil/ta-001 --output eksperimen/hasil/ta-001-ringkasan.csv
 ```
 
-Ringkasan menandai kombinasi yang belum tersedia sebagai `missing` atau `partial`; rata-rata dan standar deviasi hanya ditampilkan jika kelima seed tersedia. Hasil ordinal Task 3 lama dipilih berdasarkan MAE, sehingga bukan hasil dari protokol QWK ini.
+The summary marks combinations that are not yet available as `missing` or `partial`; the mean and standard deviation are shown only when all five seeds are available. The old Task 3 ordinal results were chosen by MAE, so they are not results from this QWK protocol.

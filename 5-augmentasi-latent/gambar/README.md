@@ -1,38 +1,40 @@
-# Gambar
+# Figures
 
-Diagram dibuat dengan LaTeX (TikZ), jadi tajam di slide maupun di dokumen. Tiap gambar punya tiga file dengan nama sama:
-`.tex` (sumber), `.pdf` (vektor, untuk dokumen), `.png` (300 dpi, untuk slide).
+The diagrams are made with LaTeX (TikZ), so they stay sharp in slides and documents. Each figure has three files with the same name:
+`.tex` (source), `.pdf` (vector, for documents), `.png` (300 dpi, for slides).
 
-Menyusun ulang setelah mengubah `.tex` (perlu `pdflatex` dan `pdftoppm`):
+To rebuild after editing a `.tex` file (needs `pdflatex` and `pdftoppm`):
 
 ```bash
-./bangun.sh                # semua gambar
-./bangun.sh cosine_skema   # satu gambar
+./bangun.sh                # all figures
+./bangun.sh cosine_skema   # one figure
 ```
 
-## `arsitektur/` — alur RankUp dengan augmentasi di latent
+## `arsitektur/` — RankUp flow with augmentation in the latent space
 
-| Gambar | Isi |
+| Figure | Contents |
 |---|---|
-| `arsitektur` | Ringkas: data → encoder → weak/strong → head → loss. Untuk slide |
-| `arsitektur_medium` | Sama, dengan keterangan di tiap kotak |
-| `arsitektur_detail` | Lengkap: alur training, isi TabM, dan augmentasi angular. Untuk paper |
+| `arsitektur` | Short: data → encoder → weak/strong → head → loss. For slides |
+| `arsitektur_medium` | The same, with a note in each box |
+| `arsitektur_detail` | Full: training flow, TabM internals, and angular augmentation. For papers |
 
-## `cosine/` — metode cosine dari dosen (V, V1, V2)
+## `cosine/` — the supervisor's cosine method (V, V1, V2)
 
-Urutan baca yang disarankan:
+Suggested reading order:
 
-| Gambar | Isi |
+| Figure | Contents |
 |---|---|
-| `cosine_dasar` | Apa itu cosine similarity `c`, dan contoh 2 dimensi |
-| `cosine_hitung` | Cara menghitung V1 dari V dan `c`, langkah demi langkah |
-| `cosine_skema` | Skema V → weak V1 / strong V2 → Head, tanpa angka |
-| `cosine_latent` | Skema yang sama dengan contoh angka |
-| `cosine_dosen` | Versi lengkap sesuai papan tulis dosen: alur, langkah, dan geometri |
-| `cosine_langkah` | Empat panel (cosine, contoh 2D, kerucut di 512 dimensi, resep). Bagian kerucut hanya ada di sini |
+| `cosine_dasar` | What cosine similarity `c` is, with a 2D example |
+| `cosine_hitung` | How to compute V1 from V and `c`, step by step |
+| `cosine_skema` | Scheme V → weak V1 / strong V2 → Head, without numbers |
+| `cosine_latent` | The same scheme with a numerical example |
+| `cosine_dosen` | Full version following the supervisor's whiteboard: flow, steps, and geometry |
+| `cosine_langkah` | Four panels (cosine, 2D example, cone in 512 dimensions, recipe). The cone part appears only here |
 
-## `paper/` — metode dari paper rujukan
+## `paper/` — methods from reference papers
 
-| Gambar | Isi |
+| Figure | Contents |
 |---|---|
-| `ssr_rcus` | Metode SSR-RCUS (Li dkk., AAAI 2026), gaya sama dengan `arsitektur_medium` untuk dibandingkan |
+| `ssr_rcus` | The SSR-RCUS method (Li et al., AAAI 2026), in the same style as `arsitektur_medium` for comparison |
+
+File names are in Indonesian: `arsitektur` = architecture, `dasar` = basics, `hitung` = compute, `skema` = scheme, `dosen` = supervisor, `langkah` = steps, `bangun` = build.

@@ -1,8 +1,8 @@
-# Bar chart per dataset
+# Bar charts per dataset
 
-Setiap dataset memiliki grafik sendiri dengan skala sumbu dan warna yang disesuaikan pada rentang nilainya. Batang diurutkan dari performa terbaik. Untuk klasifikasi, Macro-F1 terbesar di atas; untuk ordinal, MAE terkecil di atas.
+Each dataset has its own chart, with axis scale and colors adjusted to its value range. Bars are sorted from best performance. For classification, the largest Macro-F1 is on top; for ordinal datasets, the smallest MAE is on top.
 
-## Klasifikasi · Macro-F1
+## Classification · Macro-F1
 
 - Adult Income: [PNG](classification/adult_income_macro_f1_bar.png) · [PDF](classification/adult_income_macro_f1_bar.pdf)
 - Bank Marketing: [PNG](classification/bank_marketing_macro_f1_bar.png) · [PDF](classification/bank_marketing_macro_f1_bar.pdf)

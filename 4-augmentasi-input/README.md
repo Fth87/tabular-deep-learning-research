@@ -1,101 +1,101 @@
-# Eksperimen TA: RankUp dan augmentasi data tabular
+# Thesis experiment: RankUp and tabular data augmentation
 
-Eksperimen ini membandingkan enam augmentasi untuk pembelajaran semi-supervised pada tiga jenis tugas: **ordinal, klasifikasi, dan regresi kontinu**. Setiap dataset diuji dengan 1%, 10%, dan 30% label dari train pool. Mode awal menjalankan tuning Optuna dan lima seed pada satu split. Mode tambahan menggunakan 5-fold dengan satu seed per fold; kedua mode tersimpan terpisah.
+This experiment compares six augmentations for semi-supervised learning on three kinds of tasks: **ordinal, classification, and continuous regression**. Each dataset is tested with 1%, 10%, and 30% of the labels from the train pool. The initial mode runs Optuna tuning and five seeds on a single split. The extra mode uses 5-fold with one seed per fold; the two modes are stored separately.
 
-Notebook [EDA dataset](eda/eda_datasets.ipynb) dijalankan secara lokal. Training eksperimen menggunakan GPU di Modal; dependensi lokal tidak memasang PyTorch.
+The [dataset EDA](eda/eda_datasets.ipynb) notebook is run locally. Experiment training uses GPUs on Modal; the local dependencies do not install PyTorch.
 
-## Peta folder
+## Folder map
 
-| Lokasi | Isi |
+| Location | Contents |
 |---|---|
-| `RINGKASAN_SEMUA_EKSPERIMEN.md` | **Ringkasan lengkap semua eksperimen** (setting, hasil, temuan, keterbatasan) |
-| `dataset/`, `config/`, `prepare_data.py` | Data mentah, daftar dataset, dan script persiapan split |
-| `eda/` | Notebook EDA |
-| `eksperimen/visualisasi_eksperimen.ipynb` | **Ringkasan visual semua hasil** (mulai dari sini) |
-| `eksperimen/hasil/gambar/` | Gambar hasil, siap ditaruh di slide |
-| `eksperimen/hasil/` | Hasil run: `ringkasan-5seed-40trial.csv` (Optuna + 5 seed), `usulan-semua/` (13 dataset tanpa Optuna), `pembanding/` (metode SSL lain), `log/` |
-| `eksperimen/catatan/` | Catatan riset, audit sumber, dan laporan eksplorasi |
-| `eksperimen/experiments/`, `eksperimen/tests/` | Kode training dan test |
-| `eksperimen/modal_*.py`, `eksperimen/ringkas_*.py` | Script menjalankan eksperimen di Modal dan meringkas hasilnya |
-| `../5-augmentasi-latent/` | Lanjutan: augmentasi di ruang latent TabM (pindah ke folder sendiri) |
-| `usulan/` | Arsip eksplorasi augmentasi lain (pilot, tidak dipakai di hasil utama) |
+| `RINGKASAN_SEMUA_EKSPERIMEN.md` | **Full summary of all experiments** (settings, results, findings, limitations; in Indonesian) |
+| `dataset/`, `config/`, `prepare_data.py` | Raw data, dataset list, and split preparation script |
+| `eda/` | EDA notebook |
+| `eksperimen/visualisasi_eksperimen.ipynb` | **Visual summary of all results** (start here) |
+| `eksperimen/hasil/gambar/` | Result figures, ready for slides |
+| `eksperimen/hasil/` | Run results: `ringkasan-5seed-40trial.csv` (Optuna + 5 seeds), `usulan-semua/` (13 datasets without Optuna), `pembanding/` (other SSL methods), `log/` |
+| `eksperimen/catatan/` | Research notes, source audit, and exploration reports |
+| `eksperimen/experiments/`, `eksperimen/tests/` | Training code and tests |
+| `eksperimen/modal_*.py`, `eksperimen/ringkas_*.py` | Scripts to run experiments on Modal and summarize their results |
+| `../5-augmentasi-latent/` | Follow-up: augmentation in the TabM latent space (moved to its own folder) |
+| `usulan/` | Archive of exploration of another augmentation (pilot, not used in the main results) |
 
-## Dataset dan metrik
+## Datasets and metrics
 
-| Tugas | Dataset | Baris | Fitur | Target | Metrik utama | Arah |
+| Task | Dataset | Rows | Features | Target | Main metric | Direction |
 |---|---|---:|---:|---|---|---|
-| Ordinal | NHANES | 5.223 | 30 | Lima level ordinal | Quadratic Weighted Kappa (QWK) | Maksimalkan |
-| Klasifikasi | Pen Digits | 10.992 | 16 | Digit 0–9 | Macro-F1 | Maksimalkan |
-| Regresi kontinu | Superconductivity | 21.263 | 81 | Temperatur kritis `critical_temp` | Mean Squared Error (MSE) | Minimalkan |
+| Ordinal | NHANES | 5,223 | 30 | Five ordinal levels | Quadratic Weighted Kappa (QWK) | Maximize |
+| Classification | Pen Digits | 10,992 | 16 | Digits 0–9 | Macro-F1 | Maximize |
+| Continuous regression | Superconductivity | 21,263 | 81 | Critical temperature `critical_temp` | Mean Squared Error (MSE) | Minimize |
 
-- **NHANES:** dataset ordinal Task 2 dari [TOC-UCO](https://www.uco.es/grupos/ayrna/materials/tocuco/). Fitur bernama anonim, sehingga makna tiap fitur belum dapat diinterpretasikan secara substantif. Pada split 1%, level yang paling jarang hanya memiliki satu contoh berlabel.
-- **Pen Digits:** [UCI Pen-Based Recognition of Handwritten Digits](https://archive.ics.uci.edu/dataset/81/pen+based+recognition+of+handwritten+digits), Alpaydin dan Alimoglu (1996), [DOI 10.24432/C5MG6K](https://doi.org/10.24432/C5MG6K). Sepuluh kelas diberi bobot yang sama dalam macro-F1. Dataset berlisensi CC BY 4.0.
-- **Superconductivity:** [UCI Superconductivty Data](https://archive.ics.uci.edu/dataset/464/superconductivty+data), Hamidieh (2018), [DOI 10.24432/C53P47](https://doi.org/10.24432/C53P47). Target tetap kontinu dan dataset berlisensi CC BY 4.0.
+- **NHANES:** the Task 2 ordinal dataset from [TOC-UCO](https://www.uco.es/grupos/ayrna/materials/tocuco/). The features have anonymous names, so the meaning of each feature cannot yet be interpreted substantively. In the 1% split, the rarest level has only one labeled example.
+- **Pen Digits:** [UCI Pen-Based Recognition of Handwritten Digits](https://archive.ics.uci.edu/dataset/81/pen+based+recognition+of+handwritten+digits), Alpaydin and Alimoglu (1996), [DOI 10.24432/C5MG6K](https://doi.org/10.24432/C5MG6K). The ten classes are weighted equally in macro-F1. The dataset is licensed CC BY 4.0.
+- **Superconductivity:** [UCI Superconductivty Data](https://archive.ics.uci.edu/dataset/464/superconductivty+data), Hamidieh (2018), [DOI 10.24432/C53P47](https://doi.org/10.24432/C53P47). The target stays continuous and the dataset is licensed CC BY 4.0.
 
-Metrik utama menentukan trial Optuna dan checkpoint terbaik berdasarkan **validation**. Training ordinal tetap menggunakan loss MSE untuk regresi; prediksi dibulatkan ke level ordinal terdekat saat menghitung QWK. Training klasifikasi menggunakan cross-entropy, sedangkan regresi menggunakan loss MSE. MSE evaluasi dihitung pada skala target asli.
+The main metric decides the Optuna trial and the best checkpoint based on **validation**. Ordinal training still uses the regression MSE loss; predictions are rounded to the nearest ordinal level when computing QWK. Classification training uses cross-entropy, while regression uses the MSE loss. Evaluation MSE is computed on the original target scale.
 
-## Pembagian data
+## Data split
 
-Validation dan test tetap untuk seluruh fraksi label dan lima seed training. Fraksi label dihitung dari train pool, bukan dari keseluruhan dataset. Sisa train pool menjadi data tanpa label.
+Validation and test stay fixed across all label fractions and the five training seeds. The label fraction is computed from the train pool, not from the whole dataset. The rest of the train pool becomes unlabeled data.
 
-| Dataset | Train pool | 1% berlabel | 10% berlabel | 30% berlabel | Validation | Test |
+| Dataset | Train pool | 1% labeled | 10% labeled | 30% labeled | Validation | Test |
 |---|---:|---:|---:|---:|---:|---:|
-| NHANES | 3.655 | 36 | 365 | 1.096 | 784 | 784 |
-| Pen Digits | 5.995 | 59 | 599 | 1.798 | 1.499 | 3.498 |
-| Superconductivity | 15.006 | 150 | 1.500 | 4.501 | 3.176 | 3.081 |
+| NHANES | 3,655 | 36 | 365 | 1,096 | 784 | 784 |
+| Pen Digits | 5,995 | 59 | 599 | 1,798 | 1,499 | 3,498 |
+| Superconductivity | 15,006 | 150 | 1,500 | 4,501 | 3,176 | 3,081 |
 
-- NHANES menggunakan split stratified sekitar 70% / 15% / 15% untuk train pool / validation / test.
-- Pen Digits mempertahankan test resmi UCI, yang berasal dari penulis berbeda. Validation diambil secara stratified dari 20% train resmi.
-- Superconductivity memisahkan kelompok baris dengan vektor fitur identik agar tidak muncul pada train pool, validation, dan test sekaligus. Baris identik tetap dipertahankan; material yang mirip tetapi fiturnya tidak identik masih dapat tersebar antarpartisi. Di dalam train pool, baris berfitur identik masih dapat terbagi antara labeled dan unlabeled.
+- NHANES uses a stratified split of about 70% / 15% / 15% for train pool / validation / test.
+- Pen Digits keeps the official UCI test set, which comes from different writers. Validation is taken stratified from 20% of the official train set.
+- Superconductivity separates groups of rows with identical feature vectors so they do not appear in the train pool, validation, and test at the same time. Identical rows are kept; similar materials whose features are not identical can still be spread across partitions. Within the train pool, rows with identical features can still be split between labeled and unlabeled.
 
-Preprocessing fitur di-fit pada train pool, termasuk bagian tanpa label, lalu diterapkan ke validation dan test. File unlabeled yang disiapkan tidak menyimpan target. Notebook EDA menganalisis seluruh dataset untuk deskripsi; pemilihan model tetap menggunakan train dan validation.
+Feature preprocessing is fit on the train pool, including the unlabeled part, then applied to validation and test. The prepared unlabeled file does not store the target. The EDA notebook analyzes the whole dataset for description; model selection still uses train and validation.
 
-## Rancangan eksperimen
+## Experiment design
 
-Sebanyak **3 dataset × 6 augmentasi × 3 fraksi label = 54 kombinasi**. Dalam mode awal, setiap kombinasi menjalankan satu studi Optuna dan lima training akhir: total **54 studi tuning dan 270 training akhir**, di luar trial Optuna. Mode 5-fold dijelaskan pada bagian terpisah di bawah.
+There are **3 datasets × 6 augmentations × 3 label fractions = 54 combinations**. In the initial mode, each combination runs one Optuna study and five final trainings: **54 tuning studies and 270 final trainings** in total, not counting Optuna trials. The 5-fold mode is described in a separate section below.
 
-| Augmentasi | ID metode | Cara yang digunakan dalam eksperimen |
+| Augmentation | Method ID | How it is used in the experiment |
 |---|---|---|
-| TabCutMix | `tabcutmix` | Menukar sebagian fitur dengan donor dari mini-batch yang memiliki pseudo-label sekelompok. |
-| SCARF | `scarf` | Mengganti fitur terpilih dengan nilai donor independen untuk setiap fitur. |
-| Range-Limited Augmentation | `range_limited` | Mengambil nilai fitur dari rentang kuantil lokal. |
-| Gaussian | `gaussian` | Menambahkan noise Gaussian pada fitur numerik. |
-| Zero Out | `zero_out` | Mengganti fitur terpilih dengan nol setelah standardisasi. |
-| TabCutMix Plus | `tabcutmix_plus` | Menukar kelompok fitur berdasarkan korelasi dengan donor yang sesuai. |
+| TabCutMix | `tabcutmix` | Swaps some features with a donor from the mini-batch that has the same pseudo-label group. |
+| SCARF | `scarf` | Replaces selected features with a donor value independent for each feature. |
+| Range-Limited Augmentation | `range_limited` | Draws feature values from a local quantile range. |
+| Gaussian | `gaussian` | Adds Gaussian noise to numeric features. |
+| Zero Out | `zero_out` | Replaces selected features with zero after standardization. |
+| TabCutMix Plus | `tabcutmix_plus` | Swaps groups of features based on correlation with a matching donor. |
 
-Pada **NHANES dan Superconductivity**, implementasi mengadaptasi RankUp dengan model tabular dan auxiliary ranking classifier (ARC). Pada **Pen Digits**, `RankUp-CLS` memakai pseudo-label kelas dengan augmentasi weak-to-strong tanpa ARC; pendekatannya lebih dekat ke FixMatch dan bukan RankUp regresi asli. Implementasi ini juga tidak memakai RDA opsional dari paper RankUp.
+On **NHANES and Superconductivity**, the implementation adapts RankUp with a tabular model and an auxiliary ranking classifier (ARC). On **Pen Digits**, `RankUp-CLS` uses class pseudo-labels with weak-to-strong augmentation without ARC; the approach is closer to FixMatch and is not the original regression RankUp. This implementation also does not use the optional RDA from the RankUp paper.
 
-Operator augmentasi diadaptasi untuk data tanpa label, bukan keseluruhan pipeline dari paper asal. TabCutMix menggunakan pseudo-label untuk mencari donor; jika donor tidak tersedia, sampel tidak ditukar. Pada regresi kontinu, TabCutMix dan TabCutMix Plus memakai kelompok kuantil prediksi untuk memilih donor, tanpa mengubah target kontinu dan tanpa estimasi confidence donor. RLA mengambil sampel uniform dalam rentang; pada fitur diskret, nilai hasilnya bisa menjadi non-diskret. Zero setelah standardisasi mendekati rata-rata train, bukan selalu nilai hilang.
+The augmentation operators are adapted for unlabeled data, not the whole pipeline of the source paper. TabCutMix uses pseudo-labels to find donors; if no donor is available, the sample is not swapped. On continuous regression, TabCutMix and TabCutMix Plus use quantile groups of the prediction to choose donors, without changing the continuous target and without a donor confidence estimate. RLA samples uniformly within the range; on discrete features, the result can become non-discrete. Zero after standardization is close to the train mean, not always a missing value.
 
-Rangkaian saat ini membandingkan keenam variasi tersebut; belum ada baseline supervised-only atau tanpa augmentasi. Karena itu, hasilnya belum cukup untuk menyimpulkan besarnya peningkatan dibanding baseline tersebut.
+The current series compares those six variants; there is no supervised-only or no-augmentation baseline yet. So the results are not enough to conclude how large the improvement over such a baseline is.
 
-## Optuna dan lima seed
+## Optuna and five seeds
 
-Untuk setiap kombinasi dataset, augmentasi, dan fraksi label:
+For each combination of dataset, augmentation, and label fraction:
 
-1. Optuna mencari kekuatan augmentasi **weak** dan **strong** berdasarkan metrik validation. Default maksimal **40 trial**, masing-masing maksimal **40 epoch**; pruning dapat menghentikan trial lebih awal. Seed tuning default adalah 42.
-2. Pilih parameter terbaik dari studi tersebut. Learning rate, bobot loss, dan parameter training lain menggunakan nilai tetap, bukan objek tuning.
-3. Latih ulang dengan seed **42, 123, 456, 789, dan 101112**, maksimal **120 epoch** per seed. Parameter terbaik dan split data yang sama dipakai untuk kelimanya; tiap seed memilih checkpoint berdasarkan validation.
-4. Hitung rata-rata dan standar deviasi sampel dari skor lima seed untuk train berlabel, validation, dan test secara terpisah. Variasi ini menggambarkan variasi training pada satu split, bukan variasi antar-split data.
+1. Optuna searches the **weak** and **strong** augmentation strengths based on the validation metric. The default is at most **40 trials**, each at most **40 epochs**; pruning can stop a trial early. The default tuning seed is 42.
+2. Pick the best parameters from that study. The learning rate, loss weights, and other training parameters use fixed values and are not tuned.
+3. Retrain with seeds **42, 123, 456, 789, and 101112**, at most **120 epochs** per seed. The best parameters and the same data split are used for all five; each seed chooses its checkpoint based on validation.
+4. Compute the mean and sample standard deviation of the five seed scores for labeled train, validation, and test separately. This variation describes training variation on one split, not variation between data splits.
 
-Pengaturan default lain: AdamW, learning rate `0.002`, weight decay `0.0003`, batch size `32`, maksimal `100` langkah per epoch, patience `15`, bobot ranking `0.2`, bobot unlabeled `0.2`, confidence cutoff `0.95`, dan donor confidence `0.8`. Beberapa parameter hanya berlaku pada metode atau tugas yang membutuhkannya. Rentang pencarian dan konfigurasi aktual disimpan bersama hasil tuning dan training.
+Other default settings: AdamW, learning rate `0.002`, weight decay `0.0003`, batch size `32`, at most `100` steps per epoch, patience `15`, ranking weight `0.2`, unlabeled weight `0.2`, confidence cutoff `0.95`, and donor confidence `0.8`. Some parameters apply only to methods or tasks that need them. The search ranges and the actual configuration are stored with the tuning and training results.
 
-## Mode tambahan: 5-fold, satu seed
+## Extra mode: 5-fold, single seed
 
-Mode `kfold` mempertahankan test yang sama untuk seluruh fold. Data di luar test dibagi menjadi lima fold: setiap fold bergantian menjadi validation, dan empat fold lain menjadi train pool. Fraksi 1%, 10%, dan 30% dihitung dari train pool masing-masing fold. Preprocessor di-fit ulang pada train pool tiap fold, termasuk data tanpa label; test dan validation tidak dipakai untuk fitting.
+The `kfold` mode keeps the same test set for all folds. The data outside test is split into five folds: each fold takes a turn as validation, and the other four folds become the train pool. The 1%, 10%, and 30% fractions are computed from each fold's train pool. The preprocessor is refit on each fold's train pool, including unlabeled data; test and validation are not used for fitting.
 
-NHANES dan Pen Digits menggunakan stratified 5-fold; Pen Digits tetap memakai test resmi. Superconductivity menggunakan GroupKFold berdasarkan vektor fitur identik, dengan test terpisah berdasarkan kelompok fitur. Split test dan pengacakan stratified fold menggunakan seed 42; GroupKFold bersifat deterministik tanpa pengacakan. Seed tuning dan training default adalah 42. Di setiap fold, Optuna berjalan hingga 40 trial berdasarkan metrik validation, lalu model dilatih satu kali dengan parameter terbaik dan seed 42. Total **54 kombinasi × 5 fold = 270 studi Optuna dan 270 training akhir**, di luar trial Optuna.
+NHANES and Pen Digits use stratified 5-fold; Pen Digits still uses the official test set. Superconductivity uses GroupKFold on identical feature vectors, with a separate test set split by feature groups. The test split and the stratified fold shuffling use seed 42; GroupKFold is deterministic without shuffling. The default tuning and training seed is 42. In each fold, Optuna runs up to 40 trials based on the validation metric, then the model is trained once with the best parameters and seed 42. In total, **54 combinations × 5 folds = 270 Optuna studies and 270 final trainings**, not counting Optuna trials.
 
-Untuk menyiapkan semua fold lalu mengirim seluruh job ke Modal:
+To prepare all folds and then send all jobs to Modal:
 
 ```bash
 uv run modal run eksperimen/modal_app.py --action prepare --protocol kfold --dataset all --label-percent all
 uv run modal run --detach eksperimen/modal_app.py --action train --protocol kfold --dataset all --method all --label-percent all --run-id ta-kfold-001
 ```
 
-Persiapan menulis split ke `experiment-ta-data/kfold/label_XX/fold_XX/<dataset>/`; hasil masuk ke `experiment-ta-results/<run-id>/kfold/label_XX/fold_XX/`. Kedua folder ini terpisah dari mode satu split dan lima seed. Tunggu pesan `Queued all 270 jobs in Modal` sebelum menutup terminal. Default maksimal empat GPU berjalan bersamaan. Gunakan `--fold 1` sampai `--fold 5` untuk satu fold atau `--fold all` untuk semuanya. `--seed` mengatur seed tuning dan training di semua fold; pembagian data memakai seed di `config/datasets.json`.
+Preparation writes the splits to `experiment-ta-data/kfold/label_XX/fold_XX/<dataset>/`; results go to `experiment-ta-results/<run-id>/kfold/label_XX/fold_XX/`. These two folders are separate from the single-split, five-seed mode. Wait for the message `Queued all 270 jobs in Modal` before closing the terminal. By default at most four GPUs run at the same time. Use `--fold 1` to `--fold 5` for one fold or `--fold all` for all of them. `--seed` sets the tuning and training seed in all folds; the data split uses the seed in `config/datasets.json`.
 
-Hasil tiap fold mencakup metrik train berlabel, validation, dan test. Unduh dan ringkas:
+Each fold's results include the labeled train, validation, and test metrics. Download and summarize:
 
 ```bash
 mkdir -p eksperimen/hasil
@@ -103,26 +103,26 @@ uv run modal volume get experiment-ta-results ta-kfold-001 eksperimen/hasil
 uv run python eksperimen/ringkas_kfold.py eksperimen/hasil/ta-kfold-001 --output eksperimen/hasil/ta-kfold-001-ringkasan.csv
 ```
 
-Ringkasan menyajikan skor tiap fold dan rata-rata serta standar deviasi sampel untuk train, validation, dan test jika lima fold lengkap. Skor test berasal dari lima model pada **test yang sama**, sehingga bukan lima test independen. Gunakan validation untuk pemilihan parameter dan perbandingan; jangan memilih fold berdasarkan test. Variasi fold tidak mengukur variasi antar-seed.
+The summary presents each fold's score and the mean and sample standard deviation for train, validation, and test when all five folds are complete. The test scores come from five models on the **same test set**, so they are not five independent tests. Use validation for parameter selection and comparison; do not choose a fold based on test. Fold variation does not measure seed variation.
 
-Resume bekerja per kombinasi dan fold: gunakan kembali run ID dan pengaturan yang sama setelah job sebelumnya berhenti. Trial yang sudah tersimpan dan seed yang lengkap digunakan kembali; trial atau seed yang terputus di tengah diulang. Jangan jalankan job yang sama secara bersamaan. Mode ini belum melanjutkan training dari epoch terakhir.
+Resume works per combination and fold: reuse the same run ID and settings after the previous job has stopped. Saved trials and complete seeds are reused; trials or seeds interrupted midway are repeated. Do not run the same job at the same time. This mode does not yet resume training from the last epoch.
 
-## EDA lokal
+## Local EDA
 
-Notebook [eda/eda_datasets.ipynb](eda/eda_datasets.ipynb) memuat statistik, distribusi target, missing values, duplikasi, dan visualisasi untuk ketiga dataset. Output tersimpan di `eda/hasil/`; rincian dan catatan dataset sebelumnya ada di [README EDA](eda/README.md).
+The notebook [eda/eda_datasets.ipynb](eda/eda_datasets.ipynb) contains statistics, target distributions, missing values, duplicates, and visualizations for the three datasets. Output is stored in `eda/hasil/`; details and notes on the earlier datasets are in the [EDA README](eda/README.md).
 
-Dari direktori `4-augmentasi-input`:
+From the `4-augmentasi-input` directory:
 
 ```bash
 uv sync
 uv run jupyter nbconvert --to notebook --execute --inplace eda/eda_datasets.ipynb
 ```
 
-Di IDE, gunakan interpreter `4-augmentasi-input/.venv/bin/python` sebagai kernel. `uv sync` memasang dependensi EDA dan Modal yang ringan, sedangkan PyTorch dipasang pada image Modal untuk training.
+In an IDE, use the `4-augmentasi-input/.venv/bin/python` interpreter as the kernel. `uv sync` installs the light EDA and Modal dependencies, while PyTorch is installed in the Modal image for training.
 
-## Menjalankan eksperimen di Modal
+## Running experiments on Modal
 
-Dari direktori `4-augmentasi-input`, siapkan data lalu jalankan seluruh kombinasi:
+From the `4-augmentasi-input` directory, prepare the data then run all combinations:
 
 ```bash
 uv sync
@@ -130,38 +130,38 @@ uv run modal run eksperimen/modal_app.py --action prepare --dataset all --label-
 uv run modal run --detach eksperimen/modal_app.py --action train --dataset all --method all --label-percent all --run-id ta-001
 ```
 
-Gunakan `--dataset nhanes`, `pendigits`, atau `superconductivity`; `--label-percent 1`, `10`, atau `30`; dan `--method` dengan ID pada tabel augmentasi untuk membatasi eksperimen. Pilihan `all` menjalankan seluruh nilai. `--trials`, `--optuna-epochs`, dan `--epochs` dapat mengubah batas default. `--seed` mengubah seed tuning, bukan lima seed training akhir.
+Use `--dataset nhanes`, `pendigits`, or `superconductivity`; `--label-percent 1`, `10`, or `30`; and `--method` with an ID from the augmentation table to limit the experiment. The `all` option runs all values. `--trials`, `--optuna-epochs`, and `--epochs` can change the default limits. `--seed` changes the tuning seed, not the five final training seeds.
 
-Contoh smoke test satu kombinasi, tetap menjalankan lima seed akhir:
+Example smoke test of one combination, which still runs the five final seeds:
 
 ```bash
 uv run modal run eksperimen/modal_app.py --action prepare --dataset nhanes --label-percent 1
 uv run modal run --detach eksperimen/modal_app.py --action train --dataset nhanes --method range_limited --label-percent 1 --run-id smoke-001 --trials 2 --optuna-epochs 3 --epochs 3
 ```
 
-Training menggunakan GPU T4 dengan maksimal empat job bersamaan dan timeout 12 jam per job. `--detach` membuat Modal melanjutkan semua job yang sudah masuk antrean setelah proses lokal selesai; tunggu pesan `Queued all ... jobs in Modal` sebelum menutup terminal. Jika job gagal atau melewati timeout, periksa log dan jalankan ulang dengan run ID serta pengaturan yang sama; trial Optuna dan seed yang selesai akan digunakan kembali. Gunakan `--run-id` baru untuk menghindari penimpaan hasil. Prepare ulang untuk dataset dan fraksi yang sama menimpa split pada Volume data.
+Training uses T4 GPUs with at most four jobs at once and a 12-hour timeout per job. `--detach` makes Modal continue all jobs already in the queue after the local process ends; wait for the message `Queued all ... jobs in Modal` before closing the terminal. If a job fails or exceeds the timeout, check the logs and rerun with the same run ID and settings; finished Optuna trials and seeds are reused. Use a new `--run-id` to avoid overwriting results. Running prepare again for the same dataset and fraction overwrites the split in the data Volume.
 
-## Melanjutkan eksperimen yang terputus
+## Resuming an interrupted experiment
 
-Setelah job sebelumnya berhenti, jalankan kembali perintah training yang sama dengan `--run-id` dan opsi yang sama. Kamu juga bisa membatasi dataset, metode, dan fraksi untuk mengulang kombinasi tertentu. Jangan jalankan kombinasi yang sama secara bersamaan dengan run ID yang sama: Modal Volume tidak menyediakan penguncian antar-container. Hasil dari versi sebelum fitur resume tidak dapat dilanjutkan otomatis; gunakan run ID baru. Hindari menjalankan prepare ulang sebelum resume karena checksum file split dapat berubah.
+After the previous job has stopped, run the same training command again with the same `--run-id` and options. You can also limit the dataset, method, and fraction to repeat specific combinations. Do not run the same combination at the same time with the same run ID: the Modal Volume provides no locking between containers. Results from versions before the resume feature cannot be resumed automatically; use a new run ID. Avoid running prepare again before resuming because the split file checksums can change.
 
-Setiap trial Optuna yang selesai menyimpan snapshot studi dan sampler, lalu melakukan commit Volume. Resume melanjutkan sisa trial; trial yang sedang berjalan saat terputus dihitung ulang. Setiap seed yang selesai memiliki penanda dan checksum berkas hasil serta parameter terbaik; seed yang lengkap dan valid dilewati. Seed yang terputus di tengah training dimulai ulang dari awal, bukan dari epoch terakhir. Saat kode, versi library, data split, jumlah trial, epoch, atau seed tuning berubah, gunakan run ID baru agar hasil tidak tercampur. Jangan ubah atau jalankan file snapshot pickle dari sumber yang tidak dipercaya.
+Each finished Optuna trial saves a snapshot of the study and sampler, then commits the Volume. Resume continues the remaining trials; a trial that was running when the interruption happened is recomputed. Each finished seed has a marker and checksums of the result files and best parameters; complete and valid seeds are skipped. A seed interrupted midway through training restarts from the beginning, not from the last epoch. When the code, library versions, data split, number of trials, epochs, or tuning seed change, use a new run ID so results do not get mixed. Do not modify or run pickle snapshot files from untrusted sources.
 
-Tautan dashboard muncul saat job dikirim. Lihat status dengan `uv run modal app list` dan log dengan `uv run modal app logs <app-id>`. Jika job masih berjalan, tunggu atau hentikan dulu sebelum mengirim ulang kombinasi yang sama. Simpan run ID untuk menemukan hasil dalam Volume.
+The dashboard link appears when a job is submitted. Check the status with `uv run modal app list` and the logs with `uv run modal app logs <app-id>`. If a job is still running, wait or stop it before resubmitting the same combination. Keep the run ID to find the results in the Volume.
 
-## Hasil dan reproduksi
+## Results and reproduction
 
-Data yang disiapkan tersimpan di Modal Volume `experiment-ta-data/label_XX/<dataset>/`, termasuk split, manifest, dan preprocessor fitur. Hasil disimpan di Volume `experiment-ta-results/<run-id>/`:
+The prepared data is stored in the Modal Volume `experiment-ta-data/label_XX/<dataset>/`, including the split, manifest, and feature preprocessor. Results are stored in the Volume `experiment-ta-results/<run-id>/`:
 
-| Lokasi | Isi |
+| Location | Contents |
 |---|---|
-| `label_XX/tuning/<dataset>/` | Riwayat trial Optuna, snapshot studi untuk resume, konfigurasi resume, parameter terbaik, rentang pencarian, dan seed tuning. |
-| `label_XX/seed_<seed>/<dataset>/` | Konfigurasi awal dan versi library, metrik train berlabel / validation / test, riwayat loss dan metrik validation per epoch, prediksi test, dan checkpoint model terbaik. |
-| `label_XX/summary/<dataset>/` | Nilai masing-masing seed serta rata-rata dan standar deviasi untuk train, validation, dan test. |
+| `label_XX/tuning/<dataset>/` | Optuna trial history, study snapshot for resume, resume configuration, best parameters, search ranges, and tuning seed. |
+| `label_XX/seed_<seed>/<dataset>/` | Initial configuration and library versions, labeled train / validation / test metrics, per-epoch loss and validation metric history, test predictions, and the best model checkpoint. |
+| `label_XX/summary/<dataset>/` | Each seed's values plus the mean and standard deviation for train, validation, and test. |
 
-Preprocessor fitur berada di Volume data, bukan di dalam checkpoint; simpan keduanya untuk reproduksi. Riwayat per epoch mencatat loss dan metrik validation; skor train berlabel dihitung setelah checkpoint terbaik dipilih.
+The feature preprocessor is in the data Volume, not inside the checkpoint; keep both for reproduction. The per-epoch history records loss and the validation metric; the labeled train score is computed after the best checkpoint is chosen.
 
-Unduh dan gabungkan ringkasan:
+Download and combine the summaries:
 
 ```bash
 mkdir -p eksperimen/hasil
@@ -169,20 +169,20 @@ uv run modal volume get experiment-ta-results ta-001 eksperimen/hasil
 uv run python eksperimen/ringkas_hasil.py eksperimen/hasil/ta-001 --output eksperimen/hasil/ta-001-ringkasan.csv
 ```
 
-Ringkasan menandai kombinasi belum tersedia sebagai `missing` atau `partial`; rata-rata dan standar deviasi hanya ditampilkan ketika lima seed tersedia. Petunjuk pemeriksaan ringan dan rincian file ada di [README eksperimen](eksperimen/README.md).
+The summary marks combinations that are not yet available as `missing` or `partial`; the mean and standard deviation are shown only when all five seeds are available. Instructions for light checks and file details are in the [experiment README](eksperimen/README.md).
 
-## Referensi paper dan kode
+## Paper and code references
 
-| Referensi | Kegunaan dalam eksperimen |
+| Reference | Use in the experiment |
 |---|---|
-| Huang, Fu, dan Tsao, **RankUp: Boosting Semi-Supervised Regression with an Auxiliary Ranking Classifier**, NeurIPS 2024. [Paper](https://proceedings.neurips.cc/paper_files/paper/2024/file/c26a8494fe31695db965ae8b7244b7c1-Paper-Conference.pdf) · [Kode resmi](https://github.com/pm25/Semi-Supervised-Regression) | Dasar RankUp dan ARC untuk regresi serta ordinal. |
-| Sohn dkk., **FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence**, NeurIPS 2020. [Paper](https://arxiv.org/abs/2001.07685) · [Kode resmi](https://github.com/google-research/fixmatch) | Dasar pseudo-label dan konsistensi weak-to-strong pada adaptasi klasifikasi. |
-| Gorishniy dkk., **TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling**. [Paper](https://arxiv.org/abs/2410.24210) · [Kode resmi](https://github.com/yandex-research/tabm) | Arsitektur tabular yang digunakan dalam model. |
-| Fang dkk., **Understanding and Mitigating Memorization in Diffusion Models for Tabular Data**, ICML 2025. [Paper](https://proceedings.mlr.press/v267/fang25f.html) · [Kode resmi](https://github.com/fangzy96/TabCutMix) | Sumber TabCutMix dan TabCutMix Plus; penerapannya di sini diadaptasi untuk pseudo-label. |
-| Bahri dkk., **SCARF: Self-Supervised Contrastive Learning Using Random Feature Corruption**, ICLR 2022. [Paper](https://openreview.net/pdf?id=CuV_qYkmKb3) | Sumber korupsi fitur SCARF. Repo resmi penulis belum terverifikasi; proyek memakai operatornya, bukan keseluruhan pretraining SCARF. |
-| Lee dkk., **Range-limited Augmentation for Few-shot Learning in Tabular Data with Comprehensive Benchmark**, KDD 2025. [Paper](https://openreview.net/pdf?id=kTH3bEH6hW) · [Kode resmi FeSTA](https://github.com/kyungeun-lee/festa) | Sumber ide RLA; implementasi ini menggunakan sampling dalam rentang kuantil. |
-| GsRCL. [Paper](https://academic.oup.com/bfg/article/23/4/441/7577350) · [Kode penulis](https://github.com/ibrahimsaggaf/GsRCL) | Referensi penggunaan noise Gaussian; eksperimen ini hanya memakai operator Gaussian. |
-| Ucar dkk., **SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning**, NeurIPS 2021. [Paper](https://papers.nips.cc/paper/2021/file/9c8661befae6dbcd08304dbf4dcaf0db-Paper.pdf) · [Kode resmi](https://github.com/AstraZeneca/SubTab) | Referensi zero-out; eksperimen ini tidak menjalankan keseluruhan SubTab. |
-| Akiba dkk., **Optuna: A Next-generation Hyperparameter Optimization Framework**, KDD 2019. [Paper](https://arxiv.org/abs/1907.10902) · [Kode resmi](https://github.com/optuna/optuna) | Optimasi kekuatan augmentasi. |
+| Huang, Fu, and Tsao, **RankUp: Boosting Semi-Supervised Regression with an Auxiliary Ranking Classifier**, NeurIPS 2024. [Paper](https://proceedings.neurips.cc/paper_files/paper/2024/file/c26a8494fe31695db965ae8b7244b7c1-Paper-Conference.pdf) · [Official code](https://github.com/pm25/Semi-Supervised-Regression) | The basis of RankUp and ARC for regression and ordinal. |
+| Sohn et al., **FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence**, NeurIPS 2020. [Paper](https://arxiv.org/abs/2001.07685) · [Official code](https://github.com/google-research/fixmatch) | The basis of pseudo-labels and weak-to-strong consistency in the classification adaptation. |
+| Gorishniy et al., **TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling**. [Paper](https://arxiv.org/abs/2410.24210) · [Official code](https://github.com/yandex-research/tabm) | The tabular architecture used in the model. |
+| Fang et al., **Understanding and Mitigating Memorization in Diffusion Models for Tabular Data**, ICML 2025. [Paper](https://proceedings.mlr.press/v267/fang25f.html) · [Official code](https://github.com/fangzy96/TabCutMix) | Source of TabCutMix and TabCutMix Plus; its use here is adapted for pseudo-labels. |
+| Bahri et al., **SCARF: Self-Supervised Contrastive Learning Using Random Feature Corruption**, ICLR 2022. [Paper](https://openreview.net/pdf?id=CuV_qYkmKb3) | Source of the SCARF feature corruption. The authors' official repo is not verified; the project uses its operator, not the whole SCARF pretraining. |
+| Lee et al., **Range-limited Augmentation for Few-shot Learning in Tabular Data with Comprehensive Benchmark**, KDD 2025. [Paper](https://openreview.net/pdf?id=kTH3bEH6hW) · [Official FeSTA code](https://github.com/kyungeun-lee/festa) | Source of the RLA idea; this implementation uses sampling within the quantile range. |
+| GsRCL. [Paper](https://academic.oup.com/bfg/article/23/4/441/7577350) · [Authors' code](https://github.com/ibrahimsaggaf/GsRCL) | Reference for using Gaussian noise; this experiment only uses the Gaussian operator. |
+| Ucar et al., **SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning**, NeurIPS 2021. [Paper](https://papers.nips.cc/paper/2021/file/9c8661befae6dbcd08304dbf4dcaf0db-Paper.pdf) · [Official code](https://github.com/AstraZeneca/SubTab) | Reference for zero-out; this experiment does not run the whole SubTab. |
+| Akiba et al., **Optuna: A Next-generation Hyperparameter Optimization Framework**, KDD 2019. [Paper](https://arxiv.org/abs/1907.10902) · [Official code](https://github.com/optuna/optuna) | Optimization of the augmentation strength. |
 
-[Catatan audit sumber](eksperimen/catatan/temuan_sumber.md) merekam perbandingan awal dengan implementasi asli. Beberapa temuan dalam catatan tersebut sudah diperbaiki; perhatikan keterangan status di awal file saat membacanya.
+The [source audit notes](eksperimen/catatan/temuan_sumber.md) record an initial comparison with the original implementations. Some findings in those notes have been fixed; check the status note at the top of the file when reading them.
