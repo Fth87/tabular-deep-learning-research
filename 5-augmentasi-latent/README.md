@@ -87,6 +87,8 @@ Format `{position}_{operator}[_weak]`; operators: `gaussian`, `zero_out`, `scarf
 | `angular[_weak\|_weak90][_s10\|_s50]` | Ablation of the cosine range |
 | `angular…_prerelu` | Rotation before the last block's ReLU, instead of at the backbone output |
 | `matched_{op}` | Old operator with the strength that gives cos ≈ 0.4, the same as `angular` |
+| `advrot_{05\|10\|20}` | Head-aware adversarial rotation, angular distance d ≈ 0.05/0.10/0.20 (θ = π·d); see [`dokumen/USULAN_ROTASI_ADVERSARIAL.md`](dokumen/USULAN_ROTASI_ADVERSARIAL.md) |
+| `headrot_{10\|20}` | Control: same head-aware rotation with a random sign (not adversarial) |
 
 ## Data
 

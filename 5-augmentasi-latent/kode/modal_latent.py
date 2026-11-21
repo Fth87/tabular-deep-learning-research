@@ -47,7 +47,8 @@ def check():
     sys.path.insert(0, '/opt/ta')
     from latent import run_one
     for dataset, name in (('nhanes', 'both_tabcutmix'), ('pendigits', 'latent_scarf_weak'),
-                          ('superconductivity', 'angular_weak')):
+                          ('superconductivity', 'angular_weak'), ('nhanes', 'advrot_10'),
+                          ('pendigits', 'advrot_10')):
         result = run_one('/opt/ta/data', dataset, 10, GRID[name], 42, epochs=2)
         print('smoke', dataset, name, result['test'], result['cos'], f"{result['seconds']:.0f}s", flush=True)
 

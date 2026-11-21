@@ -54,11 +54,20 @@ MATCHED_TO, MATCHED_COS = 'angular', 0.4
 for op in ('zero_out', 'dropout', 'gaussian', 'scarf'):
     GRID[f'matched_{op}'] = {'latent_op': op, 'latent_strong': matched_strength(op, MATCHED_COS)}
 
+# Fase 3: rotasi sadar-head (dokumen/USULAN_ROTASI_ADVERSARIAL.md). Strength = rentang angular distance
+# d ∈ [0, 1], θ = π·d, pusat 0,05 / 0,10 / 0,20. advrot = arah adversarial closed form; headrot = tanda acak (kontrol).
+ROT_D = {'05': (0.025, 0.075), '10': (0.05, 0.15), '20': (0.10, 0.30)}
+for tag, d in ROT_D.items():
+    GRID[f'advrot_{tag}'] = {'latent_op': 'advrot', 'latent_strong': d}
+for tag in ('10', '20'):
+    GRID[f'headrot_{tag}'] = {'latent_op': 'headrot', 'latent_strong': ROT_D[tag]}
+
 GROUPS = {
-    'fase1': [name for name in GRID if not name.startswith(('angular', 'matched_'))],
+    'fase1': [name for name in GRID if not name.startswith(('angular', 'matched_', 'advrot', 'headrot'))],
     'fase2': ['angular', 'angular_weak'],
     'fase2b': [name for name in GRID if name.startswith('angular') and name not in ('angular', 'angular_weak')],
     'fase2c': [name for name in GRID if name.startswith('matched_')],
+    'fase3': [name for name in GRID if name.startswith(('advrot', 'headrot'))],
 }
 DATASETS = ('nhanes', 'pendigits', 'superconductivity')
 PERCENTS = (1, 10, 30)

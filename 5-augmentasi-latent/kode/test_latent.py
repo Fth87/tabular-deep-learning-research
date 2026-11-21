@@ -1,10 +1,11 @@
 """Self-check operator latent dan hook. Jalankan: lihat README.md bagian "Menjalankan"."""
+import math
 import unittest
 
 import torch
 from torch import nn
 
-from latent import LATENT_OPS, angular, latent_model, perturb
+from latent import LATENT_OPS, angular, head_shift, latent_model, perturb
 
 
 class Base(nn.Module):
@@ -26,9 +27,10 @@ class LatentTests(unittest.TestCase):
         self.conf = torch.ones(32)
 
     def test_every_op_keeps_shape_and_changes_values(self):
+        weight = torch.randn(4, 64, 3)
         for op in LATENT_OPS:
-            strength = (0.3, 0.5) if op == 'angular' else 0.5
-            out = perturb(op, self.h, strength, self.labels, self.conf)
+            strength = {'angular': (0.3, 0.5), 'advrot': (0.1, 0.2), 'headrot': (0.1, 0.2)}.get(op, 0.5)
+            out = perturb(op, self.h, strength, self.labels, self.conf, head=weight)
             self.assertEqual(out.shape, self.h.shape, op)
             self.assertTrue(torch.isfinite(out).all(), op)
             self.assertFalse(torch.equal(out, self.h), op)
@@ -43,6 +45,36 @@ class LatentTests(unittest.TestCase):
         h = self.h.clone()
         h[0] = 0
         self.assertTrue(torch.equal(angular(h, 0.3, 0.5)[0], h[0]))
+
+    def test_advrot_hits_angle_keeps_norm_and_pushes_rank_scores_to_median(self):
+        weight = torch.randn(4, 64, 3)
+        a = weight[..., 2] - weight[..., 1]
+        out = perturb('advrot', self.h, (0.1, 0.1), head=weight, rank=True)
+        cos = torch.nn.functional.cosine_similarity(out, self.h, dim=-1)
+        self.assertTrue(torch.allclose(cos, torch.full_like(cos, math.cos(0.1 * math.pi)), atol=1e-4))
+        self.assertTrue(torch.allclose(out.norm(dim=-1), self.h.norm(dim=-1), atol=1e-3))
+        # Sudut kecil (orde-1): setiap skor bergerak ke arah median batch.
+        r = (self.h * a).sum(-1)
+        moved = (perturb('advrot', self.h, (0.01, 0.01), head=weight, rank=True) * a).sum(-1) - r
+        away = r - r.median(dim=0).values
+        self.assertTrue((moved * away)[away != 0].lt(0).all())
+
+    def test_advrot_moves_head_more_than_random_rotation_at_same_angle(self):
+        h = torch.relu(torch.randn(32, 4, 512))  # dimensi asli TabM: arah acak hampir tegak lurus head
+        weight = torch.randn(4, 512, 3)
+        for rank in (True, False):
+            w = weight if rank else torch.randn(4, 512, 10)
+            adv = head_shift(h, perturb('advrot', h, (0.2, 0.2), head=w, rank=rank), w, rank)
+            rand = head_shift(h, angular(h, math.cos(0.2 * math.pi), math.cos(0.2 * math.pi)), w, rank)
+            self.assertGreater(adv, 3 * rand, rank)
+
+    def test_classification_advrot_moves_toward_second_class(self):
+        weight = torch.randn(4, 64, 10)
+        logits = lambda x: torch.einsum('bkd,kdo->bko', x, weight)
+        before = logits(self.h).topk(2, dim=-1)
+        after = logits(perturb('advrot', self.h, (0.05, 0.05), head=weight, rank=False))
+        margin = lambda z: z.gather(-1, before.indices[..., :1]) - z.gather(-1, before.indices[..., 1:])
+        self.assertTrue((margin(after) < margin(logits(self.h))).all())
 
     def test_tabcutmix_takes_units_only_from_same_pseudo_label(self):
         h = self.labels.float()[:, None, None].expand(32, 4, 64)  # isi = labelnya sendiri

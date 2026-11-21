@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import importlib
 import json
+import math
 import time
 from pathlib import Path
 from types import SimpleNamespace
@@ -23,27 +24,68 @@ import torch.nn.functional as F
 from experiments.rankup.tabcutmix import same_rank_donors  # aturan donor yang sama dengan TabCutMix input
 from experiments.usulan import FAMILIES, load, scores
 
-LATENT_OPS = ('gaussian', 'zero_out', 'scarf', 'tabcutmix', 'dropout', 'fnoise', 'angular')
+LATENT_OPS = ('gaussian', 'zero_out', 'scarf', 'tabcutmix', 'dropout', 'fnoise', 'angular', 'advrot', 'headrot')
 
 
-def angular(h: torch.Tensor, low: float, high: float) -> torch.Tensor:
-    """Putar h sehingga cos(h, h') = c ~ U(low, high) tepat, norma tetap (ide pembimbing).
-
-    h' = ‖h‖ (c·v + √(1−c²)·u), v = h/‖h‖, u acak dan tegak lurus v.
-    """
+def rotate(h: torch.Tensor, u: torch.Tensor, c: torch.Tensor) -> torch.Tensor:
+    """h' = ‖h‖ (c·v + √(1−c²)·û), v = h/‖h‖, û = bagian u yang tegak lurus v (dinormalkan). Norma tetap."""
     norm = h.norm(dim=-1, keepdim=True)
     v = h / norm.clamp_min(1e-12)
-    u = torch.randn_like(h)
     u = u - (u * v).sum(-1, keepdim=True) * v
     u = u / u.norm(dim=-1, keepdim=True).clamp_min(1e-12)
-    c = torch.empty_like(norm).uniform_(low, high)
-    rotated = norm * (c * v + (1 - c ** 2).sqrt() * u)
+    rotated = norm * (c * v + (1 - c ** 2).clamp_min(0).sqrt() * u)
     return torch.where(norm > 1e-6, rotated, h)  # vektor nol tidak punya arah, dibiarkan
 
 
+def angular(h: torch.Tensor, low: float, high: float) -> torch.Tensor:
+    """Putar h ke arah acak sehingga cos(h, h') = c ~ U(low, high) tepat, norma tetap (ide pembimbing)."""
+    u = torch.randn_like(h)  # urutan RNG sama dengan versi lama: hasil run angular lama tetap bisa diulang
+    return rotate(h, u, torch.empty_like(h[..., :1]).uniform_(low, high))
+
+
+def head_view(weight: torch.Tensor, rank: bool) -> torch.Tensor:
+    """Bobot head (k, d, out) yang benar-benar dilihat loss. RankUp: output [regresi, ARC0, ARC1] dan
+    peluang i > j hanya bergantung pada r_i − r_j, dengan r = h·a, a = W[..., 2] − W[..., 1]."""
+    weight = weight.detach()
+    return (weight[..., 2] - weight[..., 1])[..., None] if rank else weight
+
+
+def head_direction(h: torch.Tensor, weight: torch.Tensor, rank: bool, adversarial: bool) -> torch.Tensor:
+    """Arah di ruang h yang paling mengubah output head linear (closed form, tanpa backward tambahan).
+
+    rank: skor r = h·a didorong ke median batch, sehingga urutan antar sampel paling sulit dibedakan.
+    klasifikasi: dari bobot kelas teratas ke kelas kedua (batas keputusan terdekat).
+    adversarial=False: tanda arah diacak (kontrol 'headrot': sadar-head tapi tidak adversarial).
+    """
+    w = head_view(weight, rank)                                       # (k, d, o)
+    if rank:
+        a = w[..., 0]                                                 # (k, d)
+        r = (h * a).sum(-1)                                           # (B, k)
+        sign = -torch.sign(r - r.median(dim=0).values)
+        direction = a.expand_as(h)
+    else:
+        top = torch.einsum('bkd,kdo->bko', h, w).topk(2, dim=-1).indices
+        wt, member = w.transpose(1, 2), torch.arange(w.shape[0], device=h.device)  # (k, o, d)
+        direction = wt[member, top[..., 1]] - wt[member, top[..., 0]]  # (B, k, d)
+        sign = torch.ones(h.shape[:2], device=h.device)
+    if not adversarial:
+        sign = torch.randint(0, 2, h.shape[:2], device=h.device) * 2.0 - 1
+    sign = torch.where(sign == 0, torch.ones_like(sign), sign)        # sampel tepat di median
+    return sign[..., None] * direction
+
+
+def head_shift(h: torch.Tensor, out: torch.Tensor, weight: torch.Tensor, rank: bool) -> torch.Tensor:
+    """‖Δ output head‖ / ‖output head‖ tanpa bias: seberapa besar gangguan yang benar-benar dilihat head."""
+    w = head_view(weight, rank)
+    before = torch.einsum('bkd,kdo->bko', h, w)
+    after = torch.einsum('bkd,kdo->bko', out, w)
+    return (after - before).norm(dim=-1).mean() / before.norm(dim=-1).mean().clamp_min(1e-12)
+
+
 def perturb(op: str, h: torch.Tensor, strength, pseudo_labels=None, confidence=None,
-            donor_confidence: float = 0.8) -> torch.Tensor:
-    """h: (batch, submodel, dim). strength: angka, atau (low, high) cosine untuk 'angular'."""
+            donor_confidence: float = 0.8, head=None, rank: bool = True) -> torch.Tensor:
+    """h: (batch, submodel, dim). strength: angka; (low, high) cosine untuk 'angular';
+    (low, high) angular distance d ∈ [0, 1] (θ = π·d) untuk 'advrot'/'headrot', yang juga butuh head (k, d, out)."""
     chosen = torch.rand_like(h) < strength if op in ('zero_out', 'scarf', 'tabcutmix') else None
     if op == 'gaussian':  # skala noise ikut sebaran tiap unit di batch, jadi strength tanpa satuan
         return h + strength * h.std(dim=0, keepdim=True, unbiased=False) * torch.randn_like(h)
@@ -60,6 +102,9 @@ def perturb(op: str, h: torch.Tensor, strength, pseudo_labels=None, confidence=N
         return h + h * (2 * torch.rand_like(h) - 1) * strength
     if op == 'angular':
         return angular(h, *strength)
+    if op in ('advrot', 'headrot'):
+        d = torch.empty_like(h[..., :1]).uniform_(*strength)
+        return rotate(h, head_direction(h, head, rank, op == 'advrot'), torch.cos(math.pi * d))
     raise ValueError(f'operator latent tidak dikenal: {op!r}')
 
 
@@ -69,6 +114,10 @@ def latent_model(base: type, config: dict, marked: dict, cosines: dict) -> type:
     config['latent_at'] = 'pre_relu': gangguan dipasang di output Linear blok terakhir, sebelum ReLU dan
     dropout, sehingga hasilnya tetap ≥ 0 seperti yang biasa dilihat head. Default: output backbone.
     """
+    rank = base.__name__ != 'TabMClassifier'  # TabMRankUp: head [regresi, ARC0, ARC1]
+    if config.get('latent_at') == 'pre_relu' and config.get('latent_op') in ('advrot', 'headrot'):
+        raise ValueError('advrot/headrot menghitung arah dari head, jadi harus di output backbone')
+
     class Latent(base):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
@@ -82,8 +131,12 @@ def latent_model(base: type, config: dict, marked: dict, cosines: dict) -> type:
             if not strength:
                 return None
             _, pseudo_labels, confidence = marked[f'{self._role}_context']
-            out = perturb(config['latent_op'], h, strength, pseudo_labels, confidence)
+            head = getattr(self.model, 'output', None)  # LinearEnsemble TabM, bobot (k, d, out)
+            weight = head.weight if head is not None else None
+            out = perturb(config['latent_op'], h, strength, pseudo_labels, confidence, head=weight, rank=rank)
             cosines[self._role].append(F.cosine_similarity(out.detach(), h.detach(), dim=-1).mean())
+            if weight is not None and config.get('latent_at') != 'pre_relu':
+                cosines[f'shift_{self._role}'].append(head_shift(h.detach(), out.detach(), weight, rank))
             return out
 
         def forward(self, x):
@@ -106,7 +159,7 @@ def run_one(data_root, dataset: str, label_percent: int, config: dict, seed: int
     module = importlib.import_module(f'experiments.{FAMILIES[task]}.{config.get("input_op") or "tabcutmix"}')
     model_name = 'TabMClassifier' if task == 'classification' else 'TabMRankUp'
     base_model, base_augment = getattr(module, model_name), module.augment
-    marked, cosines = {}, {'weak': [], 'strong': []}
+    marked, cosines = {}, {'weak': [], 'strong': [], 'shift_weak': [], 'shift_strong': []}
 
     def augment(x, role, *rest):
         # fit_model memanggil augment(x, weak_strength, ...); di sini weak_strength = 'weak'.
