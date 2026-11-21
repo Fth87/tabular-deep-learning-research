@@ -1,0 +1,110 @@
+{
+  "seed": 42,
+  "train_fraction": 0.7,
+  "validation_fraction": 0.15,
+  "test_fraction": 0.15,
+  "labeled_fraction": 0.1,
+  "class_balance_ratio_threshold": 1.5,
+  "datasets": [
+    {
+      "name": "lev",
+      "task_type": "ordinal_regression",
+      "csv": "../3-pembanding-ssl/dataset/oc05_lev.csv",
+      "target": "y",
+      "drop_columns": []
+    },
+    {
+      "name": "esl",
+      "task_type": "ordinal_regression",
+      "csv": "../3-pembanding-ssl/dataset/oc06_esl.csv",
+      "target": "y",
+      "drop_columns": []
+    },
+    {
+      "name": "student_performance",
+      "task_type": "ordinal_regression",
+      "csv": "../3-pembanding-ssl/dataset/oc08_studentPerformance.csv",
+      "target": "y",
+      "drop_columns": []
+    },
+    {
+      "name": "melbourne_airbnb",
+      "task_type": "ordinal_regression",
+      "csv": "../3-pembanding-ssl/dataset/oc10_melbourneAirbnb.csv",
+      "target": "y",
+      "drop_columns": []
+    },
+    {
+      "name": "diabetes_pima",
+      "task_type": "classification",
+      "csv": "../3-pembanding-ssl/dataset/classification/diabetes_pima_openml37.csv",
+      "target": "class",
+      "drop_columns": []
+    },
+    {
+      "name": "cmc",
+      "task_type": "classification",
+      "csv": "../3-pembanding-ssl/dataset/classification/cmc_openml23.csv",
+      "target": "Contraceptive_method_used",
+      "drop_columns": [],
+      "categorical_columns": [
+        "Wifes_education",
+        "Husbands_education",
+        "Wifes_religion",
+        "Wifes_now_working%3F",
+        "Husbands_occupation",
+        "Standard-of-living_index",
+        "Media_exposure"
+      ]
+    },
+    {
+      "name": "satimage",
+      "task_type": "classification",
+      "csv": "../3-pembanding-ssl/dataset/classification/satimage_openml182.csv",
+      "target": "class",
+      "drop_columns": []
+    },
+    {
+      "name": "bank_marketing",
+      "task_type": "classification",
+      "csv": "../3-pembanding-ssl/dataset/classification/bank_marketing_openml1461.csv",
+      "target": "Class",
+      "drop_columns": [],
+      "categorical_columns": [
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V7",
+        "V8",
+        "V9",
+        "V11",
+        "V16"
+      ]
+    },
+    {
+      "name": "adult_income",
+      "task_type": "classification",
+      "csv": "../3-pembanding-ssl/dataset/classification/adult_income_openml1590.csv",
+      "target": "class",
+      "drop_columns": [],
+      "categorical_columns": [
+        "workclass",
+        "education",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "native-country"
+      ]
+    },
+    {
+      "name": "grid_stability",
+      "task_type": "regression",
+      "csv": "dataset/grid_stability.csv",
+      "target": "stab",
+      "drop_columns": []
+    }
+  ]
+}
