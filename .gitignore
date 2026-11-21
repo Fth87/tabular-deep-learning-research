@@ -1,0 +1,25 @@
+# lingkungan, cache, dan file editor
+.venv/
+.venv*/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.claude/
+.DS_Store
+
+# hanya lokal: rekaman dan transkrip rapat, riwayat git lama, paket konteks AI, dan bahan mentah lain
+arsip/
+
+# kode paper pihak ketiga (unduh dengan 3-pembanding-ssl/siapkan_paper_repo.sh)
+3-pembanding-ssl/experiments/*/paper_repo/
+
+# data turunan yang bisa dibuat ulang dengan prepare_data.py (hanya .npz dan manifest.json yang dipakai model)
+4-augmentasi-input/eksperimen/hasil/data-*/**/*.csv
+4-augmentasi-input/eksperimen/hasil/data-*/**/*.joblib
+
+# log run (memuat tautan akun Modal), arsip zip, dan file sementara LaTeX
+*.log
+*.zip
+*.aux
+*.fls
+*.fdb_latexmk
