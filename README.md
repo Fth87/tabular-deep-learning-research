@@ -185,6 +185,26 @@ Berupa notebook yang berdiri sendiri, dirancang untuk Kaggle (GPU). Hasilnya ter
 
 [`referensi/`](referensi/) berisi 35 paper (PDF) beserta tautan sumbernya ([`referensi/README.md`](referensi/README.md)), tinjauan isi tiap paper ([`referensi/papers/DAFTAR_PAPER.md`](referensi/papers/DAFTAR_PAPER.md)), dan salinan kode RankUp resmi (MIT).
 
+## Credit
+
+Riset ini berdiri di atas karya banyak peneliti. Terima kasih kepada para penulis.
+
+**Paper.** Daftar lengkap 35 paper, dengan penulis, venue, dan tautan sumbernya, ada di [`referensi/README.md`](referensi/README.md); BibTeX-nya di [`referensi/referensi.bib`](referensi/referensi.bib). Karya yang menjadi dasar langsung:
+
+| Karya | Dipakai untuk |
+|---|---|
+| Huang, Fu, Tsao. [*RankUp*](https://arxiv.org/abs/2410.22124), NeurIPS 2024 | Metode semi-supervised yang dipelajari di seluruh riset ini |
+| Gorishniy, Kotelnikov, Babenko. [*TabM*](https://arxiv.org/abs/2410.24210), ICLR 2025 | Backbone model |
+| Bahri dkk. [*SCARF*](https://arxiv.org/abs/2106.15147), ICLR 2022; Fang dkk., *TabCutMix*, ICML 2025; Lee dkk., *Range-limited (FeSTA)*, KDD 2025 | Augmentasi di input yang dibandingkan (tahap 2–4) |
+| Yang dkk. [*UniMatch*](https://arxiv.org/abs/2208.09910), CVPR 2023; Wu & Cui [*IFMatch*](https://arxiv.org/abs/2408.12614), ECCV 2024; Ouali dkk. [*CCT*](https://arxiv.org/abs/2003.09005), CVPR 2020 | Dasar gangguan di level fitur (tahap 5) |
+| Eo dkk. [*RaTab*](https://doi.org/10.1609/aaai.v39i11.33265), AAAI 2025; Fang dkk. [*SDAT*](https://doi.org/10.1145/3511808.3557699), CIKM 2022; Li dkk. [*SSR-RCUS*](https://doi.org/10.1609/aaai.v40i28.39487), AAAI 2026 | Pembanding terdekat untuk augmentasi latent pada data tabular dan RankUp |
+
+**Kode.** Kode resmi RankUp ([pm25/Semi-Supervised-Regression](https://github.com/pm25/Semi-Supervised-Regression), lisensi MIT, hak cipta Microsoft Corporation dan Pin-Yen Huang) disertakan di [`referensi/Semi-Supervised-Regression/`](referensi/Semi-Supervised-Regression/) beserta lisensinya. Pembanding tahap 3 memakai kode penulis aslinya, yang tidak disertakan di sini dan diunduh dengan `3-pembanding-ssl/siapkan_paper_repo.sh`: [VIME](https://github.com/jsyoon0823/VIME), [STUNT](https://github.com/jaehyun513/STUNT), [SSLAE](https://github.com/sintija-s/sslae), dan [GFTab](https://github.com/Yoontae6719/Geodesic-Flow-Kernels-for-Semi-Supervised-Learning-on-Mixed-Variable-Tabular-Dataset).
+
+**Data.** NHANES dari [TOC-UCO](https://www.uco.es/grupos/ayrna/materials/tocuco/); [Pen Digits](https://archive.ics.uci.edu/dataset/81/pen+based+recognition+of+handwritten+digits) dan [Superconductivity](https://archive.ics.uci.edu/dataset/464/superconductivty+data) dari UCI Machine Learning Repository; Satimage, Diabetes Pima, CMC, Bank Marketing, dan Adult dari [OpenML](https://www.openml.org/) (ID 182, 37, 23, 1461, 1590).
+
+**Hak cipta paper.** Salinan PDF di `referensi/papers/` disertakan hanya untuk keperluan akademik dan rujukan. Hak cipta tiap paper tetap milik penulis dan penerbit aslinya. Kalau kamu pemilik hak dan ingin salinannya dihapus, buka issue di repo ini.
+
 ## Tulisan
 
 Draf Bab II (Tinjauan Pustaka) ada di [`tulisan/`](tulisan/), dalam format Markdown dan LaTeX IEEE.
