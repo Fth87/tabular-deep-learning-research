@@ -1,0 +1,12 @@
+# Dependensi lokal (unit test, ringkasan, notebook). Di Modal, paket dipasang oleh kode/modal_latent.py.
+numpy<2
+pandas
+scipy
+scikit-learn
+torch>=2.1
+tabm
+optuna==3.6.1   # diimpor oleh kode di kode/experiments/
+matplotlib
+tabulate
+jupyter
+modal           # hanya untuk menjalankan di Modal

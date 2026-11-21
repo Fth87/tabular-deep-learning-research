@@ -1,0 +1,13 @@
+# lingkungan dan cache
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# hanya lokal: rekaman rapat, paket konteks AI, log run
+arsip/
+
+# file sementara LaTeX
+*.aux
+*.log
+.DS_Store
