@@ -1,0 +1,39 @@
+diff --git a/algorithms/GKF_solver.py b/algorithms/GKF_solver.py
+index cc71519..76784e7 100644
+--- a/algorithms/GKF_solver.py
++++ b/algorithms/GKF_solver.py
+@@ -1,8 +1,6 @@
+ import numpy as np
+-import scipy.io
+ import torch
+ from sklearn.neighbors import KNeighborsClassifier
+-from scipy.linalg import null_space
+ import torch.nn.functional as F
+ 
+ 
+@@ -76,7 +74,11 @@ class GFK:
+ 
+         source = input1
+         Ps = self.train_pca_tall(source.t(), subspace_dim=source_dim)#.detach()
+-        Rs = torch.from_numpy(null_space(Ps.t().cpu().detach().numpy())[:, :num_nullspacedim]).cuda()
++        # Keep the null-space SVD on the same device as the GFK tensors.
++        _, singular_values, vh = torch.linalg.svd(Ps.t(), full_matrices=True)
++        tolerance = torch.finfo(singular_values.dtype).eps * max(Ps.t().shape) * singular_values.max()
++        rank = int((singular_values > tolerance).sum().item())
++        Rs = vh[rank:].t()[:, :num_nullspacedim]
+         Ps = torch.cat([Ps, Rs], dim=1) ### adding columns
+         N = Ps.shape[1]  # L = NxK shot - 1
+ 
+@@ -127,7 +129,11 @@ class GFK:
+         ## PSRS #####
+         source = input1
+         Ps = self.train_pca_tall(source.t(), subspace_dim=source_dim)#.detach()
+-        Rs = torch.from_numpy(null_space(Ps.t().cpu().detach().numpy())[:, :num_nullspacedim]).cuda()
++        # Keep the null-space SVD on the same device as the GFK tensors.
++        _, singular_values, vh = torch.linalg.svd(Ps.t(), full_matrices=True)
++        tolerance = torch.finfo(singular_values.dtype).eps * max(Ps.t().shape) * singular_values.max()
++        rank = int((singular_values > tolerance).sum().item())
++        Rs = vh[rank:].t()[:, :num_nullspacedim]
+         Ps = torch.cat([Ps, Rs], dim=1) ### adding columns
+         N = Ps.shape[1]  # L = NxK shot - 1
+ 

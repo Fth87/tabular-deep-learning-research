@@ -1,0 +1,13 @@
+diff --git a/sslae/sklearn_classifier.py b/sslae/sklearn_classifier.py
+index 9627658..132cf38 100644
+--- a/sslae/sklearn_classifier.py
++++ b/sslae/sklearn_classifier.py
+@@ -229,6 +229,8 @@ class SSLAEClassifier(BaseEstimator, ClassifierMixin):
+ 
+         trainer = pl.Trainer(
+             max_epochs=self.num_epochs,
++            accelerator="gpu",
++            devices=1,
+             enable_checkpointing=False,
+             logger=False,
+             deterministic=True,
