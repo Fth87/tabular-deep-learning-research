@@ -69,7 +69,26 @@ Markers in the "Evidence" column:
 
 A search for "angular / cosine-controlled perturbation + consistency + tabular" did **not** find an identical paper. But this search is not exhaustive, so it is not proof of novelty.
 
-## 6. Status of manual downloads
+## 6. Augmentation with tabular foundation models (`6_augmentasi_foundation_model/`)
+
+Added on 26 November 2026, after stage 7 showed that random latent operators in the TabPFN embedding do not help (and break regression). All PDFs checked: real PDFs, first-page titles match.
+
+| Paper | Venue | Core idea | Relevance for us | Evidence |
+|---|---|---|---|---|
+| **Margeloiu et al., TabMDA** | ICML 2024 Workshop on In-Context Learning | Augmentation in the **TabPFN embedding space** with *in-context subsetting* (ICS): the same row is embedded K times, each time with a different stratified subset of the training data as context (context size 0.5–0.9 of the training set; K = 5, 20, 50). Assumed label-invariant. Five downstream classifiers trained on the K× larger embedded set | **Basis for stage 8.** An augmentation that comes from the model's own knowledge, not random noise. Caveats from the paper itself: (1) of the gain of up to 15%, **on average only 3% is attributed to ICS**; the rest comes from training on the TabPFN manifold; (2) supervised classification only; (3) context size 0.7–0.9 is better than 0.5 on small data; U[0.5, 0.99] works but is slightly worse than a tuned fixed size | ✔ |
+| Margeloiu et al., TabEBM | NeurIPS 2024 | Turns TabPFN into a **separate energy-based model per class** and samples synthetic rows (input space) | Class-conditional, so classification only; input-space generation, not latent consistency. A possible extra baseline for Pen Digits | ✔ (abstract, intro) |
+| Ma et al., TabPFGen | arXiv 2024 | TabPFN as an energy function; synthetic rows by SGLD, no training | TabMDA reports that TabPFGen gives minimal gains; input space; classification only | ✔ (abstract) |
+| **Ye et al., A Closer Look at TabPFN v2** | arXiv 2025 | Labeled and unlabeled rows play different roles, so their embeddings are not comparable; proposes **leave-one-fold-out** extraction. A linear model on these embeddings matches TabPFN's own in-context prediction | Justifies the out-of-fold embedding of labeled rows (already used in stage 7) and explains why `head_sup`/`head_distill` ≈ `tabpfn` | ✔ |
+| Hollmann et al., TabPFN v2 | Nature 2025 | Tabular foundation model pretrained on synthetic data; outperforms tuned baselines on datasets up to 10,000 samples | The encoder (v2 family) and the strongest baseline | ✔ (abstract) |
+| Grinsztajn et al., TabPFN-2.5 | arXiv 2025 | Up to 50,000 rows and 2,000 features; leading method on TabArena; distillation engine into MLP/trees | Version used in the stage 7 run (by the user's folder name) | ✔ (abstract) |
+| Qu et al., NVIDIA Kumo Tabular | arXiv 2026 | ICL tabular foundation model (S/M/L, 27M–214M parameters), pretrained on synthetic tables; first on eight benchmarks; faster than TabPFN-3.5 on BeyondArena | A second, permissively licensed (OpenMDW-1.1) encoder/baseline; no official row-embedding API | ✔ (abstract) |
+| Dissanayake & Dutta, TabDistill | arXiv 2025 | Fine-tunes TabPFN as a **hypernetwork** that outputs the weights of a small MLP; the MLP sometimes beats TabPFN | Evidence that a student on top of TabPFN can match or beat the teacher, which our `head_distill` did not | ✔ (abstract, method) |
+| Oliver et al., Realistic Evaluation of Deep SSL | NeurIPS 2018 | Simple supervised baselines are underreported; SSL gains shrink against a strong baseline and depend on the amount of labeled/unlabeled data | Explains why SSL helped only at 1% labels in stages 5–7. Every stage-8 variant must be compared with `tabpfn` and `head_sup` | ✔ (abstract) |
+| Kadra et al., Well-tuned Simple Nets | NeurIPS 2021 | A per-dataset search over 13 regularizers for MLPs; only one augmentation (Mix-Up, Cut-Mix, Cut-Out, FGSM) is chosen per dataset | Augmentation is one regularizer among many, and the best choice differs per dataset, as in our results | ✔ |
+
+A search for "TabPFN embedding + consistency regularization + unlabeled data" did **not** find an identical paper (26 Nov 2026). Not exhaustive, so not proof of novelty.
+
+## 7. Status of manual downloads
 
 | Paper | Status |
 |---|---|
@@ -81,7 +100,7 @@ A search for "angular / cosine-controlled perturbation + consistency + tabular" 
 
 ---
 
-## 7. Best practices to take (and their impact on the plan)
+## 8. Best practices to take (and their impact on the plan)
 
 1. **Latent augmentation is most often used as an addition, not a replacement for input augmentation.**
    - UniMatch: feature stream + input stream, both guided by one weak view.

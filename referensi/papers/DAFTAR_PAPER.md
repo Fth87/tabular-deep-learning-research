@@ -1,6 +1,6 @@
 # Tinjauan paper: augmentasi di ruang latent untuk SSL tabular
 
-Dokumen ini merangkum 32 paper di folder `referensi/papers/` (subfolder 1–5), dikelompokkan sesuai subfolder. Daftar lengkap dengan sumbernya ada di `../README.md`; tiga paper awal tentang ordinal ada di `0_ordinal_regresi_ssl/`. Ringkasan dibuat dari teks PDF masing-masing, kecuali dua survei (§3.5 dan §3.6) serta lima paper terbaru (§2.10 sampai §2.14) yang hanya dibaca abstrak, pendahuluan, dan bagian metode yang relevan. Angka yang akan dikutip di laporan perlu dicek ulang ke PDF.
+Dokumen ini merangkum 42 paper di folder `referensi/papers/` (subfolder 1–6), dikelompokkan sesuai subfolder. Daftar lengkap dengan sumbernya ada di `../README.md`; tiga paper awal tentang ordinal ada di `0_ordinal_regresi_ssl/`. Ringkasan dibuat dari teks PDF masing-masing, kecuali dua survei (§3.5 dan §3.6) serta lima paper terbaru (§2.10 sampai §2.14) yang hanya dibaca abstrak, pendahuluan, dan bagian metode yang relevan. Untuk §6, TabMDA dibaca lengkap; paper lainnya dibaca abstrak dan bagian yang relevan saja (ditandai di tiap ringkasan). Angka yang akan dikutip di laporan perlu dicek ulang ke PDF.
 
 Istilah yang dipakai: *latent* adalah representasi hasil encoder, bukan nilai kolom tabel. *View weak* dan *view strong* adalah dua versi data dengan gangguan ringan dan berat; pada FixMatch dan RankUp, prediksi view weak menjadi pseudo-label untuk view strong. *Self-supervised* berarti pre-training tanpa label lalu fine-tune, sedangkan *semi-supervised* berarti data berlabel dan tak berlabel dilatih bersamaan.
 
@@ -273,3 +273,83 @@ File: `Kobayashi2022_Rotation_Regularization_Without_Rotation_ECCV.pdf`
 Vektor fitur sebelum classifier diputar ke arah acak dengan sudut α tetap. Kumpulan hasil putarannya membentuk kerucut di sekitar fitur asli, dan melatih classifier agar seluruh kerucut tetap benar memberi margin sudut. Karena rotasi eksplisit di dimensi tinggi mahal, efek rotasi dirumuskan secara statistik langsung di loss. Diuji pada klasifikasi gambar dengan CNN, supervised.
 
 Ini prior art terdekat untuk ide cosine terkontrol dari pembimbing. Perbedaan yang masih bisa diajukan: rotasi dipakai untuk membentuk view weak dan strong dalam consistency training, dengan rentang cosine berbeda untuk keduanya, di RankUp untuk data tabular ordinal, klasifikasi, dan regresi.
+
+---
+
+## 6. Augmentasi dengan tabular foundation model
+
+Folder `6_augmentasi_foundation_model/`. Ditambahkan 26 November 2026, setelah tahap 7 menunjukkan bahwa operator latent acak di embedding TabPFN tidak membantu dan merusak regresi.
+
+### 6.1 TabMDA
+
+*TabMDA: Tabular Manifold Data Augmentation for Any Classifier using Transformers with In-context Subsetting*. Margeloiu, Bazaga, Simidjievski, Liò, Jamnik (Cambridge), ICML 2024 Workshop on In-Context Learning.
+File: `Margeloiu2024_TabMDA_ICML_arXiv2406.01805.pdf` (dibaca lengkap)
+
+TabMDA melakukan augmentasi di ruang latent TabPFN. Embedding TabPFN bergantung pada konteks (data berlabel yang diberikan saat fit), jadi baris yang sama menghasilkan embedding berbeda kalau konteksnya berbeda. Teknik *in-context subsetting* (ICS) memanfaatkan sifat ini: untuk tiap baris dibuat K konteks berupa subset data latih yang diambil secara stratified, lalu baris itu di-embed dengan tiap konteks. Hasilnya K versi embedding yang dianggap tetap berlabel sama. Classifier apa pun (KNN, logistic regression, decision tree, random forest, XGBoost) lalu dilatih di embedding yang jumlahnya K kali lipat. Data test di-embed dengan seluruh data latih sebagai konteks.
+
+Eksperimen memakai 6 dataset klasifikasi kecil dengan 20–500 sampel latih, 10 ulangan, dan balanced accuracy. Ukuran konteks 0,5; 0,7; 0,9; dan 1 dari data latih, dengan K = 5, 20, atau 50, dipilih per dataset lewat validation. Peningkatannya sampai 15%, dan variasi antar classifier menjadi jauh lebih kecil. Ada dua catatan penting dari paper ini sendiri. Pertama, rata-rata hanya 3% dari peningkatan itu yang berasal dari ICS; sisanya karena classifier dilatih di ruang TabPFN. Kedua, di Tabel 1 untuk dataset vehicle dan steel, classifier terbaik dengan TabMDA hanya setara dengan TabPFN sendiri (misalnya vehicle 500 sampel: 85,1 vs 84,1). Ukuran konteks 0,7–0,9 lebih baik daripada 0,5 untuk data kecil, karena konteks yang terlalu kecil menambah variance. Ukuran acak U[0,5; 0,99] (gaya TrivialAugment) selalu lebih baik dari konteks penuh, tapi sedikit di bawah ukuran tetap yang di-tuning. Keterbatasannya: hanya klasifikasi supervised, dan model in-context harus tersedia saat inferensi.
+
+TabMDA menunjukkan bahwa augmentasi di latent bisa dibuat dari pengetahuan model itu sendiri, bukan dari noise acak. Paper ini belum menguji ICS untuk semi-supervised (view weak/strong pada data unlabeled) maupun untuk regresi.
+
+### 6.2 TabEBM
+
+*TabEBM: A Tabular Data Augmentation Method with Distinct Class-Specific Energy-Based Models*. Margeloiu, Jiang, Simidjievski, Jamnik, NeurIPS 2024.
+File: `Margeloiu2024_TabEBM_NeurIPS_arXiv2409.16118.pdf` (dibaca abstrak dan pendahuluan)
+
+Model generatif tabular yang mempelajari p(x, y) atau p(x | y) mudah overfit pada data kecil, sehingga data sintetisnya sering menurunkan performa classifier. TabEBM mengubah TabPFN menjadi energy-based model yang terpisah untuk tiap kelas, lalu mengambil sampel baris sintetis dari masing-masing. Data sintetis ini dilaporkan konsisten meningkatkan performa klasifikasi, terutama pada dataset kecil, dan lebih baik dari TabPFGen. Augmentasinya di ruang input dan butuh label kelas, jadi hanya berlaku untuk klasifikasi.
+
+### 6.3 TabPFGen
+
+*TabPFGen – Tabular Data Generation with TabPFN*. Ma, Dankar, Stein, Yu, Caterini (Layer 6 AI), arXiv 2024.
+File: `Ma2024_TabPFGen_arXiv2406.05216.pdf` (dibaca abstrak)
+
+TabPFGen memakai TabPFN sebagai fungsi energi dan mengambil sampel baris sintetis dengan SGLD, tanpa training tambahan. Dipakai untuk augmentasi, class balancing, dan imputasi. Menurut TabMDA, peningkatan dari augmentasi TabPFGen kecil, dan metode ini mewarisi batas TabPFN (maksimal 10 kelas).
+
+### 6.4 A Closer Look at TabPFN v2
+
+*A Closer Look at TabPFN v2: Understanding Its Strengths and Extending Its Capabilities*. Ye, Liu, Chao, arXiv 2025.
+File: `Ye2025_Closer_Look_TabPFN_v2_arXiv2502.17361.pdf` (dibaca abstrak dan §6)
+
+Di TabPFN, baris berlabel (support set) dan baris tanpa label (query) punya peran berbeda: label embedding baris berlabel berasal dari label asli, sedangkan baris query memakai label dummy. Akibatnya embedding keduanya tidak bisa dibandingkan langsung. Paper ini mengusulkan ekstraksi *leave-one-fold-out*: baris berlabel dibagi ke beberapa fold, dan tiap fold di-embed sebagai query dengan fold lain sebagai konteks. Dengan cara ini TabPFN v2 menjadi feature extractor yang menghasilkan ruang hampir linearly separable, dan model linear di atasnya setara dengan prediksi in-context TabPFN sendiri. Paper ini juga menunjukkan TabPFN tetap bekerja dengan token atribut acak, dan mengusulkan strategi divide-and-conquer saat inferensi untuk data berdimensi tinggi, banyak kelas, atau berukuran besar.
+
+### 6.5 TabPFN v2
+
+*Accurate predictions on small data with a tabular foundation model*. Hollmann, Müller, Purucker, Krishnakumar, Körfer, Hoo, Schirrmeister, Hutter, Nature 637, 319–326 (2025).
+File: `Hollmann2025_TabPFN_v2_Nature.pdf` (open access, CC BY; dibaca abstrak)
+
+TabPFN adalah tabular foundation model berbasis Transformer yang di-pretrain pada data sintetis dan memprediksi lewat in-context learning. Pada dataset sampai 10.000 sampel, TabPFN mengungguli semua metode sebelumnya dengan selisih besar dan waktu training jauh lebih singkat. Dalam 2,8 detik, TabPFN mengalahkan ensemble baseline terkuat yang di-tuning selama 4 jam pada setting klasifikasi. Model ini juga mendukung fine-tuning, pembangkitan data, dan density estimation.
+
+### 6.6 TabPFN-2.5
+
+*TabPFN-2.5: Advancing the State of the Art in Tabular Foundation Models*. Grinsztajn dkk. (Prior Labs, 26 penulis), arXiv 2025.
+File: `Grinsztajn2025_TabPFN_2.5_arXiv2511.08667.pdf` (dibaca abstrak)
+
+Penerus TabPFN v2 untuk dataset sampai 50.000 baris dan 2.000 fitur. Menjadi metode terdepan di TabArena, mengungguli tree-based model yang di-tuning dan setara dengan AutoGluon 1.4. Pada dataset kecil-menengah (≤ 10.000 sampel, 500 fitur), TabPFN-2.5 default menang 100% melawan XGBoost default. Paper ini juga memperkenalkan distillation engine yang mengubah TabPFN-2.5 menjadi MLP atau tree ensemble yang ringkas.
+
+### 6.7 NVIDIA Kumo Tabular
+
+*NVIDIA Kumo Tabular: Pushing the Accuracy–Efficiency Frontier for Tabular Prediction*. Qu dkk. (NVIDIA, 15 penulis), arXiv 2026.
+File: `Qu2026_Kumo_Tabular_arXiv2611.23001.pdf` (dibaca abstrak)
+
+Keluarga tabular foundation model untuk klasifikasi dan regresi dalam tiga ukuran (27M, 61M, 214M parameter), di-pretrain hanya dengan tabel sintetis dari Kumo prior. Table encoder memadatkan tiap baris menjadi embedding, lalu Transformer in-context memprediksi baris tanpa label dari baris berlabel. Kumo Tabular-L peringkat pertama di delapan benchmark, termasuk TabArena dan BeyondArena, dan lebih cepat dari runner-up-nya (36× dari LimiX-2 di TabArena, 1,7× dari TabPFN-3.5 di BeyondArena). Bobot dan kode pretraining dirilis dengan lisensi OpenMDW-1.1 dan Apache 2.0.
+
+### 6.8 TabDistill
+
+*TabDistill: Distilling Transformers into Neural Nets for Few-Shot Tabular Classification*. Dissanayake, Dutta (University of Maryland), arXiv 2025.
+File: `Dissanayake2025_TabDistill_arXiv2511.05704.pdf` (dibaca abstrak dan metode)
+
+Model Transformer tabular seperti TabPFN kuat di few-shot, tapi besar dan mahal. TabDistill memindahkan pengetahuannya ke MLP kecil dengan cara men-fine-tune Transformer itu sebagai hypernetwork yang menghasilkan bobot MLP dari representasi internalnya. MLP hasil distilasi mengungguli MLP biasa, XGBoost, dan logistic regression dengan data latih yang sama, dan kadang mengungguli model asalnya.
+
+### 6.9 Realistic Evaluation of Deep Semi-Supervised Learning
+
+*Realistic Evaluation of Deep Semi-Supervised Learning Algorithms*. Oliver, Odena, Raffel, Cubuk, Goodfellow (Google Brain), NeurIPS 2018.
+File: `Oliver2018_Realistic_Evaluation_Deep_SSL_NeurIPS_arXiv1804.09170.pdf` (dibaca abstrak)
+
+Paper ini mengimplementasikan ulang beberapa metode SSL dalam satu kerangka dan mengujinya di kondisi yang lebih realistis. Temuannya: performa baseline sederhana tanpa data unlabeled sering dilaporkan terlalu rendah, sensitivitas metode SSL terhadap jumlah data berlabel dan unlabeled berbeda-beda, dan performa bisa turun jauh kalau data unlabeled berisi sampel di luar distribusi. Kesimpulannya, manfaat SSL harus diukur terhadap baseline supervised yang kuat.
+
+### 6.10 Well-tuned Simple Nets Excel on Tabular Datasets
+
+*Well-tuned Simple Nets Excel on Tabular Datasets*. Kadra, Lindauer, Hutter, Grabocka, NeurIPS 2021.
+File: `Kadra2021_Well_tuned_Simple_Nets_NeurIPS_arXiv2106.11189.pdf`
+
+MLP biasa yang diberi kombinasi regularisasi yang tepat ("regularization cocktail") mengungguli arsitektur deep tabular khusus dan XGBoost. Kombinasi dipilih per dataset dari 13 teknik regularisasi, termasuk satu teknik augmentasi (Mix-Up, Cut-Mix, Cut-Out, atau FGSM adversarial). Kombinasi terbaik berbeda di tiap dataset, jadi augmentasi hanya salah satu regularizer dan pilihan terbaiknya tergantung data.
