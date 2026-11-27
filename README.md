@@ -1,6 +1,8 @@
-# Augmentation for RankUp semi-supervised learning on tabular data
+# Semi-supervised learning and augmentation for tabular data
 
-A thesis research project on how to build the **strong view** of unlabeled data in **RankUp** (Huang et al., NeurIPS 2024), and whether that perturbation works better on the **input data** or in the model's **latent space**. Experiments run on three kinds of tabular tasks (ordinal, classification, regression) with only 1%, 10%, and 30% labeled data.
+A thesis research project comparing **semi-supervised learning methods** and measuring the **additional benefit of augmentation** on tabular data. It starts with RankUp (Huang et al., NeurIPS 2024) and follows comparisons with other SSL methods, TabM and TabPFN. The main experiments cover ordinal, classification, and regression tasks with 1%, 10%, and 30% labeled data.
+
+**Current experiment:** [Full methodology and results](8-tabpfn-ssl/dokumen/EKSPERIMEN_SSL_TABULAR.md) · [SSR-RCUS vs TabPFN 3.5 charts](8-tabpfn-ssl/output/perbandingan_ssr_rcus.md)
 
 ![Architecture: weak/strong augmentation in the TabM latent space](5-augmentasi-latent/gambar/arsitektur/arsitektur_medium.png)
 
@@ -20,8 +22,9 @@ The augmentation decides how much, and in which direction, the strong view diffe
 
 **Research questions**
 
-1. Which augmentation works best for the strong view on tabular data, and does the answer differ for ordinal, classification, and regression tasks?
-2. If the weak/strong perturbation is moved from the input data to the **latent space** (the output of the TabM backbone), are the results better?
+1. Which SSL methods improve on label-only baselines for each task and amount of labeled data?
+2. Holding the SSL objective fixed, which augmentations improve results over identical weak and strong views?
+3. How do input, latent, and TabPFN context augmentations compare, and how sensitive are their gains to the task and the metric?
 
 ## Results summary
 
@@ -52,6 +55,9 @@ Folders are ordered by when the work was done.
 | 3 | Aug–Oct 2026 | [`3-pembanding-ssl/`](3-pembanding-ssl/) | **Task 3**: ordinal RankUp and RankUp-CLS compared with other tabular SSL methods (SSLAE, VIME, STUNT, GFTab) on 10 datasets: 100 runs on Modal |
 | 4 | Nov 2026 (4–17) | [`4-augmentasi-input/`](4-augmentasi-input/) | **Thesis experiment**: 6 input-level augmentations on three main datasets; Optuna with 40 trials and 5 seeds, plus variants without Optuna, 13 datasets, and SSL baselines |
 | 5 | Nov 2026 (17–) | [`5-augmentasi-latent/`](5-augmentasi-latent/) | Weak/strong augmentation moved to the TabM latent space (supervisor's guidance, meeting of 13 Nov) |
+| 6 | Nov 2026 (21–) | [`6-ssr-rcus/`](6-ssr-rcus/) | Official SSR-RCUS code on the three tabular datasets with TabM (classification counterpart for Pen Digits): baseline, with angular augmentation, and with the earlier augmentations |
+| 7 | Nov 2026 (26–) | [`7-tabpfn-latent/`](7-tabpfn-latent/) | Frozen TabPFN embeddings and latent augmentation on Kaggle. [Paired results for TabPFN 2.5 and 3.5](7-tabpfn-latent/RINGKASAN_2_5_DAN_3_5.md), with TabM comparisons from stages 5–6 |
+| 8 | Nov 2026 (26–) | [`8-tabpfn-ssl/`](8-tabpfn-ssl/) | Controlled comparison of label-only, teacher distillation, and EMA self-training with identity, latent, and context views. Kaggle reports include historical RankUp, SSR-RCUS, and TabPFN controls |
 
 How the stages connect: the five ordinal datasets from stage 2 are reused in stages 3 and 4 (`4-augmentasi-input/config/datasets_semua.json` points to `3-pembanding-ssl/dataset/`), and stage 5 uses the RankUp training loop and data splits from stage 4 (copied into `5-augmentasi-latent/` so it can run on its own).
 
@@ -107,8 +113,11 @@ Each combination (3 datasets × 3 label percentages × 6 augmentations = 54) was
 ├── 2-rankup-ordinal/         Tasks 1 and 2: Kaggle notebooks, results, Optuna
 ├── 3-pembanding-ssl/         Task 3: Modal runners, results, siapkan_paper_repo.sh
 ├── 4-augmentasi-input/       thesis experiment: code, data, results, RINGKASAN_SEMUA_EKSPERIMEN.md
-├── 5-augmentasi-latent/      latest research: code, data, results, figures, documents
-├── referensi/                35 papers (PDF) with their sources, a review of each, and the official RankUp code (MIT)
+├── 5-augmentasi-latent/      latent augmentation: code, data, results, figures, documents
+├── 6-ssr-rcus/               SSR-RCUS baseline: adaptor for the official code, Modal runner, siapkan_paper_repo.sh
+├── 7-tabpfn-latent/          latent operators in TabPFN embeddings, Kaggle notebook and results for 2.5 and 3.5
+├── 8-tabpfn-ssl/            TabPFN SSL: Kaggle code, experiment report, charts and architecture
+├── referensi/                45 papers (PDF) with their sources, a review of each, and the official RankUp code (MIT)
 └── tulisan/                  thesis drafts (Chapter II, IEEE and Markdown formats)
 ```
 
@@ -118,7 +127,11 @@ Each stage has its own README and environment, so there is no single environment
 
 General prerequisites: Python 3.12 for stages 2 and 4 (3.10 or newer for the others), [`uv`](https://docs.astral.sh/uv/), and a [Modal](https://modal.com/) account for GPU training in stages 3, 4, and 5 (`pip install modal`, then `modal setup`). Stage 2 consists of Kaggle notebooks.
 
-### Stage 5: latent-level augmentation (latest)
+### Stage 8: context augmentation on Kaggle
+
+Import [the stage 8 notebook](8-tabpfn-ssl/kaggle_tabpfn_konteks.ipynb) and attach the data already used for stage 7. The notebook starts with a smoke run on Kaggle. The [stage 8 README](8-tabpfn-ssl/README.md) covers the full grid, output archive, and resume.
+
+### Stage 5: latent-level augmentation
 
 ```bash
 cd 5-augmentasi-latent
@@ -185,13 +198,13 @@ These are self-contained notebooks designed for Kaggle (GPU). Results are stored
 
 ## References
 
-[`referensi/`](referensi/) contains 35 papers (PDF) with links to their sources ([`referensi/README.md`](referensi/README.md)), a review of each paper ([`referensi/papers/DAFTAR_PAPER.md`](referensi/papers/DAFTAR_PAPER.md), in Indonesian), and a copy of the official RankUp code (MIT).
+[`referensi/`](referensi/) contains 45 papers (PDF) with links to their sources ([`referensi/README.md`](referensi/README.md)), a review of each paper ([`referensi/papers/DAFTAR_PAPER.md`](referensi/papers/DAFTAR_PAPER.md), in Indonesian), and a copy of the official RankUp code (MIT).
 
 ## Credits
 
 This research stands on the work of many researchers. Thank you to the authors.
 
-**Papers.** The full list of 35 papers, with authors, venues, and source links, is in [`referensi/README.md`](referensi/README.md); the BibTeX is in [`referensi/referensi.bib`](referensi/referensi.bib). The works this research builds on directly:
+**Papers.** The full list of 45 papers, with authors, venues, and source links, is in [`referensi/README.md`](referensi/README.md); the BibTeX is in [`referensi/referensi.bib`](referensi/referensi.bib). The works this research builds on directly:
 
 | Work | Used for |
 |---|---|
@@ -200,8 +213,9 @@ This research stands on the work of many researchers. Thank you to the authors.
 | Bahri et al. [*SCARF*](https://arxiv.org/abs/2106.15147), ICLR 2022; Fang et al., *TabCutMix*, ICML 2025; Lee et al., *Range-limited (FeSTA)*, KDD 2025 | Input-level augmentations compared (stages 2–4) |
 | Yang et al. [*UniMatch*](https://arxiv.org/abs/2208.09910), CVPR 2023; Wu & Cui [*IFMatch*](https://arxiv.org/abs/2408.12614), ECCV 2024; Ouali et al. [*CCT*](https://arxiv.org/abs/2003.09005), CVPR 2020 | Basis for feature-level perturbation (stage 5) |
 | Eo et al. [*RaTab*](https://doi.org/10.1609/aaai.v39i11.33265), AAAI 2025; Fang et al. [*SDAT*](https://doi.org/10.1145/3511808.3557699), CIKM 2022; Li et al. [*SSR-RCUS*](https://doi.org/10.1609/aaai.v40i28.39487), AAAI 2026 | Closest related work on latent augmentation for tabular data and RankUp |
+| Hollmann et al. [*TabPFN v2*](https://doi.org/10.1038/s41586-024-08328-6), Nature 2025; Grinsztajn et al. [*TabPFN-2.5*](https://arxiv.org/abs/2511.08667), 2025; Margeloiu et al. [*TabMDA*](https://arxiv.org/abs/2406.01805), ICML 2024 Workshop on In-Context Learning | Frozen encoder and teacher (stage 7); in-context subsetting as the augmentation (stage 8 design) |
 
-**Code.** The official RankUp code ([pm25/Semi-Supervised-Regression](https://github.com/pm25/Semi-Supervised-Regression), MIT license, copyright Microsoft Corporation and Pin-Yen Huang) is included in [`referensi/Semi-Supervised-Regression/`](referensi/Semi-Supervised-Regression/) together with its license. The stage 3 baselines use the original authors' code, which is not included here and is downloaded with `3-pembanding-ssl/siapkan_paper_repo.sh`: [VIME](https://github.com/jsyoon0823/VIME), [STUNT](https://github.com/jaehyun513/STUNT), [SSLAE](https://github.com/sintija-s/sslae), and [GFTab](https://github.com/Yoontae6719/Geodesic-Flow-Kernels-for-Semi-Supervised-Learning-on-Mixed-Variable-Tabular-Dataset).
+**Code.** The official RankUp code ([pm25/Semi-Supervised-Regression](https://github.com/pm25/Semi-Supervised-Regression), MIT license, copyright Microsoft Corporation and Pin-Yen Huang) is included in [`referensi/Semi-Supervised-Regression/`](referensi/Semi-Supervised-Regression/) together with its license. The SSR-RCUS baseline (stage 6) uses the official code ([changchunli/SSR-RCUS](https://github.com/changchunli/SSR-RCUS), MIT license), which is not included here and is downloaded unchanged with `6-ssr-rcus/siapkan_paper_repo.sh`. The stage 3 baselines use the original authors' code, which is not included here and is downloaded with `3-pembanding-ssl/siapkan_paper_repo.sh`: [VIME](https://github.com/jsyoon0823/VIME), [STUNT](https://github.com/jaehyun513/STUNT), [SSLAE](https://github.com/sintija-s/sslae), and [GFTab](https://github.com/Yoontae6719/Geodesic-Flow-Kernels-for-Semi-Supervised-Learning-on-Mixed-Variable-Tabular-Dataset).
 
 **Data.** NHANES from [TOC-UCO](https://www.uco.es/grupos/ayrna/materials/tocuco/); [Pen Digits](https://archive.ics.uci.edu/dataset/81/pen+based+recognition+of+handwritten+digits) and [Superconductivity](https://archive.ics.uci.edu/dataset/464/superconductivty+data) from the UCI Machine Learning Repository; Satimage, Diabetes Pima, CMC, Bank Marketing, and Adult from [OpenML](https://www.openml.org/) (IDs 182, 37, 23, 1461, 1590).
 

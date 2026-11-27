@@ -23,3 +23,14 @@ arsip/
 *.aux
 *.fls
 *.fdb_latexmk
+
+# kode resmi SSR-RCUS (unduh dengan 6-ssr-rcus/siapkan_paper_repo.sh)
+6-ssr-rcus/paper_repo/
+
+# cache embedding dan keluaran Kaggle per baris, disimpan lokal
+/7-tabpfn-latent/**/kaggle_data/cache/
+/8-tabpfn-ssl/output/hasil_tabpfn_konteks/*/prediksi/
+/8-tabpfn-ssl/output/hasil_tabpfn_konteks/*/diagnostik/
+
+# salinan lokal paper pihak ketiga; sumber asli ada di indeks referensi
+/referensi/papers/6_augmentasi_foundation_model/*.pdf
