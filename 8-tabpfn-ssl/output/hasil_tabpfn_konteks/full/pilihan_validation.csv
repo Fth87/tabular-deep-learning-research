@@ -1,0 +1,37 @@
+dataset,label_percent,family,name,metric,validation,test,validation_gain_vs_tabpfn
+nhanes,1,Supervised / label-only,tabpfn,qwk_calibrated,0.26446839540426137,0.27407052316484287,0.0
+nhanes,1,SSL tanpa augmentasi eksplisit,head_distill,qwk_calibrated,0.28146231280902073,0.2656059304087706,0.016993917404759362
+nhanes,1,SSL dengan augmentasi,head_fnoise,qwk_calibrated,0.2884341763596912,0.27239600916326806,0.02396578095542984
+nhanes,1,SSL pilihan validation,head_fnoise,qwk_calibrated,0.2884341763596912,0.27239600916326806,0.02396578095542984
+pendigits,1,Supervised / label-only,tabpfn,macro_f1,0.9092410053898036,0.8734449423056271,0.0
+pendigits,1,SSL tanpa augmentasi eksplisit,head_distill,macro_f1,0.9122805692830008,0.869459691039554,0.0030395638931972613
+pendigits,1,SSL dengan augmentasi,head_scarf,macro_f1,0.9168346178617336,0.8691240820665466,0.007593612471930022
+pendigits,1,SSL pilihan validation,head_scarf,macro_f1,0.9168346178617336,0.8691240820665466,0.007593612471930022
+superconductivity,1,Supervised / label-only,tabpfn,mse,288.0651448567708,318.1292419433594,-0.0
+superconductivity,1,SSL tanpa augmentasi eksplisit,head_distill,mse,280.84058634440106,311.3572591145833,7.224558512369754
+superconductivity,1,SSL dengan augmentasi,head_gaussian,mse,281.1283467610677,312.08685302734375,6.936798095703125
+superconductivity,1,SSL pilihan validation,head_distill,mse,280.84058634440106,311.3572591145833,7.224558512369754
+nhanes,10,Supervised / label-only,ics_sup,qwk_calibrated,0.3712250560239035,0.34098368694468856,0.019172624764343837
+nhanes,10,SSL tanpa augmentasi eksplisit,head_distill,qwk_calibrated,0.3703535730800698,0.33814437735578046,0.018301141820510125
+nhanes,10,SSL dengan augmentasi,head_dropout,qwk_calibrated,0.37166079749582054,0.3420213199502384,0.019608366236260888
+nhanes,10,SSL pilihan validation,head_dropout,qwk_calibrated,0.37166079749582054,0.3420213199502384,0.019608366236260888
+pendigits,10,Supervised / label-only,ics_sup,macro_f1,0.9887264733073611,0.9609191725671614,7.298287729595732e-05
+pendigits,10,SSL tanpa augmentasi eksplisit,head_distill,macro_f1,0.9902888569559476,0.9647288270055118,0.0016353665258824757
+pendigits,10,SSL dengan augmentasi,ics_distill_70,macro_f1,0.9911764392958746,0.9651254060608383,0.0025229488658095045
+pendigits,10,SSL pilihan validation,ics_distill_70,macro_f1,0.9911764392958746,0.9651254060608383,0.0025229488658095045
+nhanes,30,Supervised / label-only,ics_sup,qwk_calibrated,0.4034699249457547,0.41388594641901655,0.01089353679792271
+nhanes,30,SSL tanpa augmentasi eksplisit,head_match,qwk_calibrated,0.4021627005300039,0.41325347879505286,0.009586312382171946
+nhanes,30,SSL dengan augmentasi,ics_both_70,qwk_calibrated,0.4086988226087575,0.4113483454869839,0.01612243446092554
+nhanes,30,SSL pilihan validation,ics_both_70,qwk_calibrated,0.4086988226087575,0.4113483454869839,0.01612243446092554
+pendigits,30,Supervised / label-only,ics_sup,macro_f1,0.9970794095721288,0.9797033109202645,1.8154642051015912e-05
+pendigits,30,SSL tanpa augmentasi eksplisit,head_distill,macro_f1,0.9977556993745221,0.9827980833625869,0.000694444444444331
+pendigits,30,SSL dengan augmentasi,head_gaussian,macro_f1,0.997970070512309,0.9842234977156846,0.000908815582231215
+pendigits,30,SSL pilihan validation,head_gaussian,macro_f1,0.997970070512309,0.9842234977156846,0.000908815582231215
+superconductivity,30,Supervised / label-only,tabpfn,mse,105.58319854736328,116.4144058227539,-0.0
+superconductivity,30,SSL tanpa augmentasi eksplisit,head_distill,mse,105.14123026529948,116.90856679280598,0.44196828206379735
+superconductivity,30,SSL dengan augmentasi,head_fnoise,mse,104.32555135091145,116.5133794148763,1.2576471964518277
+superconductivity,30,SSL pilihan validation,head_fnoise,mse,104.32555135091145,116.5133794148763,1.2576471964518277
+superconductivity,10,Supervised / label-only,tabpfn,mse,150.03161112467447,163.36234029134116,-0.0
+superconductivity,10,SSL tanpa augmentasi eksplisit,head_distill,mse,150.11262003580728,162.2767333984375,-0.0810089111328125
+superconductivity,10,SSL dengan augmentasi,head_tabcutmix,mse,150.1817626953125,163.79171244303384,-0.1501515706380303
+superconductivity,10,SSL pilihan validation,head_distill,mse,150.11262003580728,162.2767333984375,-0.0810089111328125

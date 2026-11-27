@@ -1,0 +1,413 @@
+dataset,label_percent,metric,family,stage8_name,stage8_validation,stage8_test,reference_series,reference_name,reference_validation,reference_test,reference_picked_by_validation
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 5 · TabM,supervised,0.13417326372616611,0.16899973311801764,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 5 · TabM,rankup_noaug,0.2244992234759392,0.2320764647465663,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 5 · TabM,both_scarf,0.3222498611621422,0.28003300923355035,True
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 6 · TabM,rankup,0.13757281044959324,0.15783168309560824,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 6 · TabM,rcus,0.12740624741670456,0.13680011611369872,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 6 · TabM,rcus_input_scarf,0.1565740130422051,0.16240614578491283,True
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 7 · 2.5,tabpfn,0.07718673288198925,0.08940329254346069,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 7 · 2.5,head_distill,0.1368343359419588,0.14289483935148595,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 7 · 2.5,head_angular,0.20935455867379574,0.23687079879058845,True
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 7 · 3.5,tabpfn,0.08861247577087517,0.08374252232082835,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 7 · 3.5,head_distill,0.1069364412212771,0.10643328239674954,False
+nhanes,1,qwk,Supervised / label-only,tabpfn,0.08861247577087517,0.08374252232082835,Tahap 7 · 3.5,head_angular,0.224073425097395,0.26088145210559577,True
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 5 · TabM,supervised,0.13417326372616611,0.16899973311801764,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 5 · TabM,rankup_noaug,0.2244992234759392,0.2320764647465663,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 5 · TabM,both_scarf,0.3222498611621422,0.28003300923355035,True
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 6 · TabM,rankup,0.13757281044959324,0.15783168309560824,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 6 · TabM,rcus,0.12740624741670456,0.13680011611369872,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 6 · TabM,rcus_input_scarf,0.1565740130422051,0.16240614578491283,True
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 7 · 2.5,tabpfn,0.07718673288198925,0.08940329254346069,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 7 · 2.5,head_distill,0.1368343359419588,0.14289483935148595,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 7 · 2.5,head_angular,0.20935455867379574,0.23687079879058845,True
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 7 · 3.5,tabpfn,0.08861247577087517,0.08374252232082835,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 7 · 3.5,head_distill,0.1069364412212771,0.10643328239674954,False
+nhanes,1,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.07600193400606892,0.05692603608235399,Tahap 7 · 3.5,head_angular,0.224073425097395,0.26088145210559577,True
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 5 · TabM,supervised,0.13417326372616611,0.16899973311801764,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 5 · TabM,rankup_noaug,0.2244992234759392,0.2320764647465663,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 5 · TabM,both_scarf,0.3222498611621422,0.28003300923355035,True
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 6 · TabM,rankup,0.13757281044959324,0.15783168309560824,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 6 · TabM,rcus,0.12740624741670456,0.13680011611369872,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 6 · TabM,rcus_input_scarf,0.1565740130422051,0.16240614578491283,True
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 2.5,tabpfn,0.07718673288198925,0.08940329254346069,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 2.5,head_distill,0.1368343359419588,0.14289483935148595,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 2.5,head_angular,0.20935455867379574,0.23687079879058845,True
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 3.5,tabpfn,0.08861247577087517,0.08374252232082835,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 3.5,head_distill,0.1069364412212771,0.10643328239674954,False
+nhanes,1,qwk,SSL dengan augmentasi,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 3.5,head_angular,0.224073425097395,0.26088145210559577,True
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 5 · TabM,supervised,0.13417326372616611,0.16899973311801764,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 5 · TabM,rankup_noaug,0.2244992234759392,0.2320764647465663,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 5 · TabM,both_scarf,0.3222498611621422,0.28003300923355035,True
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 6 · TabM,rankup,0.13757281044959324,0.15783168309560824,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 6 · TabM,rcus,0.12740624741670456,0.13680011611369872,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 6 · TabM,rcus_input_scarf,0.1565740130422051,0.16240614578491283,True
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 2.5,tabpfn,0.07718673288198925,0.08940329254346069,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 2.5,head_distill,0.1368343359419588,0.14289483935148595,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 2.5,head_angular,0.20935455867379574,0.23687079879058845,True
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 3.5,tabpfn,0.08861247577087517,0.08374252232082835,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 3.5,head_distill,0.1069364412212771,0.10643328239674954,False
+nhanes,1,qwk,SSL pilihan validation,head_fnoise,0.06994027147690214,0.05579862651030402,Tahap 7 · 3.5,head_angular,0.224073425097395,0.26088145210559577,True
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 5 · TabM,supervised,0.8977260149423215,0.8371718292405771,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 5 · TabM,rankup_noaug,0.9319591898114925,0.8808538451106869,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 5 · TabM,matched_gaussian,0.9475824650268202,0.8926771011943063,True
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 6 · TabM,rankup,0.9044060726966225,0.8424280287735625,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 6 · TabM,rcus,0.9311106691176259,0.8845468558894188,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 6 · TabM,rcus_input_zero_out,0.9418591100109283,0.8938107982576453,True
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 7 · 2.5,tabpfn,0.8869870765907402,0.8375370528416075,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 7 · 2.5,head_distill,0.8909483000657227,0.8388727700563477,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 7 · 2.5,head_scarf,0.8990329962609753,0.8415973048260843,True
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 7 · 3.5,tabpfn,0.9092410053898036,0.8734449423056272,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 7 · 3.5,head_distill,0.9143221392413534,0.8716546232730386,False
+pendigits,1,macro_f1,Supervised / label-only,tabpfn,0.9092410053898036,0.8734449423056271,Tahap 7 · 3.5,head_scarf,0.916292876365292,0.8742473182755971,True
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 5 · TabM,supervised,0.8977260149423215,0.8371718292405771,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 5 · TabM,rankup_noaug,0.9319591898114925,0.8808538451106869,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 5 · TabM,matched_gaussian,0.9475824650268202,0.8926771011943063,True
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 6 · TabM,rankup,0.9044060726966225,0.8424280287735625,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 6 · TabM,rcus,0.9311106691176259,0.8845468558894188,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 6 · TabM,rcus_input_zero_out,0.9418591100109283,0.8938107982576453,True
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 7 · 2.5,tabpfn,0.8869870765907402,0.8375370528416075,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 7 · 2.5,head_distill,0.8909483000657227,0.8388727700563477,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 7 · 2.5,head_scarf,0.8990329962609753,0.8415973048260843,True
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 7 · 3.5,tabpfn,0.9092410053898036,0.8734449423056272,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 7 · 3.5,head_distill,0.9143221392413534,0.8716546232730386,False
+pendigits,1,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9122805692830008,0.869459691039554,Tahap 7 · 3.5,head_scarf,0.916292876365292,0.8742473182755971,True
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 5 · TabM,supervised,0.8977260149423215,0.8371718292405771,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 5 · TabM,rankup_noaug,0.9319591898114925,0.8808538451106869,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 5 · TabM,matched_gaussian,0.9475824650268202,0.8926771011943063,True
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 6 · TabM,rankup,0.9044060726966225,0.8424280287735625,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 6 · TabM,rcus,0.9311106691176259,0.8845468558894188,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 6 · TabM,rcus_input_zero_out,0.9418591100109283,0.8938107982576453,True
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 2.5,tabpfn,0.8869870765907402,0.8375370528416075,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 2.5,head_distill,0.8909483000657227,0.8388727700563477,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 2.5,head_scarf,0.8990329962609753,0.8415973048260843,True
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 3.5,tabpfn,0.9092410053898036,0.8734449423056272,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 3.5,head_distill,0.9143221392413534,0.8716546232730386,False
+pendigits,1,macro_f1,SSL dengan augmentasi,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 3.5,head_scarf,0.916292876365292,0.8742473182755971,True
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 5 · TabM,supervised,0.8977260149423215,0.8371718292405771,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 5 · TabM,rankup_noaug,0.9319591898114925,0.8808538451106869,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 5 · TabM,matched_gaussian,0.9475824650268202,0.8926771011943063,True
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 6 · TabM,rankup,0.9044060726966225,0.8424280287735625,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 6 · TabM,rcus,0.9311106691176259,0.8845468558894188,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 6 · TabM,rcus_input_zero_out,0.9418591100109283,0.8938107982576453,True
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 2.5,tabpfn,0.8869870765907402,0.8375370528416075,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 2.5,head_distill,0.8909483000657227,0.8388727700563477,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 2.5,head_scarf,0.8990329962609753,0.8415973048260843,True
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 3.5,tabpfn,0.9092410053898036,0.8734449423056272,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 3.5,head_distill,0.9143221392413534,0.8716546232730386,False
+pendigits,1,macro_f1,SSL pilihan validation,head_scarf,0.9168346178617336,0.8691240820665466,Tahap 7 · 3.5,head_scarf,0.916292876365292,0.8742473182755971,True
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 5 · TabM,supervised,340.8263537006003,380.5455785487286,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 5 · TabM,rankup_noaug,337.70202793417997,366.5114124482035,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 5 · TabM,matched_gaussian,334.2698263289673,364.53648509877576,True
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 6 · TabM,rankup,374.87442242931866,392.901334414607,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 6 · TabM,rcus,415.9445257674791,446.29150564044863,True
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 7 · 2.5,tabpfn,272.45191446940106,306.48028564453125,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 7 · 2.5,head_distill,270.76488240559894,303.53424072265625,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 7 · 2.5,head_fnoise,269.7834777832031,304.5947265625,True
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 7 · 3.5,tabpfn,288.0651448567708,318.1292419433594,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 7 · 3.5,head_distill,284.5583190917969,314.87498982747394,False
+superconductivity,1,mse,Supervised / label-only,tabpfn,288.0651448567708,318.1292419433594,Tahap 7 · 3.5,head_tabcutmix,284.3540954589844,314.48529052734375,True
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 5 · TabM,supervised,340.8263537006003,380.5455785487286,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 5 · TabM,rankup_noaug,337.70202793417997,366.5114124482035,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 5 · TabM,matched_gaussian,334.2698263289673,364.53648509877576,True
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 6 · TabM,rankup,374.87442242931866,392.901334414607,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 6 · TabM,rcus,415.9445257674791,446.29150564044863,True
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 2.5,tabpfn,272.45191446940106,306.48028564453125,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 2.5,head_distill,270.76488240559894,303.53424072265625,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 2.5,head_fnoise,269.7834777832031,304.5947265625,True
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 3.5,tabpfn,288.0651448567708,318.1292419433594,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 3.5,head_distill,284.5583190917969,314.87498982747394,False
+superconductivity,1,mse,SSL tanpa augmentasi eksplisit,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 3.5,head_tabcutmix,284.3540954589844,314.48529052734375,True
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 5 · TabM,supervised,340.8263537006003,380.5455785487286,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 5 · TabM,rankup_noaug,337.70202793417997,366.5114124482035,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 5 · TabM,matched_gaussian,334.2698263289673,364.53648509877576,True
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 6 · TabM,rankup,374.87442242931866,392.901334414607,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 6 · TabM,rcus,415.9445257674791,446.29150564044863,True
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 7 · 2.5,tabpfn,272.45191446940106,306.48028564453125,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 7 · 2.5,head_distill,270.76488240559894,303.53424072265625,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 7 · 2.5,head_fnoise,269.7834777832031,304.5947265625,True
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 7 · 3.5,tabpfn,288.0651448567708,318.1292419433594,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 7 · 3.5,head_distill,284.5583190917969,314.87498982747394,False
+superconductivity,1,mse,SSL dengan augmentasi,head_gaussian,281.1283467610677,312.08685302734375,Tahap 7 · 3.5,head_tabcutmix,284.3540954589844,314.48529052734375,True
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 5 · TabM,supervised,340.8263537006003,380.5455785487286,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 5 · TabM,rankup_noaug,337.70202793417997,366.5114124482035,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 5 · TabM,matched_gaussian,334.2698263289673,364.53648509877576,True
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 6 · TabM,rankup,374.87442242931866,392.901334414607,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 6 · TabM,rcus,415.9445257674791,446.29150564044863,True
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 2.5,tabpfn,272.45191446940106,306.48028564453125,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 2.5,head_distill,270.76488240559894,303.53424072265625,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 2.5,head_fnoise,269.7834777832031,304.5947265625,True
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 3.5,tabpfn,288.0651448567708,318.1292419433594,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 3.5,head_distill,284.5583190917969,314.87498982747394,False
+superconductivity,1,mse,SSL pilihan validation,head_distill,280.84058634440106,311.3572591145833,Tahap 7 · 3.5,head_tabcutmix,284.3540954589844,314.48529052734375,True
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 5 · TabM,supervised,0.2950125822932838,0.2540797385469509,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 5 · TabM,rankup_noaug,0.29630578109514333,0.2463744171048746,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 5 · TabM,angular,0.3043113669756078,0.2615889107040824,True
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 6 · TabM,rankup,0.25771430662106637,0.2087475305006763,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 6 · TabM,rcus,0.2505273230439383,0.21782208099802283,True
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 7 · 2.5,tabpfn,0.2236415168579405,0.21603484373554363,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 7 · 2.5,head_distill,0.2569172325289133,0.25465597612468777,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 7 · 2.5,head_scarf,0.3206635692762488,0.30622192057240954,True
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 7 · 3.5,tabpfn,0.23816315638816268,0.25964321256499184,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 7 · 3.5,head_distill,0.26335216366107234,0.2647366194275858,False
+nhanes,10,qwk,Supervised / label-only,ics_sup,0.17319935341777193,0.1802973764765583,Tahap 7 · 3.5,head_angular,0.36238976312892524,0.3453311047970908,True
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 5 · TabM,supervised,0.2950125822932838,0.2540797385469509,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 5 · TabM,rankup_noaug,0.29630578109514333,0.2463744171048746,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 5 · TabM,angular,0.3043113669756078,0.2615889107040824,True
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 6 · TabM,rankup,0.25771430662106637,0.2087475305006763,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 6 · TabM,rcus,0.2505273230439383,0.21782208099802283,True
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 7 · 2.5,tabpfn,0.2236415168579405,0.21603484373554363,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 7 · 2.5,head_distill,0.2569172325289133,0.25465597612468777,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 7 · 2.5,head_scarf,0.3206635692762488,0.30622192057240954,True
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 7 · 3.5,tabpfn,0.23816315638816268,0.25964321256499184,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 7 · 3.5,head_distill,0.26335216366107234,0.2647366194275858,False
+nhanes,10,qwk,SSL tanpa augmentasi eksplisit,head_distill,0.22621976997973522,0.24790879208727598,Tahap 7 · 3.5,head_angular,0.36238976312892524,0.3453311047970908,True
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 5 · TabM,supervised,0.2950125822932838,0.2540797385469509,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 5 · TabM,rankup_noaug,0.29630578109514333,0.2463744171048746,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 5 · TabM,angular,0.3043113669756078,0.2615889107040824,True
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 6 · TabM,rankup,0.25771430662106637,0.2087475305006763,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 6 · TabM,rcus,0.2505273230439383,0.21782208099802283,True
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 2.5,tabpfn,0.2236415168579405,0.21603484373554363,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 2.5,head_distill,0.2569172325289133,0.25465597612468777,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 2.5,head_scarf,0.3206635692762488,0.30622192057240954,True
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 3.5,tabpfn,0.23816315638816268,0.25964321256499184,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 3.5,head_distill,0.26335216366107234,0.2647366194275858,False
+nhanes,10,qwk,SSL dengan augmentasi,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 3.5,head_angular,0.36238976312892524,0.3453311047970908,True
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 5 · TabM,supervised,0.2950125822932838,0.2540797385469509,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 5 · TabM,rankup_noaug,0.29630578109514333,0.2463744171048746,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 5 · TabM,angular,0.3043113669756078,0.2615889107040824,True
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 6 · TabM,rankup,0.25771430662106637,0.2087475305006763,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 6 · TabM,rcus,0.2505273230439383,0.21782208099802283,True
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 2.5,tabpfn,0.2236415168579405,0.21603484373554363,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 2.5,head_distill,0.2569172325289133,0.25465597612468777,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 2.5,head_scarf,0.3206635692762488,0.30622192057240954,True
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 3.5,tabpfn,0.23816315638816268,0.25964321256499184,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 3.5,head_distill,0.26335216366107234,0.2647366194275858,False
+nhanes,10,qwk,SSL pilihan validation,head_dropout,0.2518449025206065,0.2589736607051374,Tahap 7 · 3.5,head_angular,0.36238976312892524,0.3453311047970908,True
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 5 · TabM,supervised,0.9873857030611185,0.9495242947328367,False
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 5 · TabM,rankup_noaug,0.9884940961989365,0.9492446486132804,True
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 6 · TabM,rankup,0.9827137449389863,0.9440486265191982,False
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 6 · TabM,rcus,0.9907422292092694,0.9725754844866631,True
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 7 · 2.5,tabpfn,0.9831782119369166,0.9484811498197447,False
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 7 · 2.5,head_distill,0.9837802923957342,0.9465295328736281,False
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 7 · 2.5,head_scarf,0.9842671261244231,0.944181202119094,True
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 7 · 3.5,tabpfn,0.9886534904300651,0.9703005252225638,False
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 7 · 3.5,head_distill,0.9898176210331453,0.9672358720018023,False
+pendigits,10,macro_f1,Supervised / label-only,ics_sup,0.9887264733073611,0.9609191725671614,Tahap 7 · 3.5,head_scarf,0.9918414954832434,0.9679789961600084,True
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 5 · TabM,supervised,0.9873857030611185,0.9495242947328367,False
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 5 · TabM,rankup_noaug,0.9884940961989365,0.9492446486132804,True
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 6 · TabM,rankup,0.9827137449389863,0.9440486265191982,False
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 6 · TabM,rcus,0.9907422292092694,0.9725754844866631,True
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 7 · 2.5,tabpfn,0.9831782119369166,0.9484811498197447,False
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 7 · 2.5,head_distill,0.9837802923957342,0.9465295328736281,False
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 7 · 2.5,head_scarf,0.9842671261244231,0.944181202119094,True
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 7 · 3.5,tabpfn,0.9886534904300651,0.9703005252225638,False
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 7 · 3.5,head_distill,0.9898176210331453,0.9672358720018023,False
+pendigits,10,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9902888569559476,0.9647288270055118,Tahap 7 · 3.5,head_scarf,0.9918414954832434,0.9679789961600084,True
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 5 · TabM,supervised,0.9873857030611185,0.9495242947328367,False
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 5 · TabM,rankup_noaug,0.9884940961989365,0.9492446486132804,True
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 6 · TabM,rankup,0.9827137449389863,0.9440486265191982,False
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 6 · TabM,rcus,0.9907422292092694,0.9725754844866631,True
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 2.5,tabpfn,0.9831782119369166,0.9484811498197447,False
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 2.5,head_distill,0.9837802923957342,0.9465295328736281,False
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 2.5,head_scarf,0.9842671261244231,0.944181202119094,True
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 3.5,tabpfn,0.9886534904300651,0.9703005252225638,False
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 3.5,head_distill,0.9898176210331453,0.9672358720018023,False
+pendigits,10,macro_f1,SSL dengan augmentasi,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 3.5,head_scarf,0.9918414954832434,0.9679789961600084,True
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 5 · TabM,supervised,0.9873857030611185,0.9495242947328367,False
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 5 · TabM,rankup_noaug,0.9884940961989365,0.9492446486132804,True
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 6 · TabM,rankup,0.9827137449389863,0.9440486265191982,False
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 6 · TabM,rcus,0.9907422292092694,0.9725754844866631,True
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 2.5,tabpfn,0.9831782119369166,0.9484811498197447,False
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 2.5,head_distill,0.9837802923957342,0.9465295328736281,False
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 2.5,head_scarf,0.9842671261244231,0.944181202119094,True
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 3.5,tabpfn,0.9886534904300651,0.9703005252225638,False
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 3.5,head_distill,0.9898176210331453,0.9672358720018023,False
+pendigits,10,macro_f1,SSL pilihan validation,ics_distill_70,0.9911764392958746,0.9651254060608383,Tahap 7 · 3.5,head_scarf,0.9918414954832434,0.9679789961600084,True
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 5 · TabM,supervised,0.3262284785558712,0.3107915666624415,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 5 · TabM,rankup_noaug,0.3254353822897861,0.3052605621781272,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 5 · TabM,both_zero_out,0.3266901672351319,0.31307896872581814,True
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 6 · TabM,rankup,0.25675202087426785,0.2705402964705718,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 6 · TabM,rcus,0.264868757921548,0.2630859713919494,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 6 · TabM,rcus_input_scarf,0.2700957563525163,0.2849678300963197,True
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 7 · 2.5,tabpfn,0.3274673234779089,0.3201838910718161,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 7 · 2.5,head_distill,0.3647563697781427,0.32846459381234405,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 7 · 2.5,head_angular,0.39842615782595875,0.3714556592557748,True
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 7 · 3.5,tabpfn,0.3391316134426135,0.3188726373253399,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 7 · 3.5,head_distill,0.3534142347741648,0.3209815036998476,False
+nhanes,30,qwk,Supervised / label-only,ics_sup,0.31900060355242,0.3126690446471525,Tahap 7 · 3.5,head_scarf,0.4180139714600249,0.4127987617270003,True
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 5 · TabM,supervised,0.3262284785558712,0.3107915666624415,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 5 · TabM,rankup_noaug,0.3254353822897861,0.3052605621781272,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 5 · TabM,both_zero_out,0.3266901672351319,0.31307896872581814,True
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 6 · TabM,rankup,0.25675202087426785,0.2705402964705718,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 6 · TabM,rcus,0.264868757921548,0.2630859713919494,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 6 · TabM,rcus_input_scarf,0.2700957563525163,0.2849678300963197,True
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 7 · 2.5,tabpfn,0.3274673234779089,0.3201838910718161,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 7 · 2.5,head_distill,0.3647563697781427,0.32846459381234405,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 7 · 2.5,head_angular,0.39842615782595875,0.3714556592557748,True
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 7 · 3.5,tabpfn,0.3391316134426135,0.3188726373253399,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 7 · 3.5,head_distill,0.3534142347741648,0.3209815036998476,False
+nhanes,30,qwk,SSL tanpa augmentasi eksplisit,head_match,0.048113509754744564,0.047313036217068394,Tahap 7 · 3.5,head_scarf,0.4180139714600249,0.4127987617270003,True
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 5 · TabM,supervised,0.3262284785558712,0.3107915666624415,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 5 · TabM,rankup_noaug,0.3254353822897861,0.3052605621781272,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 5 · TabM,both_zero_out,0.3266901672351319,0.31307896872581814,True
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 6 · TabM,rankup,0.25675202087426785,0.2705402964705718,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 6 · TabM,rcus,0.264868757921548,0.2630859713919494,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 6 · TabM,rcus_input_scarf,0.2700957563525163,0.2849678300963197,True
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 2.5,tabpfn,0.3274673234779089,0.3201838910718161,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 2.5,head_distill,0.3647563697781427,0.32846459381234405,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 2.5,head_angular,0.39842615782595875,0.3714556592557748,True
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 3.5,tabpfn,0.3391316134426135,0.3188726373253399,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 3.5,head_distill,0.3534142347741648,0.3209815036998476,False
+nhanes,30,qwk,SSL dengan augmentasi,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 3.5,head_scarf,0.4180139714600249,0.4127987617270003,True
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 5 · TabM,supervised,0.3262284785558712,0.3107915666624415,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 5 · TabM,rankup_noaug,0.3254353822897861,0.3052605621781272,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 5 · TabM,both_zero_out,0.3266901672351319,0.31307896872581814,True
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 6 · TabM,rankup,0.25675202087426785,0.2705402964705718,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 6 · TabM,rcus,0.264868757921548,0.2630859713919494,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 6 · TabM,rcus_input_scarf,0.2700957563525163,0.2849678300963197,True
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 2.5,tabpfn,0.3274673234779089,0.3201838910718161,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 2.5,head_distill,0.3647563697781427,0.32846459381234405,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 2.5,head_angular,0.39842615782595875,0.3714556592557748,True
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 3.5,tabpfn,0.3391316134426135,0.3188726373253399,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 3.5,head_distill,0.3534142347741648,0.3209815036998476,False
+nhanes,30,qwk,SSL pilihan validation,ics_both_70,0.3342796251641862,0.30631845418399295,Tahap 7 · 3.5,head_scarf,0.4180139714600249,0.4127987617270003,True
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 5 · TabM,supervised,0.9949205060868539,0.9692864194033768,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 5 · TabM,rankup_noaug,0.9964906186725728,0.9737283197109958,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 5 · TabM,latent_fnoise,0.9969288699510149,0.9755856523815577,True
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 6 · TabM,rankup,0.9931912128243423,0.971283920966797,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 6 · TabM,rcus,0.9957845847611156,0.9778445610590029,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 6 · TabM,rcus_angular_weak,0.9960801172984916,0.9776192942334737,True
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 7 · 2.5,tabpfn,0.9937774427928804,0.9725726143832892,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 7 · 2.5,head_distill,0.9944450935288697,0.9693087724840749,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 7 · 2.5,head_dropout,0.994449756890703,0.9681888143700108,True
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 7 · 3.5,tabpfn,0.9970612549300778,0.9840861007359949,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 7 · 3.5,head_distill,0.9977556993745222,0.9806655984652873,False
+pendigits,30,macro_f1,Supervised / label-only,ics_sup,0.9970794095721288,0.9797033109202645,Tahap 7 · 3.5,head_scarf,0.998200745438106,0.9801397736175895,True
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 5 · TabM,supervised,0.9949205060868539,0.9692864194033768,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 5 · TabM,rankup_noaug,0.9964906186725728,0.9737283197109958,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 5 · TabM,latent_fnoise,0.9969288699510149,0.9755856523815577,True
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 6 · TabM,rankup,0.9931912128243423,0.971283920966797,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 6 · TabM,rcus,0.9957845847611156,0.9778445610590029,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 6 · TabM,rcus_angular_weak,0.9960801172984916,0.9776192942334737,True
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 7 · 2.5,tabpfn,0.9937774427928804,0.9725726143832892,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 7 · 2.5,head_distill,0.9944450935288697,0.9693087724840749,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 7 · 2.5,head_dropout,0.994449756890703,0.9681888143700108,True
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 7 · 3.5,tabpfn,0.9970612549300778,0.9840861007359949,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 7 · 3.5,head_distill,0.9977556993745222,0.9806655984652873,False
+pendigits,30,macro_f1,SSL tanpa augmentasi eksplisit,head_distill,0.9977556993745221,0.9827980833625869,Tahap 7 · 3.5,head_scarf,0.998200745438106,0.9801397736175895,True
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 5 · TabM,supervised,0.9949205060868539,0.9692864194033768,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 5 · TabM,rankup_noaug,0.9964906186725728,0.9737283197109958,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 5 · TabM,latent_fnoise,0.9969288699510149,0.9755856523815577,True
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 6 · TabM,rankup,0.9931912128243423,0.971283920966797,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 6 · TabM,rcus,0.9957845847611156,0.9778445610590029,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 6 · TabM,rcus_angular_weak,0.9960801172984916,0.9776192942334737,True
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 2.5,tabpfn,0.9937774427928804,0.9725726143832892,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 2.5,head_distill,0.9944450935288697,0.9693087724840749,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 2.5,head_dropout,0.994449756890703,0.9681888143700108,True
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 3.5,tabpfn,0.9970612549300778,0.9840861007359949,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 3.5,head_distill,0.9977556993745222,0.9806655984652873,False
+pendigits,30,macro_f1,SSL dengan augmentasi,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 3.5,head_scarf,0.998200745438106,0.9801397736175895,True
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 5 · TabM,supervised,0.9949205060868539,0.9692864194033768,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 5 · TabM,rankup_noaug,0.9964906186725728,0.9737283197109958,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 5 · TabM,latent_fnoise,0.9969288699510149,0.9755856523815577,True
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 6 · TabM,rankup,0.9931912128243423,0.971283920966797,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 6 · TabM,rcus,0.9957845847611156,0.9778445610590029,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 6 · TabM,rcus_angular_weak,0.9960801172984916,0.9776192942334737,True
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 2.5,tabpfn,0.9937774427928804,0.9725726143832892,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 2.5,head_distill,0.9944450935288697,0.9693087724840749,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 2.5,head_dropout,0.994449756890703,0.9681888143700108,True
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 3.5,tabpfn,0.9970612549300778,0.9840861007359949,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 3.5,head_distill,0.9977556993745222,0.9806655984652873,False
+pendigits,30,macro_f1,SSL pilihan validation,head_gaussian,0.997970070512309,0.9842234977156846,Tahap 7 · 3.5,head_scarf,0.998200745438106,0.9801397736175895,True
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 5 · TabM,supervised,139.5675721200219,151.92230364051952,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 5 · TabM,rankup_noaug,141.17241745886733,152.75514350368914,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 5 · TabM,latent_gaussian,137.9890860427044,145.72965232093287,True
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 6 · TabM,rankup,145.04105524588016,151.70022391791105,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 6 · TabM,rcus,154.51382371803092,154.4633925633908,True
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 7 · 2.5,tabpfn,112.19809468587239,122.44816589355469,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 7 · 2.5,head_distill,111.23772430419922,123.53341929117839,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 7 · 2.5,head_tabcutmix,111.37583669026692,123.6783930460612,True
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 7 · 3.5,tabpfn,105.58319854736328,116.4144058227539,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 7 · 3.5,head_distill,105.23486073811848,118.3210678100586,False
+superconductivity,30,mse,Supervised / label-only,tabpfn,105.58319854736328,116.4144058227539,Tahap 7 · 3.5,head_tabcutmix,105.41812388102214,118.89878590901692,True
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 5 · TabM,supervised,139.5675721200219,151.92230364051952,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 5 · TabM,rankup_noaug,141.17241745886733,152.75514350368914,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 5 · TabM,latent_gaussian,137.9890860427044,145.72965232093287,True
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 6 · TabM,rankup,145.04105524588016,151.70022391791105,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 6 · TabM,rcus,154.51382371803092,154.4633925633908,True
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 7 · 2.5,tabpfn,112.19809468587239,122.44816589355469,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 7 · 2.5,head_distill,111.23772430419922,123.53341929117839,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 7 · 2.5,head_tabcutmix,111.37583669026692,123.6783930460612,True
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 7 · 3.5,tabpfn,105.58319854736328,116.4144058227539,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 7 · 3.5,head_distill,105.23486073811848,118.3210678100586,False
+superconductivity,30,mse,SSL tanpa augmentasi eksplisit,head_distill,105.14123026529948,116.90856679280598,Tahap 7 · 3.5,head_tabcutmix,105.41812388102214,118.89878590901692,True
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 5 · TabM,supervised,139.5675721200219,151.92230364051952,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 5 · TabM,rankup_noaug,141.17241745886733,152.75514350368914,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 5 · TabM,latent_gaussian,137.9890860427044,145.72965232093287,True
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 6 · TabM,rankup,145.04105524588016,151.70022391791105,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 6 · TabM,rcus,154.51382371803092,154.4633925633908,True
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 2.5,tabpfn,112.19809468587239,122.44816589355469,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 2.5,head_distill,111.23772430419922,123.53341929117839,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 2.5,head_tabcutmix,111.37583669026692,123.6783930460612,True
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 3.5,tabpfn,105.58319854736328,116.4144058227539,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 3.5,head_distill,105.23486073811848,118.3210678100586,False
+superconductivity,30,mse,SSL dengan augmentasi,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 3.5,head_tabcutmix,105.41812388102214,118.89878590901692,True
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 5 · TabM,supervised,139.5675721200219,151.92230364051952,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 5 · TabM,rankup_noaug,141.17241745886733,152.75514350368914,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 5 · TabM,latent_gaussian,137.9890860427044,145.72965232093287,True
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 6 · TabM,rankup,145.04105524588016,151.70022391791105,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 6 · TabM,rcus,154.51382371803092,154.4633925633908,True
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 2.5,tabpfn,112.19809468587239,122.44816589355469,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 2.5,head_distill,111.23772430419922,123.53341929117839,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 2.5,head_tabcutmix,111.37583669026692,123.6783930460612,True
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 3.5,tabpfn,105.58319854736328,116.4144058227539,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 3.5,head_distill,105.23486073811848,118.3210678100586,False
+superconductivity,30,mse,SSL pilihan validation,head_fnoise,104.32555135091145,116.5133794148763,Tahap 7 · 3.5,head_tabcutmix,105.41812388102214,118.89878590901692,True
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 5 · TabM,supervised,189.39518407545464,207.70105019632837,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 5 · TabM,rankup_noaug,190.17013332125748,208.8466922916999,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 5 · TabM,angular_weak_prerelu,187.19116009355463,202.293246948442,True
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 6 · TabM,rankup,199.87743358556187,208.1701558316062,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 6 · TabM,rcus,201.6383631202681,208.0624591363433,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 6 · TabM,rcus_input_scarf,194.2851407181621,204.33626817888114,True
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 7 · 2.5,tabpfn,158.98221842447916,165.7642364501953,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 7 · 2.5,head_distill,159.37648010253906,166.89710998535156,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 7 · 2.5,head_fnoise,157.99161783854166,168.08067321777344,True
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 7 · 3.5,tabpfn,150.03161112467447,163.36234029134116,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 7 · 3.5,head_distill,155.3275400797526,164.89678955078125,False
+superconductivity,10,mse,Supervised / label-only,tabpfn,150.03161112467447,163.36234029134116,Tahap 7 · 3.5,head_gaussian,154.3067626953125,165.39325968424478,True
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 5 · TabM,supervised,189.39518407545464,207.70105019632837,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 5 · TabM,rankup_noaug,190.17013332125748,208.8466922916999,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 5 · TabM,angular_weak_prerelu,187.19116009355463,202.293246948442,True
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 6 · TabM,rankup,199.87743358556187,208.1701558316062,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 6 · TabM,rcus,201.6383631202681,208.0624591363433,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 6 · TabM,rcus_input_scarf,194.2851407181621,204.33626817888114,True
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 2.5,tabpfn,158.98221842447916,165.7642364501953,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 2.5,head_distill,159.37648010253906,166.89710998535156,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 2.5,head_fnoise,157.99161783854166,168.08067321777344,True
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 3.5,tabpfn,150.03161112467447,163.36234029134116,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 3.5,head_distill,155.3275400797526,164.89678955078125,False
+superconductivity,10,mse,SSL tanpa augmentasi eksplisit,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 3.5,head_gaussian,154.3067626953125,165.39325968424478,True
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 5 · TabM,supervised,189.39518407545464,207.70105019632837,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 5 · TabM,rankup_noaug,190.17013332125748,208.8466922916999,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 5 · TabM,angular_weak_prerelu,187.19116009355463,202.293246948442,True
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 6 · TabM,rankup,199.87743358556187,208.1701558316062,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 6 · TabM,rcus,201.6383631202681,208.0624591363433,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 6 · TabM,rcus_input_scarf,194.2851407181621,204.33626817888114,True
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 7 · 2.5,tabpfn,158.98221842447916,165.7642364501953,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 7 · 2.5,head_distill,159.37648010253906,166.89710998535156,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 7 · 2.5,head_fnoise,157.99161783854166,168.08067321777344,True
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 7 · 3.5,tabpfn,150.03161112467447,163.36234029134116,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 7 · 3.5,head_distill,155.3275400797526,164.89678955078125,False
+superconductivity,10,mse,SSL dengan augmentasi,head_tabcutmix,150.1817626953125,163.79171244303384,Tahap 7 · 3.5,head_gaussian,154.3067626953125,165.39325968424478,True
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 5 · TabM,supervised,189.39518407545464,207.70105019632837,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 5 · TabM,rankup_noaug,190.17013332125748,208.8466922916999,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 5 · TabM,angular_weak_prerelu,187.19116009355463,202.293246948442,True
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 6 · TabM,rankup,199.87743358556187,208.1701558316062,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 6 · TabM,rcus,201.6383631202681,208.0624591363433,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 6 · TabM,rcus_input_scarf,194.2851407181621,204.33626817888114,True
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 2.5,tabpfn,158.98221842447916,165.7642364501953,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 2.5,head_distill,159.37648010253906,166.89710998535156,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 2.5,head_fnoise,157.99161783854166,168.08067321777344,True
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 3.5,tabpfn,150.03161112467447,163.36234029134116,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 3.5,head_distill,155.3275400797526,164.89678955078125,False
+superconductivity,10,mse,SSL pilihan validation,head_distill,150.11262003580728,162.2767333984375,Tahap 7 · 3.5,head_gaussian,154.3067626953125,165.39325968424478,True

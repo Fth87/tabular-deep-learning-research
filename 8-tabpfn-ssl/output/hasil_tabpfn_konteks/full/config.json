@@ -1,0 +1,13 @@
+{
+  "schema": 2,
+  "steps": 3000,
+  "views": 4,
+  "max_unlabeled": 5000,
+  "chunk": 2000,
+  "device": "cuda",
+  "tabpfn_version": "10.2.0",
+  "weights_sha256": "ece4d67eadfea42eb0e610df5189bea60cb7f31073d81e9c7a019b76eacf0be3",
+  "data_sha256": "d6724d3a853d0076fd5f8716493267382159616675b436865be2d8d77515cff6",
+  "ema_decay": 0.99,
+  "pseudolabel_confidence": 0.95
+}
